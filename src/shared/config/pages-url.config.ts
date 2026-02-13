@@ -1,9 +1,8 @@
 class GAME {
   private root = "/game";
 
-  CREATE = `${this.root}/create`;
-  PREPARE = `${this.root}/prepare`;
-  ROUNDS = `${this.root}/rounds`;
+  SETUP = `${this.root}/setup`;
+  ROUND = `${this.root}/round`;
   FINAL_ROUND = `${this.root}/final-round`;
   ENDING = `${this.root}/ending`;
 }

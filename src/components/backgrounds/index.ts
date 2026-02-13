@@ -1,1 +1,0 @@
-export { HexagonBackground } from "./hexagon";

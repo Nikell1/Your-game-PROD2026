@@ -1,5 +1,5 @@
-import { Input } from "@/components/ui";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib";
+import { Input } from "@/shared/ui";
 import { Trash2 } from "lucide-react";
 
 export function PlayerCard() {
