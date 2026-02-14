@@ -1,4 +1,4 @@
-export { Badge } from "./badge";
-export { Button } from "./button";
-export { Input } from "./input";
-export { HeaderTitle } from "./header-title";
+export * from "./badge";
+export * from "./button";
+export * from "./input";
+export * from "./backgrounds/hexagon";

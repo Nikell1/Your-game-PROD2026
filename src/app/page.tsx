@@ -1,4 +1,4 @@
-import { MainMenuPage } from "@/pages/main-menu";
+import { MainMenuPage } from "@/app-pages";
 
 export default function Home() {
   return <MainMenuPage />;

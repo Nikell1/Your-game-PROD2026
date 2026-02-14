@@ -1,15 +1,15 @@
-import { DEFAULT_COLORS_LIST } from "@/entities/player/player.constants";
-import { IPlayer } from "@/entities/player/player.types";
+import { DEFAULT_COLORS_LIST, ISetupPlayer } from "@/entities/player";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface SetupGameStoreState {
-  playersData: Omit<IPlayer, "id">[];
+  playersData: ISetupPlayer[];
+  players: number;
 }
 
 interface SetupGameStoreActions {
   addPlayer: () => void;
-  resetStore: () => void;
+  resetSetupGameStore: () => void;
   removePlayer: (index: number) => void;
   updatePlayerName: (index: number, name: string) => void;
 }
@@ -17,6 +17,7 @@ interface SetupGameStoreActions {
 interface ISetupGameStore extends SetupGameStoreState, SetupGameStoreActions {}
 
 const initialState: SetupGameStoreState = {
+  players: 3,
   playersData: [
     { name: "", color: DEFAULT_COLORS_LIST[0] },
     { name: "", color: DEFAULT_COLORS_LIST[1] },
@@ -41,6 +42,7 @@ const useSetupGameStore = create<ISetupGameStore>()(
         const newColor = availableColor || DEFAULT_COLORS_LIST[0];
 
         set((state) => ({
+          players: state.players + 1,
           playersData: [
             ...state.playersData,
             {
@@ -53,6 +55,7 @@ const useSetupGameStore = create<ISetupGameStore>()(
 
       removePlayer: (index) =>
         set((state) => ({
+          players: state.players - 1,
           playersData: state.playersData.filter((_, i) => i !== index),
         })),
 
@@ -63,7 +66,7 @@ const useSetupGameStore = create<ISetupGameStore>()(
           ),
         })),
 
-      resetStore: () => set({ ...initialState }),
+      resetSetupGameStore: () => set({ ...initialState }),
     }),
     { name: "setup-game-storage" },
   ),

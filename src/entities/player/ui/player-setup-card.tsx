@@ -2,12 +2,14 @@
 
 import { Button, Input } from "@/shared/ui";
 import { Trash2 } from "lucide-react";
+import { MAX_NAME_LENGTH } from "../player.constants";
 
 interface PlayerSetupCardProps {
   color: string;
   value: string;
   index: number;
   isDisabled: boolean;
+  playerKey: string;
 
   onNameChange: (index: number, name: string) => void;
   onPlayerRemove: (index: number) => void;
@@ -19,6 +21,7 @@ export function PlayerSetupCard({
   index,
   value,
   isDisabled,
+  playerKey,
   onPlayerRemove,
 }: PlayerSetupCardProps) {
   return (
@@ -45,13 +48,14 @@ export function PlayerSetupCard({
         value={value}
         placeholder="Имя игрока"
         className="border text-center text-xl!"
+        maxLength={MAX_NAME_LENGTH}
         style={{
           color: color,
           borderColor: color,
         }}
       />
 
-      <p className="text-3xl">[A]</p>
+      <p className="text-3xl">{playerKey}</p>
       <Button variant="ghost" className=" text-md" style={{ color: color }}>
         Редактировать профиль
       </Button>

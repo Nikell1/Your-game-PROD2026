@@ -1,7 +1,7 @@
 import { Badge, Button } from "@/shared/ui";
 import { Play, Swords } from "lucide-react";
 import Link from "next/link";
-import { ButtonList } from "./components/button-list";
+import { ButtonList } from "./button-list";
 import { PROJECT_NAME } from "@/shared/constants";
 import { GAME_ROUTES } from "@/shared/config";
 

@@ -2,7 +2,8 @@ class GAME {
   private root = "/game";
 
   SETUP = `${this.root}/setup`;
-  ROUND = `${this.root}/round`;
+  ROUND_1 = `${this.root}/round/1`;
+  ROUND_2 = `${this.root}/round/2`;
   FINAL_ROUND = `${this.root}/final-round`;
   ENDING = `${this.root}/ending`;
 }

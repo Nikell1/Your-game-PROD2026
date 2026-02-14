@@ -1,1 +1,1 @@
-export { GAME_ROUTES } from "./pages-url.config";
+export * from "./pages-url.config";
