@@ -1,6 +1,7 @@
 export interface ISetupPlayer {
   name: string;
   color: string;
+  key: string;
   customSettings?: string; // изменить
 }
 

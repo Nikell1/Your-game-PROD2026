@@ -1,4 +1,8 @@
-import { IActivePlayer, ISetupPlayer } from "@/entities/player";
+import {
+  IActivePlayer,
+  ISetupPlayer,
+  PLAYERS_KEYS_LIST,
+} from "@/entities/player";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { GameStatus } from "../game.types";
@@ -28,6 +32,7 @@ const useGameStore = create<IGameStore>()(
         const activePlayers: IActivePlayer[] = players.map((player, index) => ({
           ...player,
           id: index,
+          key: PLAYERS_KEYS_LIST[index].label,
           score: 0,
           isActive: index === 0,
         }));

@@ -40,9 +40,10 @@ export const PLAYERS_KEYS_LIST = [
   },
   {
     code: "keyF",
-    label: "F",
+    label: "[F]",
   },
 ] as const;
 
 export const MAX_NAME_LENGTH = 14;
 export const MAX_PLAYERS = 8;
+export const MIN_PLAYERS = 3;

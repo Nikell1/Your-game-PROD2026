@@ -1,4 +1,8 @@
-import { DEFAULT_COLORS_LIST, ISetupPlayer } from "@/entities/player";
+import {
+  DEFAULT_COLORS_LIST,
+  ISetupPlayer,
+  PLAYERS_KEYS_LIST,
+} from "@/entities/player";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -19,9 +23,21 @@ interface ISetupGameStore extends SetupGameStoreState, SetupGameStoreActions {}
 const initialState: SetupGameStoreState = {
   players: 3,
   playersData: [
-    { name: "", color: DEFAULT_COLORS_LIST[0] },
-    { name: "", color: DEFAULT_COLORS_LIST[1] },
-    { name: "", color: DEFAULT_COLORS_LIST[2] },
+    {
+      name: "",
+      color: DEFAULT_COLORS_LIST[0],
+      key: PLAYERS_KEYS_LIST[0].label,
+    },
+    {
+      name: "",
+      color: DEFAULT_COLORS_LIST[1],
+      key: PLAYERS_KEYS_LIST[1].label,
+    },
+    {
+      name: "",
+      color: DEFAULT_COLORS_LIST[2],
+      key: PLAYERS_KEYS_LIST[2].label,
+    },
   ],
 };
 
@@ -34,12 +50,18 @@ const useSetupGameStore = create<ISetupGameStore>()(
         const { playersData } = get();
 
         const usedColors = playersData.map((p) => p.color);
+        const usedKeys = playersData.map((p) => p.key);
 
         const availableColor = DEFAULT_COLORS_LIST.find(
           (color) => !usedColors.includes(color),
         );
 
+        const availableKey = PLAYERS_KEYS_LIST.find(
+          (key) => !usedKeys.includes(key.label),
+        );
+
         const newColor = availableColor || DEFAULT_COLORS_LIST[0];
+        const newKey = availableKey?.label || "no key";
 
         set((state) => ({
           players: state.players + 1,
@@ -47,6 +69,7 @@ const useSetupGameStore = create<ISetupGameStore>()(
             ...state.playersData,
             {
               name: "",
+              key: newKey,
               color: newColor,
             },
           ],

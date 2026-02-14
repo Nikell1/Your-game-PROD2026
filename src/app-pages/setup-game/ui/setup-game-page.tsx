@@ -1,28 +1,30 @@
 "use client";
 
 import {
-  PlayerSetupCard,
+  PlayerCard,
   validatePlayers,
   MAX_PLAYERS,
-  PLAYERS_KEYS_LIST,
+  PlayerRemoveBtn,
+  MIN_PLAYERS,
+  PlayerNameInput,
+  PlayerEditBtn,
 } from "@/entities/player";
 import { Button } from "@/shared/ui";
-import { Header } from "@/widgets/header";
+import { Header } from "@/widgets";
 import useSetupGameStore from "../model/setup-game.store";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { useStartGame } from "../hooks/use-start-game";
 
 export function SetupGamePage() {
   const { players, addPlayer, playersData, updatePlayerName, removePlayer } =
     useSetupGameStore();
 
-  const [isPlayersValid, setIsPlayersValid] = useState(false);
-
   const startGame = useStartGame();
 
-  useEffect(() => {
-    setIsPlayersValid(validatePlayers(playersData));
-  }, [playersData]);
+  const isPlayersValid = useMemo(
+    () => validatePlayers(playersData),
+    [playersData],
+  );
 
   return (
     <div className="flex flex-col items-center">
@@ -30,15 +32,25 @@ export function SetupGamePage() {
 
       <div className="flex flex-wrap gap-14 px-8 py-4 max-w-278">
         {playersData.map((player, index) => (
-          <PlayerSetupCard
-            playerKey={PLAYERS_KEYS_LIST[index].label}
+          <PlayerCard
+            player={player}
             key={index}
-            isDisabled={players < 4}
-            color={player.color}
-            index={index}
-            onPlayerRemove={removePlayer}
-            onNameChange={updatePlayerName}
-            value={playersData[index].name}
+            cardTop={
+              <PlayerRemoveBtn
+                index={index}
+                playerColor={player.color}
+                isDisabled={players <= MIN_PLAYERS}
+                onPlayerRemove={removePlayer}
+              />
+            }
+            cardMain={
+              <PlayerNameInput
+                index={index}
+                player={player}
+                onNameChange={updatePlayerName}
+              />
+            }
+            cardBottom={<PlayerEditBtn playerColor={player.color} />}
           />
         ))}
 
