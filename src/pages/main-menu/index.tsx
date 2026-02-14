@@ -1,5 +1,4 @@
 import { Badge, Button } from "@/shared/ui";
-import { HexagonBackground } from "@/shared/ui/backgrounds";
 import { Play, Swords } from "lucide-react";
 import Link from "next/link";
 import { ButtonList } from "./components/button-list";
@@ -9,9 +8,7 @@ import { GAME_ROUTES } from "@/shared/config";
 export function MainMenuPage() {
   return (
     <>
-      <HexagonBackground className="w-full h-full absolute top-0 right-0 z-1" />
-
-      <div className="relative z-2 w-full py-20 h-full overflow-hidden flex flex-col justify-between">
+      <div className="w-full py-20 h-full overflow-hidden flex flex-col justify-between">
         <header className="flex items-center w-screen flex-col">
           <Swords size={60} />
 

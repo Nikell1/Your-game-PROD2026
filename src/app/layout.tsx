@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { PROJECT_NAME } from "@/shared/constants/seo.constants";
+import { HexagonBackground } from "@/shared/ui/backgrounds";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen h-screen flex flex-col`}
       >
-        {children}
+        <HexagonBackground className="w-full h-full absolute top-0 right-0 z-1" />
+        <div className="relative z-2 w-screen h-screen">{children}</div>
       </body>
     </html>
   );
