@@ -1,0 +1,1682 @@
+[
+  {
+    "id": "history-easy-1",
+    "themeId": "history",
+    "label": "В каком году произошло крещение Руси?",
+    "correctAnswer": "988",
+    "difficulty": "easy"
+  },
+  {
+    "id": "history-easy-2",
+    "themeId": "history",
+    "label": "Кто был первым президентом США?",
+    "correctAnswer": "Джордж Вашингтон",
+    "difficulty": "easy"
+  },
+  {
+    "id": "history-easy-3",
+    "themeId": "history",
+    "label": "В каком году началась Вторая мировая война?",
+    "correctAnswer": "1939",
+    "difficulty": "easy"
+  },
+  {
+    "id": "history-easy-4",
+    "themeId": "history",
+    "label": "Как звали последнего российского императора?",
+    "correctAnswer": "Николай II",
+    "difficulty": "easy"
+  },
+  {
+    "id": "history-easy-5",
+    "themeId": "history",
+    "label": "Какая древняя цивилизация построила пирамиды в Гизе?",
+    "correctAnswer": "Древний Египет",
+    "difficulty": "easy"
+  },
+  {
+    "id": "history-easy-6",
+    "themeId": "history",
+    "label": "В каком году человек впервые высадился на Луну?",
+    "correctAnswer": "1969",
+    "difficulty": "easy"
+  },
+  {
+    "id": "history-easy-7",
+    "themeId": "history",
+    "label": "Кто написал 'Войну и мир'?",
+    "correctAnswer": "Лев Толстой",
+    "difficulty": "easy"
+  },
+  {
+    "id": "history-easy-8",
+    "themeId": "history",
+    "label": "Как называлась первая столица Древней Руси?",
+    "correctAnswer": "Новгород",
+    "difficulty": "easy"
+  },
+  {
+    "id": "history-easy-9",
+    "themeId": "history",
+    "label": "Кто открыл Америку?",
+    "correctAnswer": "Христофор Колумб",
+    "difficulty": "easy"
+  },
+  {
+    "id": "history-easy-10",
+    "themeId": "history",
+    "label": "В каком году пала Берлинская стена?",
+    "correctAnswer": "1989",
+    "difficulty": "easy"
+  },
+  {
+    "id": "history-medium-1",
+    "themeId": "history",
+    "label": "Как звали древнерусского князя, который крестил Русь?",
+    "correctAnswer": "Владимир Святославич",
+    "difficulty": "medium"
+  },
+  {
+    "id": "history-medium-2",
+    "themeId": "history",
+    "label": "Какое событие произошло в 1380 году?",
+    "correctAnswer": "Куликовская битва",
+    "difficulty": "medium"
+  },
+  {
+    "id": "history-medium-3",
+    "themeId": "history",
+    "label": "Кто был прозван 'Александром Македонским'?",
+    "correctAnswer": "Александр III Македонский",
+    "difficulty": "medium"
+  },
+  {
+    "id": "history-medium-4",
+    "themeId": "history",
+    "label": "Какая династия правила в России в XVII веке?",
+    "correctAnswer": "Романовы",
+    "difficulty": "medium"
+  },
+  {
+    "id": "history-medium-5",
+    "themeId": "history",
+    "label": "В каком году был подписан Версальский договор?",
+    "correctAnswer": "1919",
+    "difficulty": "medium"
+  },
+  {
+    "id": "history-medium-6",
+    "themeId": "history",
+    "label": "Кто был лидером Кубинской революции?",
+    "correctAnswer": "Фидель Кастро",
+    "difficulty": "medium"
+  },
+  {
+    "id": "history-medium-7",
+    "themeId": "history",
+    "label": "Какая империя существовала на территории современной Турции до 1922 года?",
+    "correctAnswer": "Османская империя",
+    "difficulty": "medium"
+  },
+  {
+    "id": "history-medium-8",
+    "themeId": "history",
+    "label": "В каком веке жила Жанна д'Арк?",
+    "correctAnswer": "XV век",
+    "difficulty": "medium"
+  },
+  {
+    "id": "history-medium-9",
+    "themeId": "history",
+    "label": "Кто был первым императором Китая?",
+    "correctAnswer": "Цинь Шихуанди",
+    "difficulty": "medium"
+  },
+  {
+    "id": "history-medium-10",
+    "themeId": "history",
+    "label": "Какое сражение произошло в 1066 году?",
+    "correctAnswer": "Битва при Гастингсе",
+    "difficulty": "medium"
+  },
+  {
+    "id": "history-hard-1",
+    "themeId": "history",
+    "label": "Кто был автором 'Слова о полку Игореве'?",
+    "correctAnswer": "Неизвестен",
+    "difficulty": "hard"
+  },
+  {
+    "id": "history-hard-2",
+    "themeId": "history",
+    "label": "В каком году была подписана Кревская уния?",
+    "correctAnswer": "1385",
+    "difficulty": "hard"
+  },
+  {
+    "id": "history-hard-3",
+    "themeId": "history",
+    "label": "Кто такие 'опричники' и при каком царе они появились?",
+    "correctAnswer": "Личная гвардия Ивана Грозного",
+    "difficulty": "hard"
+  },
+  {
+    "id": "history-hard-4",
+    "themeId": "history",
+    "label": "Какая битва положила конец экспансии арабов в Европу?",
+    "correctAnswer": "Битва при Пуатье",
+    "difficulty": "hard"
+  },
+  {
+    "id": "history-hard-5",
+    "themeId": "history",
+    "label": "Кто такой 'Железный канцлер'?",
+    "correctAnswer": "Отто фон Бисмарк",
+    "difficulty": "hard"
+  },
+  {
+    "id": "history-hard-6",
+    "themeId": "history",
+    "label": "В каком году была создана Организация Варшавского договора?",
+    "correctAnswer": "1955",
+    "difficulty": "hard"
+  },
+  {
+    "id": "history-hard-7",
+    "themeId": "history",
+    "label": "Кто был последним правителем из династии Меровингов?",
+    "correctAnswer": "Хильдерик III",
+    "difficulty": "hard"
+  },
+  {
+    "id": "history-hard-8",
+    "themeId": "history",
+    "label": "Как назывался мирный договор, завершивший русско-японскую войну?",
+    "correctAnswer": "Портсмутский мир",
+    "difficulty": "hard"
+  },
+  {
+    "id": "history-hard-9",
+    "themeId": "history",
+    "label": "Кто такой 'Лжедмитрий' и сколько их было?",
+    "correctAnswer": "Самозванцы, выдававшие себя за сыновей Ивана Грозного, было несколько",
+    "difficulty": "hard"
+  },
+  {
+    "id": "history-hard-10",
+    "themeId": "history",
+    "label": "В каком году произошло восстание декабристов?",
+    "correctAnswer": "1825",
+    "difficulty": "hard"
+  },
+  {
+    "id": "geography-easy-1",
+    "themeId": "geography",
+    "label": "Какая самая длинная река в мире?",
+    "correctAnswer": "Нил",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geography-easy-2",
+    "themeId": "geography",
+    "label": "Какая самая высокая гора в мире?",
+    "correctAnswer": "Эверест (Джомолунгма)",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geography-easy-3",
+    "themeId": "geography",
+    "label": "Столица Франции?",
+    "correctAnswer": "Париж",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geography-easy-4",
+    "themeId": "geography",
+    "label": "Какой океан самый большой?",
+    "correctAnswer": "Тихий океан",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geography-easy-5",
+    "themeId": "geography",
+    "label": "Какая пустыня самая большая в мире?",
+    "correctAnswer": "Сахара",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geography-easy-6",
+    "themeId": "geography",
+    "label": "Столица Италии?",
+    "correctAnswer": "Рим",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geography-easy-7",
+    "themeId": "geography",
+    "label": "На каком материке находится Бразилия?",
+    "correctAnswer": "Южная Америка",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geography-easy-8",
+    "themeId": "geography",
+    "label": "Какое озеро самое глубокое в мире?",
+    "correctAnswer": "Байкал",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geography-easy-9",
+    "themeId": "geography",
+    "label": "Столица Великобритании?",
+    "correctAnswer": "Лондон",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geography-easy-10",
+    "themeId": "geography",
+    "label": "Сколько материков на Земле?",
+    "correctAnswer": "6",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geography-medium-1",
+    "themeId": "geography",
+    "label": "Какая страна имеет самое большое количество часовых поясов?",
+    "correctAnswer": "Россия",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geography-medium-2",
+    "themeId": "geography",
+    "label": "Как называется самый маленький материк?",
+    "correctAnswer": "Австралия",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geography-medium-3",
+    "themeId": "geography",
+    "label": "Столица Канады?",
+    "correctAnswer": "Оттава",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geography-medium-4",
+    "themeId": "geography",
+    "label": "Какой пролив разделяет Азию и Северную Америку?",
+    "correctAnswer": "Берингов пролив",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geography-medium-5",
+    "themeId": "geography",
+    "label": "Какая река протекает через десять стран Европы?",
+    "correctAnswer": "Дунай",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geography-medium-6",
+    "themeId": "geography",
+    "label": "Столица Бразилии?",
+    "correctAnswer": "Бразилиа",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geography-medium-7",
+    "themeId": "geography",
+    "label": "Какой вулкан уничтожил Помпеи?",
+    "correctAnswer": "Везувий",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geography-medium-8",
+    "themeId": "geography",
+    "label": "Где находится Мёртвое море?",
+    "correctAnswer": "Между Израилем и Иорданией",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geography-medium-9",
+    "themeId": "geography",
+    "label": "Какая страна известна как 'Страна тысячи озёр'?",
+    "correctAnswer": "Финляндия",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geography-medium-10",
+    "themeId": "geography",
+    "label": "Столица Австралии?",
+    "correctAnswer": "Канберра",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geography-hard-1",
+    "themeId": "geography",
+    "label": "Какой город называется 'Городом на семи холмах'?",
+    "correctAnswer": "Рим",
+    "difficulty": "hard"
+  },
+  {
+    "id": "geography-hard-2",
+    "themeId": "geography",
+    "label": "Какая страна не имеет выхода к морю, но имеет военно-морской флот?",
+    "correctAnswer": "Боливия",
+    "difficulty": "hard"
+  },
+  {
+    "id": "geography-hard-3",
+    "themeId": "geography",
+    "label": "Как называется точка, где сходятся все меридианы?",
+    "correctAnswer": "Северный и Южный полюса",
+    "difficulty": "hard"
+  },
+  {
+    "id": "geography-hard-4",
+    "themeId": "geography",
+    "label": "Столица Мьянмы?",
+    "correctAnswer": "Нейпьидо",
+    "difficulty": "hard"
+  },
+  {
+    "id": "geography-hard-5",
+    "themeId": "geography",
+    "label": "Какой остров называют 'Островом свободы'?",
+    "correctAnswer": "Куба",
+    "difficulty": "hard"
+  },
+  {
+    "id": "geography-hard-6",
+    "themeId": "geography",
+    "label": "Какая пустыня находится в Монголии?",
+    "correctAnswer": "Гоби",
+    "difficulty": "hard"
+  },
+  {
+    "id": "geography-hard-7",
+    "themeId": "geography",
+    "label": "Как называются коренные жители Новой Зеландии?",
+    "correctAnswer": "Маори",
+    "difficulty": "hard"
+  },
+  {
+    "id": "geography-hard-8",
+    "themeId": "geography",
+    "label": "Столица Суринама?",
+    "correctAnswer": "Парамарибо",
+    "difficulty": "hard"
+  },
+  {
+    "id": "geography-hard-9",
+    "themeId": "geography",
+    "label": "Какой африканский город ранее назывался Леопольдвиль?",
+    "correctAnswer": "Киншаса",
+    "difficulty": "hard"
+  },
+  {
+    "id": "geography-hard-10",
+    "themeId": "geography",
+    "label": "Где находится мыс Горн?",
+    "correctAnswer": "На Огненной Земле, Чили",
+    "difficulty": "hard"
+  },
+  {
+    "id": "science-easy-1",
+    "themeId": "science",
+    "label": "Какая планета самая большая в Солнечной системе?",
+    "correctAnswer": "Юпитер",
+    "difficulty": "easy"
+  },
+  {
+    "id": "science-easy-2",
+    "themeId": "science",
+    "label": "Из чего состоит вода?",
+    "correctAnswer": "Из водорода и кислорода",
+    "difficulty": "easy"
+  },
+  {
+    "id": "science-easy-3",
+    "themeId": "science",
+    "label": "Какая наука изучает звёзды?",
+    "correctAnswer": "Астрономия",
+    "difficulty": "easy"
+  },
+  {
+    "id": "science-easy-4",
+    "themeId": "science",
+    "label": "Сколько костей в теле взрослого человека?",
+    "correctAnswer": "206",
+    "difficulty": "easy"
+  },
+  {
+    "id": "science-easy-5",
+    "themeId": "science",
+    "label": "Какая самая близкая к Солнцу планета?",
+    "correctAnswer": "Меркурий",
+    "difficulty": "easy"
+  },
+  {
+    "id": "science-easy-6",
+    "themeId": "science",
+    "label": "Что изучает биология?",
+    "correctAnswer": "Живые организмы",
+    "difficulty": "easy"
+  },
+  {
+    "id": "science-easy-7",
+    "themeId": "science",
+    "label": "Как называется частица с отрицательным зарядом?",
+    "correctAnswer": "Электрон",
+    "difficulty": "easy"
+  },
+  {
+    "id": "science-easy-8",
+    "themeId": "science",
+    "label": "Какая самая твёрдая природная ткань?",
+    "correctAnswer": "Алмаз",
+    "difficulty": "easy"
+  },
+  {
+    "id": "science-easy-9",
+    "themeId": "science",
+    "label": "Сколько планет в Солнечной системе?",
+    "correctAnswer": "8",
+    "difficulty": "easy"
+  },
+  {
+    "id": "science-easy-10",
+    "themeId": "science",
+    "label": "Что измеряется в вольтах?",
+    "correctAnswer": "Напряжение",
+    "difficulty": "easy"
+  },
+  {
+    "id": "science-medium-1",
+    "themeId": "science",
+    "label": "Кто разработал теорию относительности?",
+    "correctAnswer": "Альберт Эйнштейн",
+    "difficulty": "medium"
+  },
+  {
+    "id": "science-medium-2",
+    "themeId": "science",
+    "label": "Какой газ составляет большую часть атмосферы Земли?",
+    "correctAnswer": "Азот",
+    "difficulty": "medium"
+  },
+  {
+    "id": "science-medium-3",
+    "themeId": "science",
+    "label": "Что такое ДНК?",
+    "correctAnswer": "Дезоксирибонуклеиновая кислота",
+    "difficulty": "medium"
+  },
+  {
+    "id": "science-medium-4",
+    "themeId": "science",
+    "label": "Кто открыл пенициллин?",
+    "correctAnswer": "Александр Флеминг",
+    "difficulty": "medium"
+  },
+  {
+    "id": "science-medium-5",
+    "themeId": "science",
+    "label": "Какой элемент обозначается символом 'O'?",
+    "correctAnswer": "Кислород",
+    "difficulty": "medium"
+  },
+  {
+    "id": "science-medium-6",
+    "themeId": "science",
+    "label": "Что такое фотосинтез?",
+    "correctAnswer": "Процесс превращения света в энергию у растений",
+    "difficulty": "medium"
+  },
+  {
+    "id": "science-medium-7",
+    "themeId": "science",
+    "label": "Какая температура замерзания воды по Цельсию?",
+    "correctAnswer": "0 градусов",
+    "difficulty": "medium"
+  },
+  {
+    "id": "science-medium-8",
+    "themeId": "science",
+    "label": "Кто изобрёл телефон?",
+    "correctAnswer": "Александр Белл",
+    "difficulty": "medium"
+  },
+  {
+    "id": "science-medium-9",
+    "themeId": "science",
+    "label": "Что изучает археология?",
+    "correctAnswer": "Древние цивилизации по вещественным источникам",
+    "difficulty": "medium"
+  },
+  {
+    "id": "science-medium-10",
+    "themeId": "science",
+    "label": "Как называется ближайшая к Земле звезда?",
+    "correctAnswer": "Солнце",
+    "difficulty": "medium"
+  },
+  {
+    "id": "science-hard-1",
+    "themeId": "science",
+    "label": "Кто создал периодическую таблицу элементов?",
+    "correctAnswer": "Дмитрий Менделеев",
+    "difficulty": "hard"
+  },
+  {
+    "id": "science-hard-2",
+    "themeId": "science",
+    "label": "Что такое бозон Хиггса?",
+    "correctAnswer": "Элементарная частица, отвечающая за массу",
+    "difficulty": "hard"
+  },
+  {
+    "id": "science-hard-3",
+    "themeId": "science",
+    "label": "Какая самая маленькая кость в человеческом теле?",
+    "correctAnswer": "Стремечко (в ухе)",
+    "difficulty": "hard"
+  },
+  {
+    "id": "science-hard-4",
+    "themeId": "science",
+    "label": "Что такое 'чёрная дыра'?",
+    "correctAnswer": "Область пространства-времени с гравитационным притяжением",
+    "difficulty": "hard"
+  },
+  {
+    "id": "science-hard-5",
+    "themeId": "science",
+    "label": "Кто открыл радиоактивность?",
+    "correctAnswer": "Антуан Беккерель",
+    "difficulty": "hard"
+  },
+  {
+    "id": "science-hard-6",
+    "themeId": "science",
+    "label": "Что такое 'квантовая запутанность'?",
+    "correctAnswer": "Состояние связанных частиц, влияющих друг на друга на расстоянии",
+    "difficulty": "hard"
+  },
+  {
+    "id": "science-hard-7",
+    "themeId": "science",
+    "label": "Какой химический элемент самый распространённый во Вселенной?",
+    "correctAnswer": "Водород",
+    "difficulty": "hard"
+  },
+  {
+    "id": "science-hard-8",
+    "themeId": "science",
+    "label": "Кто автор теории эволюции?",
+    "correctAnswer": "Чарльз Дарвин",
+    "difficulty": "hard"
+  },
+  {
+    "id": "science-hard-9",
+    "themeId": "science",
+    "label": "Что изучает энтомология?",
+    "correctAnswer": "Насекомых",
+    "difficulty": "hard"
+  },
+  {
+    "id": "science-hard-10",
+    "themeId": "science",
+    "label": "Какой газ используется в лампах накаливания?",
+    "correctAnswer": "Аргон",
+    "difficulty": "hard"
+  },
+  {
+    "id": "art-easy-1",
+    "themeId": "art",
+    "label": "Кто написал 'Мону Лизу'?",
+    "correctAnswer": "Леонардо да Винчи",
+    "difficulty": "easy"
+  },
+  {
+    "id": "art-easy-2",
+    "themeId": "art",
+    "label": "Какая картина Ван Гога самая известная?",
+    "correctAnswer": "Подсолнухи",
+    "difficulty": "easy"
+  },
+  {
+    "id": "art-easy-3",
+    "themeId": "art",
+    "label": "Как называется знаменитая статуя Микеланджело во Флоренции?",
+    "correctAnswer": "Давид",
+    "difficulty": "easy"
+  },
+  {
+    "id": "art-easy-4",
+    "themeId": "art",
+    "label": "Кто написал 'Чёрный квадрат'?",
+    "correctAnswer": "Казимир Малевич",
+    "difficulty": "easy"
+  },
+  {
+    "id": "art-easy-5",
+    "themeId": "art",
+    "label": "Какой художник отрезал себе ухо?",
+    "correctAnswer": "Винсент Ван Гог",
+    "difficulty": "easy"
+  },
+  {
+    "id": "art-easy-6",
+    "themeId": "art",
+    "label": "Где находится Лувр?",
+    "correctAnswer": "В Париже",
+    "difficulty": "easy"
+  },
+  {
+    "id": "art-easy-7",
+    "themeId": "art",
+    "label": "Кто написал фреску 'Сотворение Адама' в Сикстинской капелле?",
+    "correctAnswer": "Микеланджело",
+    "difficulty": "easy"
+  },
+  {
+    "id": "art-easy-8",
+    "themeId": "art",
+    "label": "Как называется картина Эдварда Мунка?",
+    "correctAnswer": "Крик",
+    "difficulty": "easy"
+  },
+  {
+    "id": "art-easy-9",
+    "themeId": "art",
+    "label": "Какое направление в искусстве представлял Сальвадор Дали?",
+    "correctAnswer": "Сюрреализм",
+    "difficulty": "easy"
+  },
+  {
+    "id": "art-easy-10",
+    "themeId": "art",
+    "label": "Кто написал 'Рождение Венеры'?",
+    "correctAnswer": "Сандро Боттичелли",
+    "difficulty": "easy"
+  },
+  {
+    "id": "art-medium-1",
+    "themeId": "art",
+    "label": "Какой русский художник написал 'Богатыри'?",
+    "correctAnswer": "Виктор Васнецов",
+    "difficulty": "medium"
+  },
+  {
+    "id": "art-medium-2",
+    "themeId": "art",
+    "label": "Кто был основателем абстракционизма?",
+    "correctAnswer": "Василий Кандинский",
+    "difficulty": "medium"
+  },
+  {
+    "id": "art-medium-3",
+    "themeId": "art",
+    "label": "Какая картина Рембрандта самая известная?",
+    "correctAnswer": "Ночной дозор",
+    "difficulty": "medium"
+  },
+  {
+    "id": "art-medium-4",
+    "themeId": "art",
+    "label": "Где находится музей Прадо?",
+    "correctAnswer": "В Мадриде",
+    "difficulty": "medium"
+  },
+  {
+    "id": "art-medium-5",
+    "themeId": "art",
+    "label": "Кто написал 'Страшный суд' в Сикстинской капелле?",
+    "correctAnswer": "Микеланджело",
+    "difficulty": "medium"
+  },
+  {
+    "id": "art-medium-6",
+    "themeId": "art",
+    "label": "Какой художник был известен своими портретами с длинными шеями?",
+    "correctAnswer": "Амедео Модильяни",
+    "difficulty": "medium"
+  },
+  {
+    "id": "art-medium-7",
+    "themeId": "art",
+    "label": "Что такое 'импрессионизм'?",
+    "correctAnswer": "Направление в искусстве с акцентом на впечатление и свет",
+    "difficulty": "medium"
+  },
+  {
+    "id": "art-medium-8",
+    "themeId": "art",
+    "label": "Кто написал 'Свобода на баррикадах'?",
+    "correctAnswer": "Эжен Делакруа",
+    "difficulty": "medium"
+  },
+  {
+    "id": "art-medium-9",
+    "themeId": "art",
+    "label": "Какой скульптор создал 'Мыслителя'?",
+    "correctAnswer": "Огюст Роден",
+    "difficulty": "medium"
+  },
+  {
+    "id": "art-medium-10",
+    "themeId": "art",
+    "label": "Где находится Третьяковская галерея?",
+    "correctAnswer": "В Москве",
+    "difficulty": "medium"
+  },
+  {
+    "id": "art-hard-1",
+    "themeId": "art",
+    "label": "Кто такой Караваджо и чем он знаменит?",
+    "correctAnswer": "Итальянский художник, мастер светотени",
+    "difficulty": "hard"
+  },
+  {
+    "id": "art-hard-2",
+    "themeId": "art",
+    "label": "Что такое 'Авангард' в искусстве?",
+    "correctAnswer": "Совокупность новаторских направлений XX века",
+    "difficulty": "hard"
+  },
+  {
+    "id": "art-hard-3",
+    "themeId": "art",
+    "label": "Кто автор картины 'Иван Грозный и сын его Иван'?",
+    "correctAnswer": "Илья Репин",
+    "difficulty": "hard"
+  },
+  {
+    "id": "art-hard-4",
+    "themeId": "art",
+    "label": "Где хранится 'Джоконда'?",
+    "correctAnswer": "В Лувре",
+    "difficulty": "hard"
+  },
+  {
+    "id": "art-hard-5",
+    "themeId": "art",
+    "label": "Что такое 'кубизм' и кто его основал?",
+    "correctAnswer": "Направление с геометрическими формами, основано Пикассо и Браком",
+    "difficulty": "hard"
+  },
+  {
+    "id": "art-hard-6",
+    "themeId": "art",
+    "label": "Кто написал 'Явление Христа народу'?",
+    "correctAnswer": "Александр Иванов",
+    "difficulty": "hard"
+  },
+  {
+    "id": "art-hard-7",
+    "themeId": "art",
+    "label": "Какой художник знаменит своими 'каплями'?",
+    "correctAnswer": "Джексон Поллок",
+    "difficulty": "hard"
+  },
+  {
+    "id": "art-hard-8",
+    "themeId": "art",
+    "label": "Где находится Эрмитаж?",
+    "correctAnswer": "В Санкт-Петербурге",
+    "difficulty": "hard"
+  },
+  {
+    "id": "art-hard-9",
+    "themeId": "art",
+    "label": "Что такое 'фреска'?",
+    "correctAnswer": "Роспись по сырой штукатурке",
+    "difficulty": "hard"
+  },
+  {
+    "id": "art-hard-10",
+    "themeId": "art",
+    "label": "Кто такой Иероним Босх и чем знаменит?",
+    "correctAnswer": "Нидерландский художник, известный фантастическими сюжетами",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cinema-easy-1",
+    "themeId": "cinema",
+    "label": "Какой фильм получил 'Оскар' в 2020 году?",
+    "correctAnswer": "Паразиты",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cinema-easy-2",
+    "themeId": "cinema",
+    "label": "Кто сыграл Железного человека в киновселенной Marvel?",
+    "correctAnswer": "Роберт Дауни-младший",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cinema-easy-3",
+    "themeId": "cinema",
+    "label": "Какой актёр сыграл Гарри Поттера?",
+    "correctAnswer": "Дэниел Рэдклифф",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cinema-easy-4",
+    "themeId": "cinema",
+    "label": "Как назывался первый звуковой фильм?",
+    "correctAnswer": "Певец джаза",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cinema-easy-5",
+    "themeId": "cinema",
+    "label": "Кто режиссёр фильма 'Криминальное чтиво'?",
+    "correctAnswer": "Квентин Тарантино",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cinema-easy-6",
+    "themeId": "cinema",
+    "label": "Какой мультфильм студии Pixar про рыб?",
+    "correctAnswer": "В поисках Немо",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cinema-easy-7",
+    "themeId": "cinema",
+    "label": "Кто сыграл Терминатора?",
+    "correctAnswer": "Арнольд Шварценеггер",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cinema-easy-8",
+    "themeId": "cinema",
+    "label": "Какой фильм собрал больше всего денег в истории?",
+    "correctAnswer": "Аватар",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cinema-easy-9",
+    "themeId": "cinema",
+    "label": "Кто сыграл Джеймса Бонда в 2000-х?",
+    "correctAnswer": "Дэниел Крейг",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cinema-easy-10",
+    "themeId": "cinema",
+    "label": "Какой советский фильм получил 'Оскар'?",
+    "correctAnswer": "Война и мир",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cinema-medium-1",
+    "themeId": "cinema",
+    "label": "Кто снял фильм 'Солярис'?",
+    "correctAnswer": "Андрей Тарковский",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cinema-medium-2",
+    "themeId": "cinema",
+    "label": "Какой актёр получил 'Оскар' за роль в 'Отце'?",
+    "correctAnswer": "Энтони Хопкинс",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cinema-medium-3",
+    "themeId": "cinema",
+    "label": "Кто режиссёр 'Зеркала'?",
+    "correctAnswer": "Андрей Тарковский",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cinema-medium-4",
+    "themeId": "cinema",
+    "label": "Какой фильм открыл Каннский кинофестиваль 2023?",
+    "correctAnswer": "Жанна Дюбарри",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cinema-medium-5",
+    "themeId": "cinema",
+    "label": "Кто сыгра главную роль в фильме 'Джокер'?",
+    "correctAnswer": "Хоакин Феникс",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cinema-medium-6",
+    "themeId": "cinema",
+    "label": "Какой фильм получил 'Золотую пальмовую ветвь' в 2022?",
+    "correctAnswer": "Треугольник печали",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cinema-medium-7",
+    "themeId": "cinema",
+    "label": "Кто режиссёр 'Иванова детства'?",
+    "correctAnswer": "Андрей Тарковский",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cinema-medium-8",
+    "themeId": "cinema",
+    "label": "Какой актёр сыграл в 'Волк с Уолл-стрит'?",
+    "correctAnswer": "Леонардо ДиКаприо",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cinema-medium-9",
+    "themeId": "cinema",
+    "label": "Кто режиссёр 'Сталкера'?",
+    "correctAnswer": "Андрей Тарковский",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cinema-medium-10",
+    "themeId": "cinema",
+    "label": "Какой фильм получил 'Оскар' в 2023?",
+    "correctAnswer": "Всё везде и сразу",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cinema-hard-1",
+    "themeId": "cinema",
+    "label": "Кто снял фильм 'Зеркало'?",
+    "correctAnswer": "Андрей Тарковский",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cinema-hard-2",
+    "themeId": "cinema",
+    "label": "Какой актёр сыграл в фильме 'Таксист'?",
+    "correctAnswer": "Роберт Де Ниро",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cinema-hard-3",
+    "themeId": "cinema",
+    "label": "Кто режиссёр фильма 'Седьмая печать'?",
+    "correctAnswer": "Ингмар Бергман",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cinema-hard-4",
+    "themeId": "cinema",
+    "label": "Какой советский фильм получил 'Золотую пальмовую ветвь'?",
+    "correctAnswer": "Летят журавли",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cinema-hard-5",
+    "themeId": "cinema",
+    "label": "Кто сыграл главную роль в 'Пролетая над гнездом кукушки'?",
+    "correctAnswer": "Джек Николсон",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cinema-hard-6",
+    "themeId": "cinema",
+    "label": "Кто режиссёр 'Ночи живых мертвецов'?",
+    "correctAnswer": "Джордж Ромеро",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cinema-hard-7",
+    "themeId": "cinema",
+    "label": "Какой фильм получил 'Оскар' за лучший фильм в 1994?",
+    "correctAnswer": "Форрест Гамп",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cinema-hard-8",
+    "themeId": "cinema",
+    "label": "Кто сыграл в 'Сладкой жизни'?",
+    "correctAnswer": "Марчелло Мастроянни",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cinema-hard-9",
+    "themeId": "cinema",
+    "label": "Кто режиссёр 'Восхождения'?",
+    "correctAnswer": "Ларс фон Триер",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cinema-hard-10",
+    "themeId": "cinema",
+    "label": "Какой фильм получил 'Золотую пальмовую ветвь' в 2019?",
+    "correctAnswer": "Паразиты",
+    "difficulty": "hard"
+  },
+  {
+    "id": "music-easy-1",
+    "themeId": "music",
+    "label": "Какая группа исполняет песню 'Bohemian Rhapsody'?",
+    "correctAnswer": "Queen",
+    "difficulty": "easy"
+  },
+  {
+    "id": "music-easy-2",
+    "themeId": "music",
+    "label": "Кто считается 'королём поп-музыки'?",
+    "correctAnswer": "Майкл Джексон",
+    "difficulty": "easy"
+  },
+  {
+    "id": "music-easy-3",
+    "themeId": "music",
+    "label": "Сколько струн у скрипки?",
+    "correctAnswer": "4",
+    "difficulty": "easy"
+  },
+  {
+    "id": "music-easy-4",
+    "themeId": "music",
+    "label": "Кто написал 'Лунную сонату'?",
+    "correctAnswer": "Бетховен",
+    "difficulty": "easy"
+  },
+  {
+    "id": "music-easy-5",
+    "themeId": "music",
+    "label": "Какой музыкальный инструмент самый большой в оркестре?",
+    "correctAnswer": "Контрабас",
+    "difficulty": "easy"
+  },
+  {
+    "id": "music-easy-6",
+    "themeId": "music",
+    "label": "Какая группа исполняет 'Yesterday'?",
+    "correctAnswer": "The Beatles",
+    "difficulty": "easy"
+  },
+  {
+    "id": "music-easy-7",
+    "themeId": "music",
+    "label": "Кто написал оперу 'Евгений Онегин'?",
+    "correctAnswer": "Чайковский",
+    "difficulty": "easy"
+  },
+  {
+    "id": "music-easy-8",
+    "themeId": "music",
+    "label": "Какой певец известен как 'король рок-н-ролла'?",
+    "correctAnswer": "Элвис Пресли",
+    "difficulty": "easy"
+  },
+  {
+    "id": "music-easy-9",
+    "themeId": "music",
+    "label": "Сколько клавиш у пианино?",
+    "correctAnswer": "88",
+    "difficulty": "easy"
+  },
+  {
+    "id": "music-easy-10",
+    "themeId": "music",
+    "label": "Какая группа исполняет 'Stairway to Heaven'?",
+    "correctAnswer": "Led Zeppelin",
+    "difficulty": "easy"
+  },
+  {
+    "id": "music-medium-1",
+    "themeId": "music",
+    "label": "Кто написал 'Времена года'?",
+    "correctAnswer": "Вивальди",
+    "difficulty": "medium"
+  },
+  {
+    "id": "music-medium-2",
+    "themeId": "music",
+    "label": "Какой инструмент у Паганини?",
+    "correctAnswer": "Скрипка",
+    "difficulty": "medium"
+  },
+  {
+    "id": "music-medium-3",
+    "themeId": "music",
+    "label": "Кто солист группы 'Nirvana'?",
+    "correctAnswer": "Курт Кобейн",
+    "difficulty": "medium"
+  },
+  {
+    "id": "music-medium-4",
+    "themeId": "music",
+    "label": "Какой русский композитор написал 'Щелкунчик'?",
+    "correctAnswer": "Чайковский",
+    "difficulty": "medium"
+  },
+  {
+    "id": "music-medium-5",
+    "themeId": "music",
+    "label": "Кто написал 'Реквием'?",
+    "correctAnswer": "Моцарт",
+    "difficulty": "medium"
+  },
+  {
+    "id": "music-medium-6",
+    "themeId": "music",
+    "label": "Какой певец известен как 'король поп-музыки'?",
+    "correctAnswer": "Майкл Джексон",
+    "difficulty": "medium"
+  },
+  {
+    "id": "music-medium-7",
+    "themeId": "music",
+    "label": "Кто написал 'Болеро'?",
+    "correctAnswer": "Равель",
+    "difficulty": "medium"
+  },
+  {
+    "id": "music-medium-8",
+    "themeId": "music",
+    "label": "Какой инструмент у Рихтера?",
+    "correctAnswer": "Пианино",
+    "difficulty": "medium"
+  },
+  {
+    "id": "music-medium-9",
+    "themeId": "music",
+    "label": "Кто солист группы 'The Doors'?",
+    "correctAnswer": "Джим Моррисон",
+    "difficulty": "medium"
+  },
+  {
+    "id": "music-medium-10",
+    "themeId": "music",
+    "label": "Кто написал 'Кармен'?",
+    "correctAnswer": "Бизе",
+    "difficulty": "medium"
+  },
+  {
+    "id": "music-hard-1",
+    "themeId": "music",
+    "label": "Кто такой Густав Малер?",
+    "correctAnswer": "Австрийский композитор и дирижёр",
+    "difficulty": "hard"
+  },
+  {
+    "id": "music-hard-2",
+    "themeId": "music",
+    "label": "Что такое 'опера-сериа'?",
+    "correctAnswer": "Серьёзная опера на мифологический сюжет",
+    "difficulty": "hard"
+  },
+  {
+    "id": "music-hard-3",
+    "themeId": "music",
+    "label": "Кто написал 'Петя и волк'?",
+    "correctAnswer": "Прокофьев",
+    "difficulty": "hard"
+  },
+  {
+    "id": "music-hard-4",
+    "themeId": "music",
+    "label": "Какой композитор написал 'Симфонию псалмов'?",
+    "correctAnswer": "Стравинский",
+    "difficulty": "hard"
+  },
+  {
+    "id": "music-hard-5",
+    "themeId": "music",
+    "label": "Кто такой Арнольд Шёнберг?",
+    "correctAnswer": "Австрийский композитор, основатель новой венской школы",
+    "difficulty": "hard"
+  },
+  {
+    "id": "music-hard-6",
+    "themeId": "music",
+    "label": "Что такое 'додекафония'?",
+    "correctAnswer": "Музыкальная техника с 12 равноправными тонами",
+    "difficulty": "hard"
+  },
+  {
+    "id": "music-hard-7",
+    "themeId": "music",
+    "label": "Кто написал оперу 'Воццек'?",
+    "correctAnswer": "Альбан Берг",
+    "difficulty": "hard"
+  },
+  {
+    "id": "music-hard-8",
+    "themeId": "music",
+    "label": "Какой композитор написал 'Прометей: Поэма огня'?",
+    "correctAnswer": "Скрябин",
+    "difficulty": "hard"
+  },
+  {
+    "id": "music-hard-9",
+    "themeId": "music",
+    "label": "Кто такой Дьёрдь Лигети?",
+    "correctAnswer": "Венгерский композитор-авангардист",
+    "difficulty": "hard"
+  },
+  {
+    "id": "music-hard-10",
+    "themeId": "music",
+    "label": "Что такое 'конкретная музыка'?",
+    "correctAnswer": "Музыка с использованием записанных звуков",
+    "difficulty": "hard"
+  },
+  {
+    "id": "literature-easy-1",
+    "themeId": "literature",
+    "label": "Кто написал 'Война и мир'?",
+    "correctAnswer": "Лев Толстой",
+    "difficulty": "easy"
+  },
+  {
+    "id": "literature-easy-2",
+    "themeId": "literature",
+    "label": "Кто написал 'Преступление и наказание'?",
+    "correctAnswer": "Фёдор Достоевский",
+    "difficulty": "easy"
+  },
+  {
+    "id": "literature-easy-3",
+    "themeId": "literature",
+    "label": "Кто написал 'Евгений Онегин'?",
+    "correctAnswer": "Александр Пушкин",
+    "difficulty": "easy"
+  },
+  {
+    "id": "literature-easy-4",
+    "themeId": "literature",
+    "label": "Кто написал 'Герой нашего времени'?",
+    "correctAnswer": "Михаил Лермонтов",
+    "difficulty": "easy"
+  },
+  {
+    "id": "literature-easy-5",
+    "themeId": "literature",
+    "label": "Кто написал 'Мёртвые души'?",
+    "correctAnswer": "Николай Гоголь",
+    "difficulty": "easy"
+  },
+  {
+    "id": "literature-easy-6",
+    "themeId": "literature",
+    "label": "Кто написал 'Отцы и дети'?",
+    "correctAnswer": "Иван Тургенев",
+    "difficulty": "easy"
+  },
+  {
+    "id": "literature-easy-7",
+    "themeId": "literature",
+    "label": "Кто написал 'Горе от ума'?",
+    "correctAnswer": "Александр Грибоедов",
+    "difficulty": "easy"
+  },
+  {
+    "id": "literature-easy-8",
+    "themeId": "literature",
+    "label": "Кто написал 'Ревизор'?",
+    "correctAnswer": "Николай Гоголь",
+    "difficulty": "easy"
+  },
+  {
+    "id": "literature-easy-9",
+    "themeId": "literature",
+    "label": "Кто написал 'Обломов'?",
+    "correctAnswer": "Иван Гончаров",
+    "difficulty": "easy"
+  },
+  {
+    "id": "literature-easy-10",
+    "themeId": "literature",
+    "label": "Кто написал 'Вишнёвый сад'?",
+    "correctAnswer": "Антон Чехов",
+    "difficulty": "easy"
+  },
+  {
+    "id": "literature-medium-1",
+    "themeId": "literature",
+    "label": "Кто написал 'Тихий Дон'?",
+    "correctAnswer": "Михаил Шолохов",
+    "difficulty": "medium"
+  },
+  {
+    "id": "literature-medium-2",
+    "themeId": "literature",
+    "label": "Кто написал 'Мастер и Маргарита'?",
+    "correctAnswer": "Михаил Булгаков",
+    "difficulty": "medium"
+  },
+  {
+    "id": "literature-medium-3",
+    "themeId": "literature",
+    "label": "Кто написал 'Доктор Живаго'?",
+    "correctAnswer": "Борис Пастернак",
+    "difficulty": "medium"
+  },
+  {
+    "id": "literature-medium-4",
+    "themeId": "literature",
+    "label": "Кто написал 'Собачье сердце'?",
+    "correctAnswer": "Михаил Булгаков",
+    "difficulty": "medium"
+  },
+  {
+    "id": "literature-medium-5",
+    "themeId": "literature",
+    "label": "Кто написал 'Колымские рассказы'?",
+    "correctAnswer": "Варлам Шаламов",
+    "difficulty": "medium"
+  },
+  {
+    "id": "literature-medium-6",
+    "themeId": "literature",
+    "label": "Кто написал 'Архипелаг ГУЛАГ'?",
+    "correctAnswer": "Александр Солженицын",
+    "difficulty": "medium"
+  },
+  {
+    "id": "literature-medium-7",
+    "themeId": "literature",
+    "label": "Кто написал 'Мы'?",
+    "correctAnswer": "Евгений Замятин",
+    "difficulty": "medium"
+  },
+  {
+    "id": "literature-medium-8",
+    "themeId": "literature",
+    "label": "Кто написал 'Чевенгур'?",
+    "correctAnswer": "Андрей Платонов",
+    "difficulty": "medium"
+  },
+  {
+    "id": "literature-medium-9",
+    "themeId": "literature",
+    "label": "Кто написал 'Котлован'?",
+    "correctAnswer": "Андрей Платонов",
+    "difficulty": "medium"
+  },
+  {
+    "id": "literature-medium-10",
+    "themeId": "literature",
+    "label": "Кто написал 'Петербург'?",
+    "correctAnswer": "Андрей Белый",
+    "difficulty": "medium"
+  },
+  {
+    "id": "literature-hard-1",
+    "themeId": "literature",
+    "label": "Кто написал 'Улисс'?",
+    "correctAnswer": "Джеймс Джойс",
+    "difficulty": "hard"
+  },
+  {
+    "id": "literature-hard-2",
+    "themeId": "literature",
+    "label": "Кто написал 'В поисках утраченного времени'?",
+    "correctAnswer": "Марсель Пруст",
+    "difficulty": "hard"
+  },
+  {
+    "id": "literature-hard-3",
+    "themeId": "literature",
+    "label": "Кто написал 'Процесс'?",
+    "correctAnswer": "Франц Кафка",
+    "difficulty": "hard"
+  },
+  {
+    "id": "literature-hard-4",
+    "themeId": "literature",
+    "label": "Кто написал 'Замок'?",
+    "correctAnswer": "Франц Кафка",
+    "difficulty": "hard"
+  },
+  {
+    "id": "literature-hard-5",
+    "themeId": "literature",
+    "label": "Кто написал 'Игра в бисер'?",
+    "correctAnswer": "Герман Гессе",
+    "difficulty": "hard"
+  },
+  {
+    "id": "literature-hard-6",
+    "themeId": "literature",
+    "label": "Кто написал 'Степной волк'?",
+    "correctAnswer": "Герман Гессе",
+    "difficulty": "hard"
+  },
+  {
+    "id": "literature-hard-7",
+    "themeId": "literature",
+    "label": "Кто написал 'Шум и ярость'?",
+    "correctAnswer": "Уильям Фолкнер",
+    "difficulty": "hard"
+  },
+  {
+    "id": "literature-hard-8",
+    "themeId": "literature",
+    "label": "Кто написал 'Старик и море'?",
+    "correctAnswer": "Эрнест Хемингуэй",
+    "difficulty": "hard"
+  },
+  {
+    "id": "literature-hard-9",
+    "themeId": "literature",
+    "label": "Кто написал 'По ком звонит колокол'?",
+    "correctAnswer": "Эрнест Хемингуэй",
+    "difficulty": "hard"
+  },
+  {
+    "id": "literature-hard-10",
+    "themeId": "literature",
+    "label": "Кто написал 'Над пропастью во ржи'?",
+    "correctAnswer": "Джером Сэлинджер",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sport-easy-1",
+    "themeId": "sport",
+    "label": "Сколько игроков в футбольной команде?",
+    "correctAnswer": "11",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sport-easy-2",
+    "themeId": "sport",
+    "label": "Какой вид спорта называют 'королевой спорта'?",
+    "correctAnswer": "Лёгкая атлетика",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sport-easy-3",
+    "themeId": "sport",
+    "label": "Где проходили Олимпийские игры 1980 года?",
+    "correctAnswer": "В Москве",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sport-easy-4",
+    "themeId": "sport",
+    "label": "Кто выиграл Чемпионат мира по футболу 2018?",
+    "correctAnswer": "Франция",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sport-easy-5",
+    "themeId": "sport",
+    "label": "Сколько очков даётся за гол в футболе?",
+    "correctAnswer": "1",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sport-easy-6",
+    "themeId": "sport",
+    "label": "Какой теннисист выиграл больше всего турниров Большого шлема?",
+    "correctAnswer": "Новак Джокович",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sport-easy-7",
+    "themeId": "sport",
+    "label": "Какой баскетболист известен как 'Король'?",
+    "correctAnswer": "ЛеБрон Джеймс",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sport-easy-8",
+    "themeId": "sport",
+    "label": "Сколько периодов в хоккее?",
+    "correctAnswer": "3",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sport-easy-9",
+    "themeId": "sport",
+    "label": "Кто выиграл Чемпионат мира по футболу 2022?",
+    "correctAnswer": "Аргентина",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sport-easy-10",
+    "themeId": "sport",
+    "label": "Какой вид спорта в программе зимних Олимпийских игр?",
+    "correctAnswer": "Лыжные гонки",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sport-medium-1",
+    "themeId": "sport",
+    "label": "Кто выиграл Чемпионат Европы по футболу 2020?",
+    "correctAnswer": "Италия",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sport-medium-2",
+    "themeId": "sport",
+    "label": "Какой футболист забил самый быстрый гол в истории ЧМ?",
+    "correctAnswer": "Хакан Шукюр",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sport-medium-3",
+    "themeId": "sport",
+    "label": "Сколько колец на олимпийском флаге?",
+    "correctAnswer": "5",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sport-medium-4",
+    "themeId": "sport",
+    "label": "Кто выиграл Чемпионат мира по хоккею 2023?",
+    "correctAnswer": "Канада",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sport-medium-5",
+    "themeId": "sport",
+    "label": "Какой боксёр победил Майка Тайсона?",
+    "correctAnswer": "Джеймс Даглас",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sport-medium-6",
+    "themeId": "sport",
+    "label": "Кто выиграл турнир 'Ролан Гаррос' 2023?",
+    "correctAnswer": "Новак Джокович",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sport-medium-7",
+    "themeId": "sport",
+    "label": "Какой клуб выиграл Лигу чемпионов 2023?",
+    "correctAnswer": "Манчестер Сити",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sport-medium-8",
+    "themeId": "sport",
+    "label": "Сколько игроков в команде по регби?",
+    "correctAnswer": "15",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sport-medium-9",
+    "themeId": "sport",
+    "label": "Кто выиграл Чемпионат мира по биатлону 2023?",
+    "correctAnswer": "Йоханнес Бё",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sport-medium-10",
+    "themeId": "sport",
+    "label": "Какой гонщик выиграл Формулу-1 2023?",
+    "correctAnswer": "Макс Ферстаппен",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sport-hard-1",
+    "themeId": "sport",
+    "label": "Кто выиграл Чемпионат мира по футболу 1930?",
+    "correctAnswer": "Уругвай",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sport-hard-2",
+    "themeId": "sport",
+    "label": "Какой футболист забил 1000 голов?",
+    "correctAnswer": "Пеле",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sport-hard-3",
+    "themeId": "sport",
+    "label": "Сколько раз сборная Бразилии выигрывала ЧМ?",
+    "correctAnswer": "5",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sport-hard-4",
+    "themeId": "sport",
+    "label": "Кто выиграл 'Золотой мяч' в 2022?",
+    "correctAnswer": "Карим Бензема",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sport-hard-5",
+    "themeId": "sport",
+    "label": "Какой баскетболист набрал 100 очков за игру?",
+    "correctAnswer": "Уилт Чемберлен",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sport-hard-6",
+    "themeId": "sport",
+    "label": "Кто выиграл Олимпиаду в Сочи в мужском одиночном фигурном катании?",
+    "correctAnswer": "Юдзуру Ханю",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sport-hard-7",
+    "themeId": "sport",
+    "label": "Какой теннисист выиграл 'карьерный Большой шлем'?",
+    "correctAnswer": "Роджер Федерер",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sport-hard-8",
+    "themeId": "sport",
+    "label": "Сколько секунд в боксёрском раунде?",
+    "correctAnswer": "180",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sport-hard-9",
+    "themeId": "sport",
+    "label": "Кто выиграл Чемпионат мира по шахматам 2023?",
+    "correctAnswer": "Дин Лижэнь",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sport-hard-10",
+    "themeId": "sport",
+    "label": "Какой клуб выиграл Лигу Европы 2023?",
+    "correctAnswer": "Севилья",
+    "difficulty": "hard"
+  }
+]

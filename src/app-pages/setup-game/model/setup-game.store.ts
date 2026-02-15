@@ -1,4 +1,8 @@
-import { ISetupPlayer, PLAYERS_KEYS_LIST } from "@/entities/player";
+import {
+  ISetupPlayer,
+  MIN_PLAYERS,
+  PLAYERS_KEYS_LIST,
+} from "@/entities/player";
 import { DEFAULT_COLORS_LIST } from "@/shared/constants";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -17,7 +21,7 @@ interface SetupGameStoreActions {
 interface ISetupGameStore extends SetupGameStoreState, SetupGameStoreActions {}
 
 const initialState: SetupGameStoreState = {
-  players: 3,
+  players: MIN_PLAYERS,
   playersData: [
     {
       name: "",

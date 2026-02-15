@@ -6,3 +6,8 @@ export type GameStatus =
   | "FINAL_ROUND"
   | "ENDING"
   | "FINISHED";
+
+export interface ITheme {
+  id: string;
+  label: string;
+}

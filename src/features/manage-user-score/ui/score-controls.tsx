@@ -14,7 +14,7 @@ export function ScoreControls({ player }: ScoreControlsProps) {
 
   return (
     <div
-      className="flex gap-4 bg-background/10 border rounded-lg items-center justify-center my-2 w-full py-0.5"
+      className="flex gap-4 bg-background/10 border rounded-lg items-center justify-between my-2 w-full py-0.5"
       style={{ borderColor: player.color }}
     >
       <Button

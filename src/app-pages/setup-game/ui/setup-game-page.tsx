@@ -10,11 +10,17 @@ import { Button } from "@/shared/ui";
 import { Header } from "@/widgets";
 import useSetupGameStore from "../model/setup-game.store";
 import { useMemo } from "react";
-import { useStartGame } from "../hooks/use-start-game";
+import { useStartGame } from "@/features/start-game";
 
 export function SetupGamePage() {
-  const { players, addPlayer, playersData, updatePlayerName, removePlayer } =
-    useSetupGameStore();
+  const {
+    players,
+    addPlayer,
+    playersData,
+    updatePlayerName,
+    removePlayer,
+    resetSetupGameStore,
+  } = useSetupGameStore();
 
   const startGame = useStartGame();
 
@@ -56,7 +62,7 @@ export function SetupGamePage() {
         size="xl"
         className="text-2xl px-20 py-6 mt-6"
         disabled={!isPlayersValid}
-        onClick={() => startGame()}
+        onClick={() => startGame({ playersData, resetSetupGameStore })}
       >
         Начать игру
       </Button>
