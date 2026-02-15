@@ -13,9 +13,11 @@ export function GameRoundPage() {
     <>
       <Header title={headerTitle} />
 
-      <div className="flex w-full">
+      <div className="flex w-full p-8 flex-1">
         <HostWidget />
-        <QuestionsTable />
+        <div className="flex-1 flex justify-center">
+          <QuestionsTable />
+        </div>
       </div>
 
       <PlayersList />

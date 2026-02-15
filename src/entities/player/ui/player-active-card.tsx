@@ -8,7 +8,7 @@ interface PlayerActiveCardProps {
 
 export function PlayerActiveCard({ player, children }: PlayerActiveCardProps) {
   return (
-    <PlayerCardWrapper player={player} className="border-b-0 rounded-b-none">
+    <PlayerCardWrapper player={player} className="!border-b-0 rounded-b-none">
       <p className="text-2xl font-medium" style={{ color: player.color }}>
         {player.name}
       </p>

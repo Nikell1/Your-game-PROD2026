@@ -1,0 +1,1 @@
+export const DEV_MODE_SCORE_BUTTON_POINT = 100;

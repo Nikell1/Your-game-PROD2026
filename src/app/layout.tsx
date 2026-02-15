@@ -31,7 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen h-screen flex flex-col`}
       >
         <HexagonBackground className="w-full h-full absolute top-0 right-0 z-1" />
-        <div className="relative z-2 w-screen h-screen">{children}</div>
+        <div className="relative z-2 w-screen h-screen flex flex-col">
+          {children}
+        </div>
       </body>
     </html>
   );

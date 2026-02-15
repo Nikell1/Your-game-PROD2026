@@ -9,16 +9,17 @@ import type { GameStatus } from "../game.types";
 
 interface GameStoreState {
   status: GameStatus;
-  playersInGame: IActivePlayer[];
+  players: IActivePlayer[];
 }
 
 interface GameStoreActions {
   newGame: (players: ISetupPlayer[]) => void;
+  setPlayers: (players: IActivePlayer[]) => void;
 }
 
 const initialState: GameStoreState = {
   status: "NOT_STARTED",
-  playersInGame: [],
+  players: [],
 };
 
 interface IGameStore extends GameStoreState, GameStoreActions {}
@@ -39,9 +40,11 @@ const useGameStore = create<IGameStore>()(
 
         set({
           status: "ROUND_1",
-          playersInGame: activePlayers,
+          players: activePlayers,
         });
       },
+
+      setPlayers: (players) => set({ players: players }),
     }),
     {
       name: "game-storage",

@@ -1,11 +1,7 @@
-import {
-  DEFAULT_COLORS_LIST,
-  ISetupPlayer,
-  PLAYERS_KEYS_LIST,
-} from "@/entities/player";
+import { ISetupPlayer, PLAYERS_KEYS_LIST } from "@/entities/player";
+import { DEFAULT_COLORS_LIST } from "@/shared/constants";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
 interface SetupGameStoreState {
   playersData: ISetupPlayer[];
   players: number;
