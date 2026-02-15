@@ -1,13 +1,10 @@
 "use client";
 
 import {
-  PlayerCard,
   validatePlayers,
   MAX_PLAYERS,
-  PlayerRemoveBtn,
   MIN_PLAYERS,
-  PlayerNameInput,
-  PlayerEditBtn,
+  PlayerSetupCard,
 } from "@/entities/player";
 import { Button } from "@/shared/ui";
 import { Header } from "@/widgets";
@@ -26,35 +23,26 @@ export function SetupGamePage() {
     [playersData],
   );
 
+  const isRemoveBtnDisabled = useMemo(() => MIN_PLAYERS >= players, [players]);
+  const isAddBtnDisabled = useMemo(() => MAX_PLAYERS > players, [players]);
+
   return (
     <div className="flex flex-col items-center">
       <Header title="Подготовка к игре" />
 
       <div className="flex flex-wrap gap-14 px-8 py-4 max-w-278">
         {playersData.map((player, index) => (
-          <PlayerCard
-            player={player}
+          <PlayerSetupCard
             key={index}
-            cardTop={
-              <PlayerRemoveBtn
-                index={index}
-                playerColor={player.color}
-                isDisabled={players <= MIN_PLAYERS}
-                onPlayerRemove={removePlayer}
-              />
-            }
-            cardMain={
-              <PlayerNameInput
-                index={index}
-                player={player}
-                onNameChange={updatePlayerName}
-              />
-            }
-            cardBottom={<PlayerEditBtn playerColor={player.color} />}
+            player={player}
+            index={index}
+            onNameChange={updatePlayerName}
+            onPlayerRemove={removePlayer}
+            isDisabled={isRemoveBtnDisabled}
           />
         ))}
 
-        {players < MAX_PLAYERS && (
+        {isAddBtnDisabled && (
           <Button
             className="border text-8xl size-25 relative mx-13 my-18"
             onClick={() => addPlayer()}

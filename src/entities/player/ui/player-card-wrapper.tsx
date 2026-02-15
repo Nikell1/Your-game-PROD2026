@@ -1,22 +1,24 @@
 import React from "react";
 import { ISetupPlayer } from "../player.types";
+import { cn } from "@/shared/lib";
 
 interface PlayerCardProps {
   player: ISetupPlayer;
-  cardTop?: React.ReactNode;
-  cardMain: React.ReactNode;
-  cardBottom: React.ReactNode;
+  children: React.ReactNode;
+  className?: string;
 }
 
-export function PlayerCard({
+export function PlayerCardWrapper({
   player,
-  cardTop,
-  cardMain,
-  cardBottom,
+  children,
+  className,
 }: PlayerCardProps) {
   return (
     <div
-      className="p-4 backdrop-blur-xs border w-55 h-75 flex flex-col gap-4 items-center rounded-sm"
+      className={cn(
+        "p-4 backdrop-blur-xs border w-55 h-76 flex flex-col gap-4 items-center justify-between rounded-lg",
+        className,
+      )}
       style={{
         backgroundColor: `${player.color}10`,
         borderColor: player.color,
@@ -27,13 +29,7 @@ export function PlayerCard({
         style={{ borderColor: player.color }}
       ></div>
 
-      {cardTop}
-
-      {cardMain}
-
-      <p className="text-3xl">{player.key}</p>
-
-      {cardBottom}
+      {children}
     </div>
   );
 }
