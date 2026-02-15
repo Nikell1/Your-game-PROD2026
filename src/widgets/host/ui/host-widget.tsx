@@ -14,6 +14,7 @@ export function HostWidget() {
         width={193}
         height={483}
         alt="Ведущий"
+        loading="eager"
       />
     </div>
   );

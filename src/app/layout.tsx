@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { PROJECT_NAME } from "@/shared/constants";
 import { HexagonBackground } from "@/shared/ui";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const montserrat = Montserrat({
+  variable: "--font-montserrat-sans",
+  subsets: ["cyrillic", "latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: PROJECT_NAME,
   description: `Браузерная игра "${PROJECT_NAME}" для проведения 
@@ -26,9 +22,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen h-screen flex flex-col`}
+        className={`${montserrat.variable} font-sans antialiased w-screen h-screen flex flex-col`}
       >
         <HexagonBackground className="w-full h-full absolute top-0 right-0 z-1" />
         <div className="relative z-2 w-screen h-screen flex flex-col">

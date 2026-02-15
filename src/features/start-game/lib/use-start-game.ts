@@ -11,11 +11,13 @@ interface Props {
 }
 
 export function useStartGame() {
-  const { setPlayers, setStatus, setThemes, setQuestions } = useGameStore();
+  const { setPlayers, setStatus, setThemes, setQuestions, setActivePlayerId } =
+    useGameStore();
   const router = useRouter();
 
   return ({ playersData, resetSetupGameStore }: Props) => {
     setGamePlayers({ playersData, setPlayers });
+    setActivePlayerId(0);
     resetSetupGameStore();
 
     generateQuestions({

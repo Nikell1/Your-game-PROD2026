@@ -12,7 +12,11 @@ export function PlayersList() {
 
       <div className="flex flex-row-reverse gap-15 px-20">
         {players.map((player) => (
-          <PlayerActiveCard key={player.id} player={player}>
+          <PlayerActiveCard
+            key={player.id}
+            player={player}
+            isActive={player.isActive}
+          >
             <ScoreControls player={player} />
           </PlayerActiveCard>
         ))}

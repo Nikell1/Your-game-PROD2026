@@ -8,7 +8,7 @@ import {
 } from "@/entities/player";
 import { Button } from "@/shared/ui";
 import { Header } from "@/widgets";
-import useSetupGameStore from "../model/setup-game.store";
+import { useSetupGameStore } from "../model/setup-game.store";
 import { useMemo } from "react";
 import { useStartGame } from "@/features/start-game";
 

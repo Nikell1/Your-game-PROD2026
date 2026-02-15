@@ -41,7 +41,7 @@ const initialState: SetupGameStoreState = {
   ],
 };
 
-const useSetupGameStore = create<ISetupGameStore>()(
+export const useSetupGameStore = create<ISetupGameStore>()(
   persist(
     (set, get) => ({
       ...initialState,
@@ -94,5 +94,3 @@ const useSetupGameStore = create<ISetupGameStore>()(
     { name: "setup-game-storage" },
   ),
 );
-
-export default useSetupGameStore;

@@ -17,6 +17,7 @@ interface Props {
 export async function generateQuestions({
   setThemes,
   difficulty,
+  setQuestions,
   step,
 }: Props) {
   const responseThemes = await fetch("/data/themes.json");
@@ -35,5 +36,5 @@ export async function generateQuestions({
     step,
   });
 
-  console.log(chosenQuestions);
+  setQuestions(chosenQuestions);
 }
