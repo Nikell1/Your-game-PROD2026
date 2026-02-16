@@ -26,7 +26,7 @@ export function PlayerActiveCard({
         {player.name}
       </p>
 
-      <p className="text-3xl">{player.key}</p>
+      <p className="text-3xl">{player.key.label}</p>
 
       {children}
     </PlayerCardWrapper>

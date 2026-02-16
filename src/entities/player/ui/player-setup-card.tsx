@@ -43,7 +43,7 @@ export function PlayerSetupCard({
         }}
       />
 
-      <p className="text-3xl">{player.key}</p>
+      <p className="text-3xl">{player.key.label}</p>
 
       <Button
         variant="ghost"

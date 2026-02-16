@@ -9,6 +9,7 @@ interface GameStoreState {
   themes: ITheme[];
   questions: IGameQuestion[];
   activePlayerId: number | null;
+  currentQuestionId: string | null;
 }
 
 interface GameStoreActions {
@@ -16,7 +17,8 @@ interface GameStoreActions {
   setStatus: (status: TGameStatus) => void;
   setThemes: (themes: ITheme[]) => void;
   setQuestions: (questions: IGameQuestion[]) => void;
-  setActivePlayerId: (id: number) => void;
+  setActivePlayerId: (id: number | null) => void;
+  setCurrentQuestion: (id: string | null) => void;
 }
 
 const initialState: GameStoreState = {
@@ -25,6 +27,7 @@ const initialState: GameStoreState = {
   themes: [],
   questions: [],
   activePlayerId: null,
+  currentQuestionId: null,
 };
 
 interface IGameStore extends GameStoreState, GameStoreActions {}
@@ -33,6 +36,8 @@ export const useGameStore = create<IGameStore>()(
   persist(
     (set) => ({
       ...initialState,
+
+      setCurrentQuestion: (id) => set({ currentQuestionId: id }),
 
       setPlayers: (players) => set({ players: players }),
 

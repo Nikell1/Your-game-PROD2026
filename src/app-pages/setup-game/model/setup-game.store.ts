@@ -1,4 +1,5 @@
 import {
+  IKey,
   ISetupPlayer,
   MIN_PLAYERS,
   PLAYERS_KEYS_LIST,
@@ -26,17 +27,17 @@ const initialState: SetupGameStoreState = {
     {
       name: "",
       color: DEFAULT_COLORS_LIST[0],
-      key: PLAYERS_KEYS_LIST[0].label,
+      key: PLAYERS_KEYS_LIST[0],
     },
     {
       name: "",
       color: DEFAULT_COLORS_LIST[1],
-      key: PLAYERS_KEYS_LIST[1].label,
+      key: PLAYERS_KEYS_LIST[1],
     },
     {
       name: "",
       color: DEFAULT_COLORS_LIST[2],
-      key: PLAYERS_KEYS_LIST[2].label,
+      key: PLAYERS_KEYS_LIST[2],
     },
   ],
 };
@@ -50,18 +51,18 @@ export const useSetupGameStore = create<ISetupGameStore>()(
         const { playersData } = get();
 
         const usedColors = playersData.map((p) => p.color);
-        const usedKeys = playersData.map((p) => p.key);
+        const usedKeys = playersData.map((p) => p.key.label);
 
         const availableColor = DEFAULT_COLORS_LIST.find(
           (color) => !usedColors.includes(color),
         );
 
-        const availableKey = PLAYERS_KEYS_LIST.find(
+        const availableKeys = PLAYERS_KEYS_LIST.filter(
           (key) => !usedKeys.includes(key.label),
         );
 
         const newColor = availableColor || DEFAULT_COLORS_LIST[0];
-        const newKey = availableKey?.label || "no key";
+        const newKey: IKey = availableKeys[0] || "no key";
 
         set((state) => ({
           players: state.players + 1,

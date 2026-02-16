@@ -1,10 +1,10 @@
 export const PLAYERS_KEYS_LIST = [
   {
-    code: "keyA",
+    code: "KeyA",
     label: "[A]",
   },
   {
-    code: "keyL",
+    code: "KeyL",
     label: "[L]",
   },
   {
@@ -12,19 +12,19 @@ export const PLAYERS_KEYS_LIST = [
     label: "[Space]",
   },
   {
-    code: "keyB",
+    code: "KeyB",
     label: "[B]",
   },
   {
-    code: "keyC",
+    code: "KeyC",
     label: "[C]",
   },
   {
-    code: "keyD",
+    code: "KeyD",
     label: "[D]",
   },
   {
-    code: "keyE",
+    code: "KeyE",
     label: "[E]",
   },
   {

@@ -1,15 +1,27 @@
 "use client";
 
 import { useGameStore, getRoundTitle } from "@/entities/game";
+import { useKeysClick } from "@/features/keys-click";
 import {
   CurrentQuestionWidget,
   Header,
   HostWidget,
   PlayersList,
 } from "@/widgets";
+import { useEffect } from "react";
 
 export function QuestionPage() {
-  const { status } = useGameStore();
+  const { status, activePlayerId } = useGameStore();
+  const { handleKeyDown } = useKeysClick();
+
+  useEffect(() => {
+    if (!activePlayerId) {
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [activePlayerId, handleKeyDown]);
 
   const headerTitle = getRoundTitle(status);
 

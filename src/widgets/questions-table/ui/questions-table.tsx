@@ -44,7 +44,7 @@ export function QuestionsTable() {
             if (question) {
               return (
                 <Button
-                  key={`${theme.id} - ${price}`}
+                  key={`${theme.id}-${price}`}
                   className="text-2xl w-18 h-full rounded-xl"
                   onClick={() => questionClick(question.id)}
                 >
