@@ -10,6 +10,7 @@ interface GameStoreState {
   questions: IGameQuestion[];
   activePlayerId: number | null;
   currentQuestionId: string | null;
+  isOnDev: boolean;
 }
 
 interface GameStoreActions {
@@ -19,6 +20,7 @@ interface GameStoreActions {
   setQuestions: (questions: IGameQuestion[]) => void;
   setActivePlayerId: (id: number | null) => void;
   setCurrentQuestion: (id: string | null) => void;
+  setIsOnDev: () => void;
 }
 
 const initialState: GameStoreState = {
@@ -28,6 +30,7 @@ const initialState: GameStoreState = {
   questions: [],
   activePlayerId: null,
   currentQuestionId: null,
+  isOnDev: false,
 };
 
 interface IGameStore extends GameStoreState, GameStoreActions {}
@@ -36,6 +39,8 @@ export const useGameStore = create<IGameStore>()(
   persist(
     (set) => ({
       ...initialState,
+
+      setIsOnDev: () => set((state) => ({ isOnDev: !state.isOnDev })),
 
       setCurrentQuestion: (id) => set({ currentQuestionId: id }),
 

@@ -3,8 +3,13 @@ import { useManageScore } from "@/features/manage-user-score";
 import { useAnswerInputStore } from "../model/answer-input.store";
 
 export function useAnswerQuestion() {
-  const { currentQuestionId, questions, activePlayerId, setActivePlayerId } =
-    useGameStore();
+  const {
+    currentQuestionId,
+    questions,
+    activePlayerId,
+    setActivePlayerId,
+    isOnDev,
+  } = useGameStore();
   const { increaseScore, decreaseScore } = useManageScore();
   const { isCorrect, setIsCorrect } = useAnswerInputStore();
 
@@ -25,5 +30,5 @@ export function useAnswerQuestion() {
       setIsCorrect(null);
     }
   }
-  return { answerHandler, isCorrect };
+  return { answerHandler, isCorrect, currentQuestion, activePlayerId, isOnDev };
 }

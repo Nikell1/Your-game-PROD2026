@@ -7,13 +7,10 @@ import { useCallback, useEffect, useRef } from "react";
 import { cn } from "@/shared/lib";
 import { useAnswerInputStore } from "../model/answer-input.store";
 
-export function AnswerInput({
-  activePlayerId,
-}: {
-  activePlayerId: number | null;
-}) {
+export function AnswerInput() {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { answerHandler } = useAnswerQuestion();
+  const { answerHandler, currentQuestion, isOnDev, activePlayerId } =
+    useAnswerQuestion();
   const { isCorrect, inputValue, setInputValue } = useAnswerInputStore();
 
   const handleKeyDown = useCallback(
@@ -38,6 +35,11 @@ export function AnswerInput({
 
   return (
     <div className="relative">
+      {isOnDev && (
+        <p className="mb-3 text-foreground/50">
+          Правильный ответ: {currentQuestion?.correctAnswer}
+        </p>
+      )}
       <Input
         disabled={!activePlayerId}
         ref={inputRef}
@@ -55,7 +57,7 @@ export function AnswerInput({
         disabled={!activePlayerId}
         onClick={() => answerHandler(inputValue)}
         variant="ghost"
-        className="absolute right-0 top-0"
+        className="absolute right-0 bottom-0"
       >
         <Send size={30} />
       </Button>
