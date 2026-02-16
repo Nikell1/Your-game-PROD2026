@@ -16,7 +16,7 @@ export function ScoreControls({ player }: ScoreControlsProps) {
 
   return (
     <div
-      className="flex relative gap-4 bg-background/10 border rounded-lg items-center justify-between my-2 w-full py-0.5"
+      className="flex relative gap-4 bg-background/10 border rounded-lg items-center justify-between my-1 w-full py-0.5"
       style={{ borderColor: player.color }}
     >
       {isOnDev ? (
@@ -42,11 +42,7 @@ export function ScoreControls({ player }: ScoreControlsProps) {
           </Button>
         </>
       ) : (
-        <>
-          {/* <span className="text-6xl px-2 absolute">·</span> */}
-          <p className="text-xl w-full text-center py-1">{player.score}</p>
-          {/* <span className="text-6xl px-2 ab">·</span> */}
-        </>
+        <p className="text-xl w-full text-center py-1">{player.score}</p>
       )}
     </div>
   );

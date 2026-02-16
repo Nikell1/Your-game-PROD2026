@@ -43,11 +43,11 @@ export function PlayerSetupCard({
         }}
       />
 
-      <p className="text-3xl">{player.key.label}</p>
+      <p className="text-2xl">{player.key.label}</p>
 
       <Button
         variant="ghost"
-        className=" text-md"
+        className=" text-sm"
         style={{ color: player.color }}
       >
         Редактировать профиль

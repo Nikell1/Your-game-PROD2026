@@ -10,20 +10,25 @@ interface Props {
   resetSetupGameStore: () => void;
 }
 
-export function useStartGame() {
-  const { setPlayers, setStatus, setThemes, setQuestions, setActivePlayerId } =
-    useGameStore();
+export function useNewRound() {
+  const {
+    setPlayers,
+    setStatus,
+    setMaterial,
+    setActivePlayerId,
+    setAnsweredQuestionsIds,
+  } = useGameStore();
   const router = useRouter();
 
   return ({ playersData, resetSetupGameStore }: Props) => {
     setGamePlayers({ playersData, setPlayers });
     setActivePlayerId(1);
+    setAnsweredQuestionsIds([]);
     resetSetupGameStore();
 
     generateQuestions({
-      setThemes,
+      setMaterial,
       difficulty: "easy",
-      setQuestions,
       step: ROUND_1_PRICE_STEP,
     });
 

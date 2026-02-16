@@ -9,6 +9,7 @@ interface AnswerInputState {
 interface AnswerInputActions {
   setIsCorrect: (n: boolean | null) => void;
   setInputValue: (value: string) => void;
+  resetStore: () => void;
 }
 
 const initialState: AnswerInputState = {
@@ -26,6 +27,8 @@ export const useAnswerInputStore = create<IAnswerInputStore>()(
       setIsCorrect: (n) => set({ isCorrect: n }),
 
       setInputValue: (value) => set({ inputValue: value }),
+
+      resetStore: () => set({ ...initialState }),
     }),
     {
       name: "answer-input-storage",

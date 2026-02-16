@@ -1,36 +1,40 @@
 import { IActivePlayer } from "@/entities/player";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { TGameStatus, IGameQuestion, ITheme } from "../game.types";
+import type {
+  IGameQuestion,
+  IThemeWithQuestions,
+  TGameStatus,
+} from "../game.types";
 
 interface GameStoreState {
   status: TGameStatus;
   players: IActivePlayer[];
-  themes: ITheme[];
-  questions: IGameQuestion[];
   activePlayerId: number | null;
-  currentQuestionId: string | null;
+  currentQuestion: IGameQuestion | null;
   isOnDev: boolean;
+  answeredQuestionsIds: string[];
+  material: IThemeWithQuestions[];
 }
 
 interface GameStoreActions {
   setPlayers: (players: IActivePlayer[]) => void;
   setStatus: (status: TGameStatus) => void;
-  setThemes: (themes: ITheme[]) => void;
-  setQuestions: (questions: IGameQuestion[]) => void;
   setActivePlayerId: (id: number | null) => void;
-  setCurrentQuestion: (id: string | null) => void;
+  setCurrentQuestion: (question: IGameQuestion | null) => void;
   setIsOnDev: () => void;
+  setAnsweredQuestionsIds: (answeredQuesitons: string[]) => void;
+  setMaterial: (material: IThemeWithQuestions[]) => void;
 }
 
 const initialState: GameStoreState = {
   status: "NOT_STARTED",
   players: [],
-  themes: [],
-  questions: [],
+  material: [],
   activePlayerId: null,
-  currentQuestionId: null,
+  currentQuestion: null,
   isOnDev: false,
+  answeredQuestionsIds: [],
 };
 
 interface IGameStore extends GameStoreState, GameStoreActions {}
@@ -42,7 +46,10 @@ export const useGameStore = create<IGameStore>()(
 
       setIsOnDev: () => set((state) => ({ isOnDev: !state.isOnDev })),
 
-      setCurrentQuestion: (id) => set({ currentQuestionId: id }),
+      setAnsweredQuestionsIds: (answeredQuestions) =>
+        set({ answeredQuestionsIds: answeredQuestions }),
+
+      setCurrentQuestion: (question) => set({ currentQuestion: question }),
 
       setPlayers: (players) => set({ players: players }),
 
@@ -50,9 +57,7 @@ export const useGameStore = create<IGameStore>()(
 
       setStatus: (status) => set({ status: status }),
 
-      setThemes: (themes) => set({ themes: themes }),
-
-      setQuestions: (questions) => set({ questions: questions }),
+      setMaterial: (material) => set({ material: material }),
     }),
     {
       name: "game-storage",

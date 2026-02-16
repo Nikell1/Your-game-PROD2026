@@ -1,64 +1,41 @@
 "use client";
 
-import {
-  IGameQuestion,
-  QUESTIONS_COUNT,
-  ROUND_1_PRICE_STEP,
-  useGameStore,
-} from "@/entities/game";
+import { useGameStore } from "@/entities/game";
 import { useQuestionClick } from "@/features/question-click";
 import { Button, Frame } from "@/shared/ui";
-import { useCallback, useMemo } from "react";
 
 export function QuestionsTable() {
-  const { themes, questions } = useGameStore();
+  const { material, answeredQuestionsIds } = useGameStore();
   const questionClick = useQuestionClick();
-
-  const prices = Array.from(
-    { length: QUESTIONS_COUNT },
-    (_, i) => ROUND_1_PRICE_STEP * (i + 1),
-  );
-
-  const questionsByThemeAndPrice = useMemo(() => {
-    const map = new Map<string, IGameQuestion>();
-    questions.forEach((q) => {
-      map.set(`${q.themeId}-${q.price}`, q);
-    });
-    return map;
-  }, [questions]);
-
-  const getQuestionByThemeAndPrice = useCallback(
-    (themeId: string, price: number) =>
-      questionsByThemeAndPrice.get(`${themeId}-${price}`),
-    [questionsByThemeAndPrice],
-  );
 
   return (
     <Frame className="rounded-xl max-h-120 gap-6 px-8! py-6!">
-      {themes.map((theme) => (
-        <div key={theme.id} className="flex gap-6">
-          <Frame className="w-70 p-2! text-xl rounded-lg">{theme.label}</Frame>
-          {prices.map((price) => {
-            const question = getQuestionByThemeAndPrice(theme.id, price);
+      {material.map((material) => (
+        <div key={material.theme.id} className="flex gap-6">
+          <Frame className="w-70 p-2! text-xl rounded-lg">
+            {material.theme.label}
+          </Frame>
 
-            if (question) {
+          {material.questions.map((question) => {
+            if (!answeredQuestionsIds.includes(question.id)) {
               return (
                 <Button
-                  key={`${theme.id}-${price}`}
+                  key={question.id}
                   className="text-2xl w-18 h-full rounded-xl"
-                  onClick={() => questionClick(question.id)}
+                  onClick={() => questionClick(question)}
                 >
-                  {price}
+                  {question.price}
                 </Button>
               );
-            } else
+            } else {
               return (
                 <Button
-                  key={`${theme.id} - ${price}`}
                   className="w-18 h-full rounded-xl"
                   disabled
+                  key={question.id}
                 />
               );
+            }
           })}
         </div>
       ))}

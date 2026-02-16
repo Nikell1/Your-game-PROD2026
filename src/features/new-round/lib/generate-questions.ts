@@ -1,40 +1,37 @@
 import {
-  IGameQuestion,
   ITheme,
+  IThemeWithQuestions,
   THEMES_COUNT,
   TQuestionDifficulty,
 } from "@/entities/game";
 import { getRandomItems } from "@/shared/lib";
-import { filterQuestions } from "./filter-questions";
+import { filterMaterial } from "./filter-material";
 
 interface Props {
-  setThemes: (themes: ITheme[]) => void;
-  setQuestions: (questions: IGameQuestion[]) => void;
+  setMaterial: (material: IThemeWithQuestions[]) => void;
   difficulty: TQuestionDifficulty;
   step: number;
 }
 
 export async function generateQuestions({
-  setThemes,
   difficulty,
-  setQuestions,
   step,
+  setMaterial,
 }: Props) {
   const responseThemes = await fetch("/data/themes.json");
   const themes = await responseThemes.json();
 
   const chosenThemes = getRandomItems<ITheme>(themes, THEMES_COUNT);
-  setThemes(chosenThemes);
 
   const responseQuestions = await fetch("/data/questions.json");
   const questions = await responseQuestions.json();
 
-  const chosenQuestions = filterQuestions({
+  const chosenMaterial = filterMaterial({
     questions,
     difficulty,
     chosenThemes,
     step,
   });
 
-  setQuestions(chosenQuestions);
+  setMaterial(chosenMaterial);
 }
