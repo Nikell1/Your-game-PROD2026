@@ -20,7 +20,10 @@ export function filterMaterial({
   chosenThemes,
   difficulty,
   step,
-}: Props): IThemeWithQuestions[] {
+}: Props): {
+  usedQuestionIds: string[];
+  chosenMaterial: IThemeWithQuestions[];
+} {
   const themeIds = new Set(chosenThemes.map((theme) => theme.id));
 
   const regularQuestions = questions.filter(
@@ -36,6 +39,7 @@ export function filterMaterial({
   });
 
   const result: IThemeWithQuestions[] = [];
+  const usedQuestionIds: string[] = [];
 
   for (const theme of chosenThemes) {
     const themeQuestions = questionsByTheme.get(theme.id) || [];
@@ -44,8 +48,13 @@ export function filterMaterial({
       QUESTIONS_COUNT,
     );
 
+    const randomQuestionsIds = randomQuestions.map((item) => item.id);
+
+    usedQuestionIds.push(...randomQuestionsIds);
+
     const gameQuestions: IGameQuestion[] = randomQuestions.map((q, index) => ({
       ...q,
+      specials: "default",
       price: (index + 1) * step,
     }));
 
@@ -55,5 +64,5 @@ export function filterMaterial({
     });
   }
 
-  return result;
+  return { chosenMaterial: result, usedQuestionIds };
 }

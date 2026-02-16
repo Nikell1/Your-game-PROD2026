@@ -31,5 +31,5 @@ export interface IQuestion {
 
 export interface IGameQuestion extends IQuestion {
   price: number;
-  // specials: TQuestionSpecials;
+  specials: TQuestionSpecials;
 }

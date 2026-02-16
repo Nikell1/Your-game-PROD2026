@@ -2,10 +2,11 @@
 
 import { useGameStore } from "@/entities/game";
 import { useQuestionClick } from "@/features/question-click";
+import { cn } from "@/shared/lib";
 import { Button, Frame } from "@/shared/ui";
 
 export function QuestionsTable() {
-  const { material, answeredQuestionsIds } = useGameStore();
+  const { material, answeredQuestionsIds, isOnDev } = useGameStore();
   const questionClick = useQuestionClick();
 
   return (
@@ -18,10 +19,15 @@ export function QuestionsTable() {
 
           {material.questions.map((question) => {
             if (!answeredQuestionsIds.includes(question.id)) {
+              const isCat = question.specials === "cat_in_bag";
+
               return (
                 <Button
                   key={question.id}
-                  className="text-2xl w-18 h-full rounded-xl"
+                  className={cn(
+                    "text-2xl w-18 h-full rounded-xl",
+                    isCat && isOnDev && "border-orange-400",
+                  )}
                   onClick={() => questionClick(question)}
                 >
                   {question.price}
