@@ -20,7 +20,6 @@ export function generateCat(
   if (availableThemes.length === 0) return null;
 
   const selectedTheme = getRandomItems(availableThemes, 1)[0];
-  usedThemesIds.add(selectedTheme.id);
 
   const themeQuestions = allQuestions.filter(
     (q) =>

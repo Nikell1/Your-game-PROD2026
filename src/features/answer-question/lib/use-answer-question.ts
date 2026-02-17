@@ -11,6 +11,7 @@ export function useAnswerQuestion() {
     setAnsweredQuestionsIds,
     answeredQuestionsIds,
     currentQuestion,
+    setCurrentQuestion,
   } = useGameStore();
 
   const { increaseScore, decreaseScore } = useManageScore();
@@ -27,6 +28,8 @@ export function useAnswerQuestion() {
         const newAnswered = [currentQuestion.id, ...answeredQuestionsIds];
 
         setAnsweredQuestionsIds(newAnswered);
+
+        setCurrentQuestion(null);
 
         if (answeredQuestionsIds.length === THEMES_COUNT * QUESTIONS_COUNT) {
           console.log("new round");
