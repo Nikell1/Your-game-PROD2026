@@ -2,7 +2,7 @@
 
 import { useGameStore } from "@/entities/game";
 import { useQuestionClick } from "@/features/question-click";
-import { Button, CatIcon, Frame } from "@/shared/ui";
+import { AuctionIcon, Button, CatIcon, Frame } from "@/shared/ui";
 
 export function QuestionsTable() {
   const { material, answeredQuestionsIds, isOnDev } = useGameStore();
@@ -18,8 +18,9 @@ export function QuestionsTable() {
 
           {material.questions.map((question) => {
             if (!answeredQuestionsIds.includes(question.id)) {
-              const isCat = question.specials === "cat_in_bag";
-              const showCats = isCat && isOnDev;
+              const showAuctions = question.specials === "auction" && isOnDev;
+              const showCats = question.specials === "cat_in_bag" && isOnDev;
+              const isDefault = question.specials === "default" || !isOnDev;
 
               return (
                 <Button
@@ -27,7 +28,9 @@ export function QuestionsTable() {
                   className="text-2xl w-18 h-full rounded-xl"
                   onClick={() => questionClick(question)}
                 >
-                  {showCats ? <CatIcon className="size-7" /> : question.price}
+                  {showCats && <CatIcon className="size-7" />}
+                  {showAuctions && <AuctionIcon className="size-7" />}
+                  {isDefault && question.price}
                 </Button>
               );
             } else {

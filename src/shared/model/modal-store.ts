@@ -11,6 +11,7 @@ interface ModalState {
 interface ModalActions {
   setModalState: (state: TModalState) => void;
   setInputValue: (value: string) => void;
+  resetModalStore: () => void;
 }
 
 interface ModalStoreState extends ModalState, ModalActions {}
@@ -28,6 +29,8 @@ export const useModalStore = create<ModalStoreState>()(
       setModalState: (state) => set({ modalState: state }),
 
       setInputValue: (value) => set({ inputValue: value }),
+
+      resetModalStore: () => set({ ...initialState }),
     }),
     { name: "modal-storage" },
   ),

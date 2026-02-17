@@ -1,3 +1,2 @@
-export * from "./lib/generate-cats";
-export * from "./lib/generate-positions";
+export * from "./lib/generate-cat";
 export * from "./ui/input-player";

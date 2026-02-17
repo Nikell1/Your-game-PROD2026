@@ -12,6 +12,12 @@ export interface ITheme {
   label: string;
 }
 
+export interface SpecialPosition {
+  themeIndex: number;
+  priceIndex: number;
+  type: "cat" | "auction";
+}
+
 export interface IThemeWithQuestions {
   theme: ITheme;
   questions: IGameQuestion[];

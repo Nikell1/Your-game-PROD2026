@@ -1,7 +1,6 @@
-interface CellPosition {
-  themeIndex: number;
-  priceIndex: number;
-}
+import { SpecialPosition } from "@/entities/game";
+
+type CellPosition = Omit<SpecialPosition, "type">;
 
 export function getRandomCellPositions(
   themesCount: number,

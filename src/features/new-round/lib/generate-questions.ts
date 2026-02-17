@@ -7,7 +7,7 @@ import {
 } from "@/entities/game";
 import { getRandomItems } from "@/shared/lib";
 import { filterMaterial } from "./filter-material";
-import { generateCats } from "@/features/cat-in-bag";
+import { generateSpecials } from "./generate-specials";
 
 interface Props {
   setMaterial: (material: IThemeWithQuestions[]) => void;
@@ -40,8 +40,8 @@ export async function generateQuestions({
     step,
   });
 
-  const { extraMaterial, newUsedQuestionsIds, newUsedThemesIds } = generateCats(
-    {
+  const { extraMaterial, newUsedQuestionsIds, newUsedThemesIds } =
+    generateSpecials({
       step: ROUND_1_PRICE_STEP,
       chosenMaterial,
       allQuestions: questions,
@@ -49,8 +49,7 @@ export async function generateQuestions({
       difficulty,
       usedThemesIds: chosenThemesIds,
       usedQuestionIds,
-    },
-  );
+    });
 
   setUsedQuestionsIds(newUsedQuestionsIds);
   setUsedThemesIds(newUsedThemesIds);

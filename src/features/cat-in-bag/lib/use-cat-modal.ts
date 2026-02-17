@@ -3,16 +3,18 @@ import { useModalStore } from "@/shared/model";
 import { useState } from "react";
 
 export function useCatModal() {
-  const { setModalState, inputValue, setInputValue } = useModalStore();
+  const { setModalState, inputValue, setInputValue, resetModalStore } =
+    useModalStore();
   const [isBtnDisabled, setIsBtnDisabled] = useState(true);
   const { players } = useGameStore();
 
   function showCatModal() {
+    resetModalStore();
     setModalState("cat_in_bag");
   }
 
   function closeCatModal() {
-    setModalState("closed");
+    resetModalStore();
   }
 
   function setAndValidateInputValue(value: string) {
