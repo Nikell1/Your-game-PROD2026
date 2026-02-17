@@ -6,6 +6,7 @@ import type {
   IThemeWithQuestions,
   TGameStatus,
 } from "../game-types";
+import { DEFAULT_TIMER_SECONDS } from "../game-constants";
 
 interface GameStoreState {
   status: TGameStatus;
@@ -17,7 +18,8 @@ interface GameStoreState {
   material: IThemeWithQuestions[];
   usedThemesIds: string[];
   usedQuestionsIds: string[];
-  timerSeconds: number | null;
+  timerSeconds: number;
+  isTimerActive: boolean;
 }
 
 interface GameStoreActions {
@@ -30,7 +32,9 @@ interface GameStoreActions {
   setMaterial: (material: IThemeWithQuestions[]) => void;
   setUsedThemesIds: (newThemes: string[]) => void;
   setUsedQuestionsIds: (newQuestions: string[]) => void;
-  setTimesSeconds: (time: number | null | ((prev: number | null) => number | null)) => void;
+  setTimerSeconds: (time: number | ((prev: number) => number)) => void;
+  resetStore: () => void;
+  setIsTimerActive: (is: boolean) => void;
 }
 
 const initialState: GameStoreState = {
@@ -43,7 +47,8 @@ const initialState: GameStoreState = {
   answeredQuestionsIds: [],
   usedThemesIds: [],
   usedQuestionsIds: [],
-  timerSeconds: null
+  timerSeconds: DEFAULT_TIMER_SECONDS,
+  isTimerActive: false,
 };
 
 interface IGameStore extends GameStoreState, GameStoreActions {}
@@ -53,9 +58,15 @@ export const useGameStore = create<IGameStore>()(
     (set) => ({
       ...initialState,
 
-            setTimesSeconds: (time) => set((state) => ({ 
-        timerSeconds: typeof time === 'function' ? time(state.timerSeconds) : time 
-      })),
+      setIsTimerActive: (is) => set({ isTimerActive: is }),
+
+      setTimerSeconds: (time) =>
+        set((state) => ({
+          timerSeconds:
+            typeof time === "function" ? time(state.timerSeconds) : time,
+        })),
+
+      resetStore: () => set({ ...initialState }),
 
       setIsOnDev: () => set((state) => ({ isOnDev: !state.isOnDev })),
 

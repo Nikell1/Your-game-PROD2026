@@ -7,10 +7,16 @@ import { useEffect, useRef } from "react";
 import { cn, createEnterListener } from "@/shared/lib";
 import { useAnswerInputStore } from "../model/answer-input-store";
 
-export function AnswerInput() {
+export function AnswerInput({
+  clear,
+  resume,
+}: {
+  clear: () => void;
+  resume: () => void;
+}) {
   const inputRef = useRef<HTMLInputElement>(null);
   const { answerHandler, currentQuestion, isOnDev, activePlayerId } =
-    useAnswerQuestion();
+    useAnswerQuestion(clear, resume);
   const { isCorrect, inputValue, setInputValue } = useAnswerInputStore();
 
   useEffect(() => {

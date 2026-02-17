@@ -1,6 +1,5 @@
 import { useGameStore } from "@/entities/game";
 import { useAnswerInputStore } from "@/features/answer-question";
-import { useTimer } from "@/features/timer";
 import { useMemo } from "react";
 
 interface PlayersKey {
@@ -8,10 +7,9 @@ interface PlayersKey {
   playerId: number;
 }
 
-export function useKeysClick() {
-  const { players, setActivePlayerId } = useGameStore();
+export function useKeysClick(pause: () => void) {
+  const { players, setActivePlayerId, setIsTimerActive } = useGameStore();
   const { setInputValue, setIsCorrect } = useAnswerInputStore();
-  const {stopTimer} = useTimer()
 
   const playersKeys = useMemo<PlayersKey[]>(() => {
     return players.map((player) => ({
@@ -29,8 +27,9 @@ export function useKeysClick() {
 
     if (currentPlayerId) {
       setActivePlayerId(currentPlayerId);
-      stopTimer()
       setInputValue("");
+      setIsTimerActive(false);
+      pause();
       setIsCorrect(null);
     }
   };

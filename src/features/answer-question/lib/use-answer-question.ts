@@ -2,9 +2,8 @@ import { QUESTIONS_COUNT, THEMES_COUNT, useGameStore } from "@/entities/game";
 import { useManageScore } from "@/features/manage-user-score";
 import { useAnswerInputStore } from "../model/answer-input-store";
 import { useReturnToTable } from "@/features/return-to-table";
-import { useTimer } from "@/features/timer";
 
-export function useAnswerQuestion() {
+export function useAnswerQuestion(clear: () => void, resume: () => void) {
   const {
     activePlayerId,
     setActivePlayerId,
@@ -12,18 +11,23 @@ export function useAnswerQuestion() {
     setAnsweredQuestionsIds,
     answeredQuestionsIds,
     currentQuestion,
-    setCurrentQuestion
+    setCurrentQuestion,
+    setIsTimerActive,
   } = useGameStore();
 
   const { increaseScore, decreaseScore } = useManageScore();
   const { isCorrect, setIsCorrect } = useAnswerInputStore();
   const returnToTable = useReturnToTable();
-  const {continueTimer, endTimer} = useTimer()
 
   function answerHandler(answer: string) {
     if (currentQuestion && activePlayerId) {
-      if (currentQuestion.correctAnswer.toLowerCase().replace(/\s/g, "") === answer.toLowerCase().replace(/\s/g, "")) {
-        console.log(currentQuestion.correctAnswer.toLowerCase().replace(/\s/g, ""))
+      if (
+        currentQuestion.correctAnswer.toLowerCase().replace(/\s/g, "") ===
+        answer.toLowerCase().replace(/\s/g, "")
+      ) {
+        console.log(
+          currentQuestion.correctAnswer.toLowerCase().replace(/\s/g, ""),
+        );
         setIsCorrect(true);
 
         increaseScore(activePlayerId, currentQuestion.price);
@@ -32,7 +36,9 @@ export function useAnswerQuestion() {
 
         setAnsweredQuestionsIds(newAnswered);
 
-        endTimer()
+        clear();
+
+        setIsTimerActive(true);
 
         setCurrentQuestion(null);
 
@@ -46,7 +52,7 @@ export function useAnswerQuestion() {
 
         decreaseScore(activePlayerId, currentQuestion.price);
 
-        continueTimer()
+        resume();
 
         setActivePlayerId(null);
       }

@@ -5,7 +5,13 @@ import { AnswerInput } from "@/features/answer-question";
 import { useAnswerInputStore } from "@/features/answer-question";
 import { Frame } from "@/shared/ui";
 
-export function CurrentQuestionWidget() {
+export function CurrentQuestionWidget({
+  clear,
+  resume,
+}: {
+  clear: () => void;
+  resume: () => void;
+}) {
   const { activePlayerId, currentQuestion } = useGameStore();
   const { isCorrect } = useAnswerInputStore();
 
@@ -26,7 +32,7 @@ export function CurrentQuestionWidget() {
 
       <p className="text-3xl flex-1">{currentQuestion?.label}</p>
 
-      {shouldShowAnswerInput && <AnswerInput />}
+      {shouldShowAnswerInput && <AnswerInput clear={clear} resume={resume} />}
     </Frame>
   );
 }

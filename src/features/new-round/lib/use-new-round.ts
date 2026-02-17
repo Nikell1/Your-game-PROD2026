@@ -20,12 +20,14 @@ export function useNewRound() {
     setAnsweredQuestionsIds,
     setUsedQuestionsIds,
     setUsedThemesIds,
+    resetStore,
   } = useGameStore();
   const router = useRouter();
 
   const { resetAnswerInputStore } = useAnswerInputStore();
 
   return ({ playersData, resetSetupGameStore }: Props) => {
+    resetStore();
     setGamePlayers({ playersData, setPlayers });
     setActivePlayerId(1);
     setAnsweredQuestionsIds([]);
