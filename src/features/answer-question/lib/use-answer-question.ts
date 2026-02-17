@@ -2,6 +2,7 @@ import { QUESTIONS_COUNT, THEMES_COUNT, useGameStore } from "@/entities/game";
 import { useManageScore } from "@/features/manage-user-score";
 import { useAnswerInputStore } from "../model/answer-input-store";
 import { useReturnToTable } from "@/features/return-to-table";
+import { useTimer } from "@/features/timer";
 
 export function useAnswerQuestion() {
   const {
@@ -11,12 +12,13 @@ export function useAnswerQuestion() {
     setAnsweredQuestionsIds,
     answeredQuestionsIds,
     currentQuestion,
-    setCurrentQuestion,
+    setCurrentQuestion
   } = useGameStore();
 
   const { increaseScore, decreaseScore } = useManageScore();
   const { isCorrect, setIsCorrect } = useAnswerInputStore();
   const returnToTable = useReturnToTable();
+  const {continueTimer, endTimer} = useTimer()
 
   function answerHandler(answer: string) {
     if (currentQuestion && activePlayerId) {
@@ -30,6 +32,8 @@ export function useAnswerQuestion() {
 
         setAnsweredQuestionsIds(newAnswered);
 
+        endTimer()
+
         setCurrentQuestion(null);
 
         if (answeredQuestionsIds.length === THEMES_COUNT * QUESTIONS_COUNT) {
@@ -41,6 +45,8 @@ export function useAnswerQuestion() {
         setIsCorrect(false);
 
         decreaseScore(activePlayerId, currentQuestion.price);
+
+        continueTimer()
 
         setActivePlayerId(null);
       }

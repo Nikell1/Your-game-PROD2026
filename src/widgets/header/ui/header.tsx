@@ -3,9 +3,14 @@
 import { useGameStore } from "@/entities/game";
 import { Switch } from "@/shared/ui";
 import { LogOut, Settings } from "lucide-react";
+import { useCallback } from "react";
 
 export function Header({ title }: { title: string }) {
   const { isOnDev, setIsOnDev } = useGameStore();
+
+  const handleDevModeChange = useCallback(() => {
+    setIsOnDev();
+  }, [setIsOnDev]);
 
   return (
     <header className="w-full flex justify-between py-6 px-12 shrink-0 relative">
@@ -21,7 +26,7 @@ export function Header({ title }: { title: string }) {
           <Switch
             className="scale-150"
             checked={isOnDev}
-            onCheckedChange={() => setIsOnDev()}
+            onCheckedChange={handleDevModeChange}
           />
 
           <span className="text-xl">Режим разработчика</span>

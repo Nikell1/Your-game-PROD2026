@@ -17,6 +17,7 @@ interface GameStoreState {
   material: IThemeWithQuestions[];
   usedThemesIds: string[];
   usedQuestionsIds: string[];
+  timerSeconds: number | null;
 }
 
 interface GameStoreActions {
@@ -29,6 +30,7 @@ interface GameStoreActions {
   setMaterial: (material: IThemeWithQuestions[]) => void;
   setUsedThemesIds: (newThemes: string[]) => void;
   setUsedQuestionsIds: (newQuestions: string[]) => void;
+  setTimesSeconds: (time: number | null | ((prev: number | null) => number | null)) => void;
 }
 
 const initialState: GameStoreState = {
@@ -41,6 +43,7 @@ const initialState: GameStoreState = {
   answeredQuestionsIds: [],
   usedThemesIds: [],
   usedQuestionsIds: [],
+  timerSeconds: null
 };
 
 interface IGameStore extends GameStoreState, GameStoreActions {}
@@ -49,6 +52,10 @@ export const useGameStore = create<IGameStore>()(
   persist(
     (set) => ({
       ...initialState,
+
+            setTimesSeconds: (time) => set((state) => ({ 
+        timerSeconds: typeof time === 'function' ? time(state.timerSeconds) : time 
+      })),
 
       setIsOnDev: () => set((state) => ({ isOnDev: !state.isOnDev })),
 
