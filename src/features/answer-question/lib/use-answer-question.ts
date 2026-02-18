@@ -13,6 +13,8 @@ export function useAnswerQuestion(clear: () => void, resume: () => void) {
     currentQuestion,
     setCurrentQuestion,
     setIsTimerActive,
+    setSpecials,
+    specials,
   } = useGameStore();
 
   const { increaseScore, decreaseScore } = useManageScore();
@@ -33,6 +35,8 @@ export function useAnswerQuestion(clear: () => void, resume: () => void) {
 
         setAnsweredQuestionsIds(newAnswered);
 
+        setSpecials("default");
+
         clear();
 
         setCurrentQuestion(null);
@@ -43,15 +47,28 @@ export function useAnswerQuestion(clear: () => void, resume: () => void) {
 
         returnToTable();
       } else {
-        setIsCorrect(false);
-
         decreaseScore(activePlayerId, currentQuestion.price);
+        if (specials === "default") {
+          setIsCorrect(false);
 
-        resume();
+          resume();
 
-        setIsTimerActive(true);
+          setIsTimerActive(true);
 
-        setActivePlayerId(null);
+          setActivePlayerId(null);
+        } else if (specials === "auction") {
+          const newAnswered = [currentQuestion.id, ...answeredQuestionsIds];
+
+          setAnsweredQuestionsIds(newAnswered);
+
+          setSpecials("default");
+
+          clear();
+
+          setCurrentQuestion(null);
+
+          returnToTable();
+        }
       }
     } else {
       setIsCorrect(null);

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { setGamePlayers } from "./set-game-players";
 import { generateQuestions } from "./generate-questions";
 import { useAnswerInputStore } from "@/features/answer-question";
+import { useAuctionStore } from "@/features/auction";
 
 interface Props {
   playersData: ISetupPlayer[];
@@ -26,12 +27,15 @@ export function useNewRound() {
 
   const { resetAnswerInputStore } = useAnswerInputStore();
 
+  const { resetAuctionStore } = useAuctionStore();
+
   return ({ playersData, resetSetupGameStore }: Props) => {
     resetStore();
     setGamePlayers({ playersData, setPlayers });
     setActivePlayerId(1);
     setAnsweredQuestionsIds([]);
     resetSetupGameStore();
+    resetAuctionStore();
 
     generateQuestions({
       setMaterial,

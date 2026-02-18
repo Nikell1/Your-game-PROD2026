@@ -20,7 +20,6 @@ export function useQuestionClick() {
   const { showCatModal } = useCatModal();
   const { showAuctionModal } = useAuctionModal();
   const router = useRouter();
-  const { setSpecials } = useGameStore();
 
   return (question: IGameQuestion) => {
     if (question.specials === "default") {
@@ -29,7 +28,6 @@ export function useQuestionClick() {
       setCurrentQuestion({ ...question, isAnswering: true });
       setIsTimerActive(true);
       setTimerSeconds(DEFAULT_TIMER_SECONDS);
-      setSpecials("default");
 
       router.replace(GAME_ROUTES.QUESTION(question.id));
     }

@@ -7,6 +7,7 @@ interface AuctionState {
   minBet: number;
   currentWinnerId: number;
   currentWinnerBet: number;
+  isBetAll: boolean;
 }
 
 interface AuctionActions {
@@ -16,6 +17,8 @@ interface AuctionActions {
   setCurrentWinnerBet: (bet: number) => void;
   setPlayerBet: (id: number, bet: number) => void;
   setPlayerIsPassed: (id: number, isPassed: boolean) => void;
+  resetAuctionStore: () => void;
+  setIsBetAll: (is: boolean) => void;
 }
 
 interface AuctionStoreState extends AuctionState, AuctionActions {}
@@ -25,12 +28,17 @@ const initialState: AuctionState = {
   minBet: 0,
   currentWinnerBet: 0,
   currentWinnerId: -1,
+  isBetAll: false,
 };
 
 export const useAuctionStore = create<AuctionStoreState>()(
   persist(
     (set) => ({
       ...initialState,
+
+      setIsBetAll: (is) => set({ isBetAll: is }),
+
+      resetAuctionStore: () => set({ ...initialState }),
 
       setCurrentWinnerBet: (bet) => set({ currentWinnerBet: bet }),
 

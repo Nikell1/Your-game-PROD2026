@@ -1,0 +1,1 @@
+export const DEFAULT_AUCTION_STEP = 100;

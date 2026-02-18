@@ -1,5 +1,5 @@
 import { useGameStore } from "@/entities/game";
-import { useAuctionStore } from "@/features/auction/model/auction-store";
+import { DEFAULT_AUCTION_STEP, useAuctionTable } from "@/features/auction";
 import { AuctionIcon, Button, Frame } from "@/shared/ui";
 
 export function AuctionWidget() {
@@ -7,20 +7,12 @@ export function AuctionWidget() {
   const {
     players,
     currentWinnerId,
-    setPlayerBet,
     currentWinnerBet,
-    setPlayerIsPassed,
-    setCurrentWinnerBet,
-    setCurrentWinnerId,
-  } = useAuctionStore();
-
-  function addBetToPlayer(id: number, bet: number) {
-    setPlayerBet(id, bet + 100);
-    if (currentWinnerBet < bet + 100) {
-      setCurrentWinnerBet(bet + 100);
-      setCurrentWinnerId(id);
-    }
-  }
+    isBetAll,
+    playerPass,
+    addBetToPlayer,
+    betAll,
+  } = useAuctionTable();
 
   return (
     <Frame className="rounded-xl max-h-120 gap-6 flex-col p-4">
@@ -36,9 +28,12 @@ export function AuctionWidget() {
       </div>
 
       {players.map((player) => {
-        const isPassDisabled = currentWinnerId < 0 || player.isPassed;
+        const isPassDisabled =
+          currentWinnerId < 0 ||
+          player.isPassed ||
+          currentWinnerId === player.id;
         const isAddBetDisabled =
-          player.isPassed || player.score <= currentWinnerBet;
+          player.isPassed || player.score <= currentWinnerBet || isBetAll;
         const isBetAllDisabled =
           player.isPassed || player.score <= currentWinnerBet;
 
@@ -53,20 +48,22 @@ export function AuctionWidget() {
             <Frame className="gap-14 rounded-lg py-2 px-4">
               <Button
                 disabled={isPassDisabled}
-                onClick={() => setPlayerIsPassed(player.id, true)}
+                onClick={() => playerPass(player.id)}
                 className="border-foreground bg-foreground/15 hover:bg-foreground/30"
               >
                 Пас
               </Button>
               <Button
-                onClick={() => addBetToPlayer(player.id, player.bet)}
+                onClick={() =>
+                  addBetToPlayer(player.id, player.bet + DEFAULT_AUCTION_STEP)
+                }
                 disabled={isAddBetDisabled}
                 className="border-success bg-success/15 hover:bg-success/30"
               >
                 Добавить
               </Button>
               <Button
-                onClick={() => setPlayerBet(player.id, player.score)}
+                onClick={() => betAll(player.id, player.score)}
                 className="border-destructive bg-destructive/15 hover:bg-destructive/30"
                 disabled={isBetAllDisabled}
               >

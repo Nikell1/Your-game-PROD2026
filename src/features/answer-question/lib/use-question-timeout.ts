@@ -1,4 +1,5 @@
 import { useGameStore } from "@/entities/game";
+import { useManageScore } from "@/features/manage-user-score";
 import { useReturnToTable } from "@/features/return-to-table";
 
 export function useAnswerTimeout() {
@@ -9,8 +10,12 @@ export function useAnswerTimeout() {
     setCurrentQuestion,
     setActivePlayerId,
     prevActivePlayerId,
+    setSpecials,
   } = useGameStore();
+
   const returnToTable = useReturnToTable();
+
+  const { decreaseScore } = useManageScore();
   return () => {
     if (currentQuestion) {
       const newAnswered = [currentQuestion.id, ...answeredQuestionsIds];
@@ -20,6 +25,12 @@ export function useAnswerTimeout() {
       setCurrentQuestion(null);
 
       setActivePlayerId(prevActivePlayerId);
+
+      setSpecials("default");
+
+      if (currentQuestion.specials === "auction") {
+        decreaseScore(prevActivePlayerId || -1, currentQuestion.price);
+      }
 
       returnToTable();
     }
