@@ -2,6 +2,7 @@ import React, { CSSProperties } from "react";
 import { ISetupPlayer } from "../player-types";
 import { cn } from "@/shared/lib";
 import { Frame } from "@/shared/ui";
+import { COLOR_PRIMARY } from "@/shared/constants";
 
 interface PlayerCardProps {
   player: ISetupPlayer;
@@ -19,7 +20,7 @@ export function PlayerCardWrapper({
   return (
     <Frame
       style={style}
-      color={player.color}
+      color={player?.color || COLOR_PRIMARY}
       className={cn(
         " w-50 h-66 gap-2 items-center justify-between rounded-lg flex-col p-4",
         className,
@@ -27,7 +28,7 @@ export function PlayerCardWrapper({
     >
       <div
         className="rounded-full size-20 bg-background/50 border"
-        style={{ borderColor: player.color }}
+        style={{ borderColor: player?.color || COLOR_PRIMARY }}
       ></div>
 
       {children}

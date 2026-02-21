@@ -1,3 +1,5 @@
+"use client";
+
 import { useGameStore } from "@/entities/game";
 import { Frame } from "@/shared/ui";
 import Image from "next/image";
@@ -12,7 +14,7 @@ export function HostWidget({ seconds }: { seconds?: number }) {
     <div className="flex flex-col h-full justify-between items-center relative z-3 shrink-0">
       <div>
         <Frame className="rounded-lg size-60 p-4">
-          <p className="text-xl">Олег, выбирайте вопрос</p>
+          <p className="text-xl">Олег, выбирайте вопрос!</p>
         </Frame>
 
         {showTimer && (
@@ -24,10 +26,10 @@ export function HostWidget({ seconds }: { seconds?: number }) {
       </div>
 
       <Image
-        className="relative -bottom-5"
+        className="relative bottom-2"
         src="/host-image.png"
-        width={193}
-        height={483}
+        width={213}
+        height={359}
         alt="Ведущий"
         loading="eager"
       />

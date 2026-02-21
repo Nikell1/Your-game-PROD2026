@@ -1,3 +1,4 @@
+import { GameEndingPage } from "@/app-pages";
 import { NO_INDEX_PAGE, PROJECT_NAME } from "@/shared/constants";
 import { Metadata } from "next";
 

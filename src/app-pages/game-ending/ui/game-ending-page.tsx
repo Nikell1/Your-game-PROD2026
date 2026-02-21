@@ -1,3 +1,46 @@
+"use client";
+
+import { useGameStore } from "@/entities/game";
+import { PlayerWinnerCard } from "@/entities/player";
+import { useEndGame } from "@/features/endGame";
+import { Button } from "@/shared/ui";
+import { Header, HostWidget } from "@/widgets";
+import Link from "next/link";
+import { useMemo } from "react";
+
 export function GameEndingPage() {
-  return <p></p>;
+  const { players } = useGameStore();
+
+  const sortedPlayers = useMemo(() => {
+    return [...players].sort((a, b) => b.score - a.score);
+  }, [players]);
+
+  const endGame = useEndGame();
+  return (
+    <>
+      <Header title="Победители" />
+
+      <div className="flex w-full p-8 flex-1">
+        <HostWidget />
+        <div className="flex-1 flex justify-center gap-12 items-end relative z-3">
+          <PlayerWinnerCard player={sortedPlayers[2]} place={3} />
+          <PlayerWinnerCard player={sortedPlayers[0]} place={1} />
+          <PlayerWinnerCard player={sortedPlayers[1]} place={2} />
+        </div>
+        <div
+          className="w-full h-30 absolute bottom-0 bg-accent/50 left-0 backdrop-blur-xs 
+          border border-primary border-b-0 rounded-t-[80px]"
+        />
+        <Button asChild size="xl">
+          <Link
+            className="absolute left-[50%] translate-[50%] z-10"
+            href="/"
+            onClick={endGame}
+          >
+            На главную
+          </Link>
+        </Button>
+      </div>
+    </>
+  );
 }
