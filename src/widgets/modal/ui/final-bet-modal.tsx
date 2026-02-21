@@ -37,7 +37,7 @@ export function FinalBetModal() {
           className="w-50 text-center border-primary/50 text-2xl! outline-none"
           placeholder="1000"
           value={value}
-          min={0}
+          min={1}
           max={currentPlayer.score}
           onChange={(e) => setValue(e.target.value)}
         />

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type TModalState =
+export type TModalState =
   | "closed"
   | "cat_in_bag"
   | "auction"

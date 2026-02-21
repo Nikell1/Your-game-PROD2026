@@ -9,6 +9,7 @@ export function useStartFinal() {
     players,
     setPlayers,
     setStatus,
+    resetAnsweredPlayers,
     setActivePlayerId,
   } = useGameStore();
   const router = useRouter();
@@ -30,6 +31,7 @@ export function useStartFinal() {
     const passedPlayers = players.filter((p) => p.score > 0);
 
     setPlayers(passedPlayers);
+    resetAnsweredPlayers();
 
     setActivePlayerId(null);
 

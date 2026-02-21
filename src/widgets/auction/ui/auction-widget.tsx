@@ -1,18 +1,16 @@
 import { useGameStore } from "@/entities/game";
-import { DEFAULT_AUCTION_STEP, useAuctionTable } from "@/features/auction";
-import { AuctionIcon, Button, Frame } from "@/shared/ui";
+import { AuctionPlayerRow, useAuctionTable } from "@/features/auction";
+import { COLOR_PRIMARY, COLOR_SUCCESS } from "@/shared/constants";
+import { AuctionIcon, Frame } from "@/shared/ui";
+import { useMemo } from "react";
 
 export function AuctionWidget() {
   const { currentQuestion } = useGameStore();
-  const {
-    players,
-    currentWinnerId,
-    currentWinnerBet,
-    isBetAll,
-    playerPass,
-    addBetToPlayer,
-    betAll,
-  } = useAuctionTable();
+  const { players, currentWinnerId } = useAuctionTable();
+
+  const sortedPlayers = useMemo(() => {
+    return [...players].sort((a, b) => b.bet - a.bet);
+  }, [players]);
 
   return (
     <Frame className="rounded-xl max-h-120 gap-6 flex-col p-4">
@@ -27,52 +25,20 @@ export function AuctionWidget() {
         </Frame>
       </div>
 
-      {players.map((player) => {
-        const isPassDisabled =
-          currentWinnerId < 0 ||
-          player.isPassed ||
-          currentWinnerId === player.id;
-        const isAddBetDisabled =
-          player.isPassed || player.score <= currentWinnerBet || isBetAll;
-        const isBetAllDisabled =
-          player.isPassed || player.score <= currentWinnerBet;
+      <div className="flex flex-col gap-6 overflow-auto pr-3 custom-scroll">
+        {sortedPlayers.map((player, index) => {
+          const winnerColor =
+            index === 0 && currentWinnerId > 0 ? COLOR_SUCCESS : COLOR_PRIMARY;
 
-        return (
-          <div key={player.id} className="w-full flex gap-4">
-            <Frame className="py-2 px-6 text-2xl rounded-lg w-80">
-              {player.name}
-            </Frame>
-            <Frame className="py-2 px-6 text-2xl rounded-lg w-51">
-              Ставка: {player.bet}
-            </Frame>
-            <Frame className="gap-14 rounded-lg py-2 px-4">
-              <Button
-                disabled={isPassDisabled}
-                onClick={() => playerPass(player.id)}
-                className="border-foreground bg-foreground/15 hover:bg-foreground/30"
-              >
-                Пас
-              </Button>
-              <Button
-                onClick={() =>
-                  addBetToPlayer(player.id, player.bet + DEFAULT_AUCTION_STEP)
-                }
-                disabled={isAddBetDisabled}
-                className="border-success bg-success/15 hover:bg-success/30"
-              >
-                Добавить
-              </Button>
-              <Button
-                onClick={() => betAll(player.id, player.score)}
-                className="border-destructive bg-destructive/15 hover:bg-destructive/30"
-                disabled={isBetAllDisabled}
-              >
-                Ва-банк
-              </Button>
-            </Frame>
-          </div>
-        );
-      })}
+          return (
+            <AuctionPlayerRow
+              key={player.id}
+              winnerColor={winnerColor}
+              player={player}
+            />
+          );
+        })}
+      </div>
     </Frame>
   );
 }

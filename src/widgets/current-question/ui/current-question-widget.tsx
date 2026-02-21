@@ -12,8 +12,12 @@ export function CurrentQuestionWidget({
   clear: () => void;
   resume: () => void;
 }) {
-  const { activePlayerId, currentQuestion } = useGameStore();
+  const { activePlayerId, currentQuestion, finalQuestion, status } =
+    useGameStore();
   const { isCorrect } = useAnswerInputStore();
+
+  const question =
+    status === "FINAL_ROUND" ? { ...finalQuestion, price: 0 } : currentQuestion;
 
   const shouldShowAnswerInput = activePlayerId || isCorrect !== null;
 
@@ -23,14 +27,16 @@ export function CurrentQuestionWidget({
   return (
     <Frame className="max-h-120 w-200 rounded-lg gap-4 p-6 flex-col">
       <div className="flex justify-between">
-        <span className={elementClass}>
-          Тема: {currentQuestion?.themeLabel}
-        </span>
+        <span className={elementClass}>Тема: {question?.themeLabel}</span>
 
-        <span className={elementClass}>Цена: {currentQuestion?.price}</span>
+        <span className={elementClass}>
+          {status === "FINAL_ROUND"
+            ? "Финальный вопрос"
+            : `Цена: ${question?.price}`}
+        </span>
       </div>
 
-      <p className="text-3xl flex-1">{currentQuestion?.label}</p>
+      <p className="text-3xl flex-1">{question?.label}</p>
 
       {shouldShowAnswerInput && <AnswerInput clear={clear} resume={resume} />}
     </Frame>

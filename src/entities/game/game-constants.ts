@@ -7,3 +7,4 @@ export const ROUND_1_PRICE_STEP = 100;
 export const ROUND_2_PRICE_STEP = 200;
 
 export const DEFAULT_TIMER_SECONDS = 30;
+export const DEFAULT_FINAL_TIMER_SECONDS = 59;

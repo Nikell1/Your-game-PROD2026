@@ -1,4 +1,9 @@
-import { IActivePlayer, IFinalBet } from "@/entities/player";
+import {
+  IActivePlayer,
+  IFinalAnsweredPlayer,
+  IFinalBet,
+} from "@/entities/player";
+import { produce } from "immer";
 import { StateCreator } from "zustand";
 
 export interface GamePlayersSlice {
@@ -6,14 +11,15 @@ export interface GamePlayersSlice {
   activePlayerId: number | null;
   prevActivePlayerId: number | null;
   finalBets: IFinalBet[];
-  answeredPlayersIds: number[];
+  answeredPlayersIds: IFinalAnsweredPlayer[];
 
-  pushAnsweredPlayersIds: (id: number) => void;
   pushFinalBets: (finalBet: IFinalBet) => void;
   setPlayers: (players: IActivePlayer[]) => void;
   setActivePlayerId: (id: number | null) => void;
   setPrevActivePlayerId: (id: number | null) => void;
   getPlayerWithMinScore: () => IActivePlayer | undefined;
+  setFinalAnswers: (correct: boolean) => void;
+  resetAnsweredPlayers: () => void;
 }
 
 export const gamePlayersSlice: StateCreator<GamePlayersSlice> = (set, get) => ({
@@ -23,14 +29,11 @@ export const gamePlayersSlice: StateCreator<GamePlayersSlice> = (set, get) => ({
   finalBets: [],
   answeredPlayersIds: [],
 
+  resetAnsweredPlayers: () => set({ answeredPlayersIds: [] }),
+
   pushFinalBets: (finalBet) =>
     set((state) => ({
       finalBets: [...state.finalBets, finalBet],
-    })),
-
-  pushAnsweredPlayersIds: (id) =>
-    set((state) => ({
-      answeredPlayersIds: [...state.answeredPlayersIds, id],
     })),
 
   getPlayerWithMinScore: () => {
@@ -47,4 +50,31 @@ export const gamePlayersSlice: StateCreator<GamePlayersSlice> = (set, get) => ({
   setActivePlayerId: (id) => set({ activePlayerId: id }),
 
   setPrevActivePlayerId: (id) => set({ prevActivePlayerId: id }),
+
+  setFinalAnswers: (correct: boolean) =>
+    set(
+      produce((state: GamePlayersSlice) => {
+        if (state.activePlayerId === null) {
+          console.warn("Нет активного игрока для ответа");
+          return;
+        }
+
+        const currentPlayerId = state.activePlayerId;
+
+        state.answeredPlayersIds.push({
+          id: currentPlayerId,
+          isCorrect: correct,
+        });
+
+        const nextPlayer = state.players.find(
+          (player) =>
+            !state.answeredPlayersIds.some(
+              (answered) => answered.id === player.id,
+            ),
+        );
+
+        state.activePlayerId = nextPlayer?.id ?? null;
+      }),
+      false,
+    ),
 });

@@ -20,7 +20,14 @@ export function FinalRoundPage() {
         </div>
       </div>
 
-      <PlayersList />
+      {status === "ENDING" ? (
+        <div
+          className="w-full h-30 absolute bottom-0 bg-accent/50 backdrop-blur-xs 
+            border border-primary border-b-0 rounded-t-[80px]"
+        />
+      ) : (
+        <PlayersList />
+      )}
       <ModalWidget />
     </>
   );

@@ -26,7 +26,7 @@ export function PlayerCardWrapper({
       )}
     >
       <div
-        className="rounded-full size-20 bg-white/70 border"
+        className="rounded-full size-20 bg-background/50 border"
         style={{ borderColor: player.color }}
       ></div>
 

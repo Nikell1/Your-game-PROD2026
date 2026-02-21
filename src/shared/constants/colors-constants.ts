@@ -10,3 +10,5 @@ export const DEFAULT_COLORS_LIST = [
 ] as const;
 
 export const COLOR_PRIMARY = DEFAULT_COLORS_LIST[7];
+export const COLOR_SUCCESS = DEFAULT_COLORS_LIST[3];
+export const COLOR_DESTRUCTIVE = DEFAULT_COLORS_LIST[1];

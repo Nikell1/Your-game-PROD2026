@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 import { cn, createEnterListener } from "@/shared/lib";
 import { useAnswerInputStore } from "../model/answer-input-store";
 import { useGameStore } from "@/entities/game";
+import { useAnswerFinalQuestion } from "@/features/final-question";
 
 export function AnswerInput({
   clear,
@@ -18,25 +19,29 @@ export function AnswerInput({
   const inputRef = useRef<HTMLInputElement>(null);
   const { answerHandler, currentQuestion, isOnDev, activePlayerId } =
     useAnswerQuestion(clear, resume);
-  const { isTimerActive } = useGameStore();
+  const finalAnswerHandler = useAnswerFinalQuestion(clear);
+  const { isTimerActive, status, finalQuestion } = useGameStore();
   const { isCorrect, inputValue, setInputValue } = useAnswerInputStore();
+
+  const handler = status === "FINAL_ROUND" ? finalAnswerHandler : answerHandler;
+  const question = status === "FINAL_ROUND" ? finalQuestion : currentQuestion;
 
   useEffect(() => {
     if (activePlayerId) {
-      const cleanup = createEnterListener(() => answerHandler(inputValue));
+      const cleanup = createEnterListener(() => handler(inputValue));
       if (!isTimerActive) {
         inputRef.current?.focus();
       }
 
       return cleanup;
     }
-  }, [activePlayerId, answerHandler, inputValue, isTimerActive]);
+  }, [activePlayerId, handler, inputValue, isTimerActive]);
 
   return (
     <div className="relative">
       {isOnDev && (
         <p className="mb-3 text-foreground/50">
-          Правильный ответ: {currentQuestion?.correctAnswer}
+          Правильный ответ: {question?.correctAnswer}
         </p>
       )}
       <Input
@@ -54,7 +59,7 @@ export function AnswerInput({
       />
       <Button
         disabled={!activePlayerId}
-        onClick={() => answerHandler(inputValue)}
+        onClick={() => handler(inputValue)}
         variant="ghost"
         className="absolute right-0 bottom-0"
       >

@@ -3,7 +3,10 @@ import { Frame } from "@/shared/ui";
 import Image from "next/image";
 
 export function HostWidget({ seconds }: { seconds?: number }) {
-  const { currentQuestion } = useGameStore();
+  const { currentQuestion, finalQuestion, isTimerActive } = useGameStore();
+
+  const showTimer =
+    currentQuestion?.isAnswering || (finalQuestion && isTimerActive);
 
   return (
     <div className="flex flex-col h-full justify-between items-center relative z-3 shrink-0">
@@ -12,7 +15,7 @@ export function HostWidget({ seconds }: { seconds?: number }) {
           <p className="text-xl">Олег, выбирайте вопрос</p>
         </Frame>
 
-        {currentQuestion && currentQuestion.isAnswering && (
+        {showTimer && (
           <Frame className="rounded-md mt-4 w-full absolute justify-between p-4">
             <span>Оставшееся время:</span>
             <span>{seconds}</span>

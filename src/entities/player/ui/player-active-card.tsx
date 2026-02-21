@@ -25,7 +25,10 @@ export function PlayerActiveCard({
         isActive && "scale-115 -translate-y-6 shadow-md",
       )}
     >
-      <p className="text-2xl font-medium" style={{ color: player.color }}>
+      <p
+        className="text-2xl font-medium leading-6 text-center"
+        style={{ color: player.color }}
+      >
         {player.name}
       </p>
 

@@ -2,6 +2,7 @@
 
 import { useGameStore, getRoundTitle } from "@/entities/game";
 import { useAnswerTimeout } from "@/features/answer-question";
+import { useFinalQuestionTimeout } from "@/features/final-question";
 import { useKeysClick } from "@/features/keys-click";
 import {
   CurrentQuestionWidget,
@@ -20,20 +21,23 @@ export function QuestionPage() {
     timerSeconds,
     setTimerSeconds,
   } = useGameStore();
-
-  const questionTimeOut = useAnswerTimeout();
-
   const timer = useTimer(timerSeconds, {
     immediately: isTimerActive,
   });
 
+  const questionTimeOut = useAnswerTimeout();
+  const finalTimeout = useFinalQuestionTimeout(timer.clear);
+
   const { handleKeyDown } = useKeysClick(timer.pause);
+
+  const timeoutHandler =
+    status === "FINAL_ROUND" ? finalTimeout : questionTimeOut;
 
   useEffect(() => {
     if (timer.seconds === 0 && isTimerActive) {
-      questionTimeOut();
+      timeoutHandler();
     }
-  }, [timer.seconds, isTimerActive, questionTimeOut]);
+  }, [timer.seconds, isTimerActive, questionTimeOut, timeoutHandler]);
 
   useEffect(() => {
     if (timerSeconds !== timer.seconds && isTimerActive) {
@@ -42,13 +46,13 @@ export function QuestionPage() {
   }, [timer.seconds]);
 
   useEffect(() => {
-    if (!activePlayerId) {
+    if (!activePlayerId && status !== "FINAL_ROUND") {
       window.addEventListener("keydown", handleKeyDown);
       return () => {
         window.removeEventListener("keydown", handleKeyDown);
       };
     }
-  }, [activePlayerId, handleKeyDown]);
+  }, [activePlayerId, handleKeyDown, status]);
 
   const headerTitle = getRoundTitle(status);
 

@@ -19,3 +19,8 @@ export interface IFinalBet {
   playerId: number;
   bet: number;
 }
+
+export interface IFinalAnsweredPlayer {
+  id: number;
+  isCorrect: boolean;
+}
