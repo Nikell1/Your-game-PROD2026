@@ -1,16 +1,23 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import {
+  devModeInitialState,
   devModeSlice,
   DevModeSlice,
+  gamePlayersInitialState,
+  gamePlayersRoundInitialState,
   gamePlayersSlice,
   GamePlayersSlice,
+  gameStatusInitialState,
   gameStatusSlice,
   GameStatusSlice,
+  questionInitialState,
   questionSlice,
   QuestionSlice,
+  timerInitialState,
   timerSlice,
   TimerSlice,
+  usedIdsInitialState,
   usedIdsSlice,
   UsedIdsSlice,
 } from "./slices";
@@ -29,26 +36,19 @@ interface IGameStore
   resetRound: () => void;
 }
 
-const roundInitialState = {
-  timerSeconds: DEFAULT_TIMER_SECONDS,
-  isTimerActive: false,
-  currentQuestion: null,
-  answeredQuestionsIds: [],
-  material: [],
-  specials: "default" as TQuestionSpecials,
-  prevActivePlayerId: null,
-  finalBets: [],
+const fullInitialState = {
+  ...devModeInitialState,
+  ...gamePlayersInitialState,
+  ...questionInitialState,
+  ...gameStatusInitialState,
+  ...timerInitialState,
+  ...usedIdsInitialState,
 };
 
-const fullInitialState = {
-  status: "NOT_STARTED" as TGameStatus,
-  players: [],
-  activePlayerId: null,
-  isOnDev: false,
-  usedThemesIds: [],
-  usedQuestionsIds: [],
-
-  ...roundInitialState,
+const roundInitialState = {
+  ...timerInitialState,
+  ...questionInitialState,
+  ...gamePlayersRoundInitialState,
 };
 
 export const useGameStore = create<IGameStore>()(

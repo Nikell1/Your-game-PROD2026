@@ -22,12 +22,22 @@ export interface GamePlayersSlice {
   resetAnsweredPlayers: () => void;
 }
 
-export const gamePlayersSlice: StateCreator<GamePlayersSlice> = (set, get) => ({
+export const gamePlayersInitialState = {
   players: [],
   activePlayerId: null,
   prevActivePlayerId: null,
   finalBets: [],
   answeredPlayersIds: [],
+};
+
+export const gamePlayersRoundInitialState = {
+  prevActivePlayerId: null,
+  finalBets: [],
+  answeredPlayersIds: [],
+};
+
+export const gamePlayersSlice: StateCreator<GamePlayersSlice> = (set, get) => ({
+  ...gamePlayersInitialState,
 
   resetAnsweredPlayers: () => set({ answeredPlayersIds: [] }),
 

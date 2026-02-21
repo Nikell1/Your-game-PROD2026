@@ -1,4 +1,6 @@
 import { useGameStore } from "@/entities/game";
+import { useHostPhrases } from "@/entities/host";
+import { useFindPlayerInPlayers } from "@/entities/player";
 import { useAnswerInputStore } from "@/features/answer-question";
 import { useMemo } from "react";
 
@@ -8,8 +10,11 @@ interface PlayersKey {
 }
 
 export function useKeysClick(pause: () => void) {
-  const { players, setActivePlayerId, setIsTimerActive } = useGameStore();
+  const { players, setActivePlayerId, setIsTimerActive, currentQuestion } =
+    useGameStore();
   const { setInputValue, setIsCorrect } = useAnswerInputStore();
+  const { say } = useHostPhrases();
+  const findPlayer = useFindPlayerInPlayers();
 
   const playersKeys = useMemo<PlayersKey[]>(() => {
     return players.map((player) => ({
@@ -31,6 +36,12 @@ export function useKeysClick(pause: () => void) {
       setIsTimerActive(false);
       pause();
       setIsCorrect(null);
+      const activePlayer = findPlayer(currentPlayerId);
+      say({
+        eventType: "regular_question_answer_start",
+        playerName: activePlayer?.name,
+        price: currentQuestion?.price,
+      });
     }
   };
 

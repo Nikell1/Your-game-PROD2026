@@ -20,3 +20,10 @@ export function getRandomItems<T>(array: T[], n: number): T[] {
 
   return result;
 }
+
+export function getPlayerById<T extends { id: number }>(
+  players: T[],
+  id: number,
+): T | undefined {
+  return players.find((player) => player.id === id);
+}

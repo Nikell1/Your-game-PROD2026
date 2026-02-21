@@ -6,7 +6,12 @@ export interface GameStatusSlice {
   setStatus: (status: TGameStatus) => void;
 }
 
+export const gameStatusInitialState = {
+  status: "NOT_STARTED" as TGameStatus,
+};
+
 export const gameStatusSlice: StateCreator<GameStatusSlice> = (set) => ({
-  status: "NOT_STARTED",
+  ...gameStatusInitialState,
+
   setStatus: (status) => set({ status: status }),
 });

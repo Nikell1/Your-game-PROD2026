@@ -8,9 +8,13 @@ export interface UsedIdsSlice {
   setUsedThemesIds: (newThemes: string[]) => void;
 }
 
-export const usedIdsSlice: StateCreator<UsedIdsSlice> = (set) => ({
+export const usedIdsInitialState = {
   usedQuestionsIds: [],
   usedThemesIds: [],
+};
+
+export const usedIdsSlice: StateCreator<UsedIdsSlice> = (set) => ({
+  ...usedIdsInitialState,
 
   setUsedThemesIds: (newThemes) =>
     set((state) => ({

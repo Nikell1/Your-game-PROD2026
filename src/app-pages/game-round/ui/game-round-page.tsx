@@ -6,6 +6,8 @@ import {
   QUESTIONS_COUNT,
   THEMES_COUNT,
 } from "@/entities/game";
+import { useHostPhrases } from "@/entities/host";
+import { useFindPlayerInPlayers } from "@/entities/player";
 import { useModalStore } from "@/shared/model";
 import { Header, HostWidget, QuestionsTable, PlayersList } from "@/widgets";
 import { AuctionWidget } from "@/widgets/auction/ui/auction-widget";
@@ -14,8 +16,11 @@ import { ModalWidget } from "@/widgets/modal";
 import { useEffect } from "react";
 
 export function GameRoundPage() {
-  const { status, specials, answeredQuestionsIds } = useGameStore();
+  const { status, specials, answeredQuestionsIds, activePlayerId, players } =
+    useGameStore();
   const { setModalState } = useModalStore();
+  const { say, currentEvent } = useHostPhrases();
+  const findPlayer = useFindPlayerInPlayers();
 
   const headerTitle = getRoundTitle(status);
 
@@ -27,6 +32,21 @@ export function GameRoundPage() {
     //   setModalState("round_results");
     // }
   }, [answeredQuestionsIds, setModalState]);
+
+  useEffect(() => {
+    if (
+      (currentEvent === "game_started" || currentEvent === "round_2_start") &&
+      activePlayerId
+    ) {
+      setTimeout(() => {
+        const activePlayer = findPlayer(activePlayerId);
+        say({
+          eventType: "question_table_open",
+          playerName: activePlayer?.name || null,
+        });
+      }, 5000);
+    }
+  });
 
   return (
     <>

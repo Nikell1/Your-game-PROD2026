@@ -3,6 +3,7 @@ import {
   IGameQuestion,
   useGameStore,
 } from "@/entities/game";
+import { useHostPhrases } from "@/entities/host";
 import { useAuctionModal } from "@/features/auction";
 import { useCatModal } from "@/features/cat-in-bag/lib/use-cat-modal";
 import { GAME_ROUTES } from "@/shared/config";
@@ -20,6 +21,7 @@ export function useQuestionClick() {
   const { showCatModal } = useCatModal();
   const { showAuctionModal } = useAuctionModal();
   const router = useRouter();
+  const { say } = useHostPhrases();
 
   return (question: IGameQuestion) => {
     if (question.specials === "default") {
@@ -30,6 +32,7 @@ export function useQuestionClick() {
       setTimerSeconds(DEFAULT_TIMER_SECONDS);
 
       router.replace(GAME_ROUTES.QUESTION(question.id));
+      say({ eventType: "question_selected", price: question.price });
     }
 
     if (question.specials === "cat_in_bag") {

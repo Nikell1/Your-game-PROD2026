@@ -5,8 +5,12 @@ export interface DevModeSlice {
   setIsOnDev: () => void;
 }
 
-export const devModeSlice: StateCreator<DevModeSlice> = (set) => ({
+export const devModeInitialState = {
   isOnDev: false,
+};
+
+export const devModeSlice: StateCreator<DevModeSlice> = (set) => ({
+  ...devModeInitialState,
 
   setIsOnDev: () => set((state) => ({ isOnDev: !state.isOnDev })),
 });

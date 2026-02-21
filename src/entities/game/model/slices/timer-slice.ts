@@ -9,9 +9,13 @@ export interface TimerSlice {
   setIsTimerActive: (is: boolean) => void;
 }
 
-export const timerSlice: StateCreator<TimerSlice> = (set) => ({
+export const timerInitialState = {
   timerSeconds: DEFAULT_TIMER_SECONDS,
   isTimerActive: false,
+};
+
+export const timerSlice: StateCreator<TimerSlice> = (set) => ({
+  ...timerInitialState,
 
   setTimerSeconds: (time) =>
     set((state) => ({

@@ -2,6 +2,8 @@ import { useGameStore } from "@/entities/game";
 import { useManageScore } from "@/features/manage-user-score";
 import { useAnswerInputStore } from "../model/answer-input-store";
 import { useReturnToTable } from "@/features/return-to-table";
+import { useHostPhrases } from "@/entities/host";
+import { useFindPlayerInPlayers } from "@/entities/player";
 
 export function useAnswerQuestion(clear: () => void, resume: () => void) {
   const {
@@ -20,28 +22,38 @@ export function useAnswerQuestion(clear: () => void, resume: () => void) {
   const { increaseScore, decreaseScore } = useManageScore();
   const { isCorrect, setIsCorrect } = useAnswerInputStore();
   const returnToTable = useReturnToTable();
+  const { say } = useHostPhrases();
+  const findPlayer = useFindPlayerInPlayers();
 
   function answerHandler(answer: string) {
     if (currentQuestion && activePlayerId) {
+      const activePlayer = findPlayer(activePlayerId);
       if (
         currentQuestion.correctAnswer.toLowerCase().replace(/\s/g, "") ===
         answer.toLowerCase().replace(/\s/g, "")
       ) {
-        setIsCorrect(true);
+        say({
+          eventType: "regular_correct_answer",
+          playerName: activePlayer?.name,
+          price: currentQuestion.price,
+        });
 
+        setIsCorrect(true);
         increaseScore(activePlayerId, currentQuestion.price);
 
-        const newAnswered = [currentQuestion.id, ...answeredQuestionsIds];
+        setTimeout(() => {
+          const newAnswered = [currentQuestion.id, ...answeredQuestionsIds];
 
-        setAnsweredQuestionsIds(newAnswered);
+          setAnsweredQuestionsIds(newAnswered);
 
-        setSpecials("default");
+          setSpecials("default");
 
-        clear();
+          clear();
 
-        setCurrentQuestion(null);
+          setCurrentQuestion(null);
 
-        returnToTable();
+          returnToTable();
+        }, 3000);
       } else {
         decreaseScore(activePlayerId, currentQuestion.price);
 

@@ -14,6 +14,7 @@ import { useAnswerInputStore } from "@/features/answer-question";
 import { useAuctionStore } from "@/features/auction";
 import { useModalStore } from "@/shared/model";
 import { useStartFinal } from "@/features/final-round";
+import { useHostPhrases } from "@/entities/host";
 
 interface Props {
   playersData?: ISetupPlayer[];
@@ -45,6 +46,8 @@ export function useNewRound() {
 
   const { startFinal } = useStartFinal();
 
+  const { say } = useHostPhrases();
+
   return async ({ playersData, resetSetupGameStore }: Props) => {
     const responseThemes = await fetch("/data/themes.json");
     const themes: ITheme[] = await responseThemes.json();
@@ -73,6 +76,7 @@ export function useNewRound() {
       });
       router.replace(GAME_ROUTES.ROUND_1);
       setActivePlayerId(1);
+      say({ eventType: "game_started" });
     }
 
     if (status === "ROUND_1" || status === "ROUND_2") {

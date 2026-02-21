@@ -3,6 +3,7 @@ import {
   ICurrentQuestion,
   IQuestion,
   IThemeWithQuestions,
+  TQuestionDifficulty,
   TQuestionSpecials,
 } from "../../game-types";
 
@@ -20,10 +21,10 @@ export interface QuestionSlice {
   setFinalQuestion: (question: IQuestion) => void;
 }
 
-export const questionSlice: StateCreator<QuestionSlice> = (set) => ({
+export const questionInitialState = {
   currentQuestion: null,
   answeredQuestionsIds: [],
-  specials: "default",
+  specials: "default" as TQuestionSpecials,
   material: [],
   finalQuestion: {
     id: "",
@@ -31,8 +32,12 @@ export const questionSlice: StateCreator<QuestionSlice> = (set) => ({
     themeLabel: "",
     correctAnswer: "",
     label: "",
-    difficulty: "hard",
+    difficulty: "hard" as TQuestionDifficulty,
   },
+};
+
+export const questionSlice: StateCreator<QuestionSlice> = (set) => ({
+  ...questionInitialState,
 
   setMaterial: (material) => set({ material: material }),
 
