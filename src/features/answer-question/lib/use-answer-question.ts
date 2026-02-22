@@ -1,7 +1,7 @@
 import { useGameStore } from "@/entities/game";
 import { useAnswerInputStore } from "../model/answer-input-store";
 import { useFindPlayerInPlayers } from "@/entities/player";
-import { useHandleCorrectAnswer } from "./handle-correct-answer";
+import { useHandleCorrectAnswer } from "./use-handle-correct";
 import { useHandleIncorrect } from "./use-handle-incorrect";
 
 export function useAnswerQuestion(clear: () => void, resume: () => void) {

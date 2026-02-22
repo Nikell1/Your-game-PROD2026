@@ -19,6 +19,7 @@ export type THostEvents =
   | "regular_correct_answer" // Правильный ответ на обычный вопрос
   | "regular_incorrect_answer" // Неправильный ответ на обычный вопрос
   | "regular_timeout" // Время вышло на обычном вопросе
+  | "all_players_incorrect"
 
   // === КОТ В МЕШКЕ ===
   | "cat_in_bag_open" // Открыт кот в мешке

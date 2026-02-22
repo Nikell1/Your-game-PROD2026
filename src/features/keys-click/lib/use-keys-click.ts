@@ -12,7 +12,8 @@ interface PlayersKey {
 export function useKeysClick(pause: () => void) {
   const { players, setActivePlayerId, setIsTimerActive, currentQuestion } =
     useGameStore();
-  const { setInputValue, setIsCorrect } = useAnswerInputStore();
+  const { setInputValue, setIsCorrect, disabledPlayerIds } =
+    useAnswerInputStore();
   const { say } = useHostPhrases();
   const findPlayer = useFindPlayerInPlayers();
 
@@ -30,7 +31,7 @@ export function useKeysClick(pause: () => void) {
       (key) => key.code === event.code,
     )?.playerId;
 
-    if (currentPlayerId) {
+    if (currentPlayerId && !disabledPlayerIds.includes(currentPlayerId)) {
       setActivePlayerId(currentPlayerId);
       setInputValue("");
       setIsTimerActive(false);

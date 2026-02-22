@@ -55,7 +55,7 @@ export function ProcessTable() {
 
   const answeringPlayer = players.find((p) => p.id === activePlayerId);
   return (
-    <Frame className="rounded-xl py-4 px-8 flex-col gap-8 w-240 max-h-120">
+    <Frame className="rounded-xl py-4 px-8 flex-col gap-6 w-240 max-h-120">
       <Frame className="p-2 rounded-lg text-2xl justify-center">
         Тема финала: {finalQuestion.themeLabel}
       </Frame>

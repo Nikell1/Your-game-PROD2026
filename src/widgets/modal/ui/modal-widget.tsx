@@ -24,70 +24,42 @@ export function ModalWidget() {
   const chosenPlayer = players.find((player) => activePlayerId === player.id);
   const classes = "w-170 pt-10! pb-6! gap-12 items-center";
   const bet = status === "ROUND_1" ? ROUND_1_PRICE_STEP : ROUND_2_PRICE_STEP;
+  const canClose = modalState === "add_avatar" || modalState === "exit_submit";
 
-  if (modalState === "cat_in_bag") {
-    if (isCatPlayer) {
-      return (
-        <ModalWrapper className={classes}>
-          <CatModalChosen
-            bet={bet}
-            name={chosenPlayer?.name}
-            onLeftClick={() => onClick(bet)}
-            onRightClick={() => onClick(bet * QUESTIONS_COUNT)}
-          />
-        </ModalWrapper>
-      );
-    } else {
-      return (
-        <ModalWrapper className={classes}>
-          <CatsModal />
-        </ModalWrapper>
-      );
+  const getWrapperClassName = () => {
+    switch (modalState) {
+      case "round_results":
+        return "w-155 p-10 gap-12 items-center";
+      case "final_bet":
+      case "exit_submit":
+        return "w-140 p-8! gap-6 items-center";
+      case "add_avatar":
+        return "w-220 p-8! gap-6 items-center";
+      default:
+        return classes;
     }
-  }
+  };
 
-  if (modalState === "auction") {
-    return (
-      <ModalWrapper className={classes}>
-        <AuctionModal />
-      </ModalWrapper>
-    );
-  }
-
-  if (modalState === "round_results") {
-    return (
-      <ModalWrapper className="w-155 p-10 gap-12 items-center">
-        <RoundResultsModal />
-      </ModalWrapper>
-    );
-  }
-
-  if (modalState === "final_bet") {
-    return (
-      <ModalWrapper className="w-120 p-8! gap-6 items-center">
-        <FinalBetModal />
-      </ModalWrapper>
-    );
-  }
-
-  if (modalState === "exit_submit") {
-    return (
-      <ModalWrapper
-        className="w-140 p-8! gap-6 items-center"
-        close={() => setModalState("closed")}
-      >
-        <ExitModal />
-      </ModalWrapper>
-    );
-  }
-  if (modalState === "add_avatar") {
-    return (
-      <ModalWrapper
-        className="w-220 p-8! gap-6 items-center"
-        close={() => setModalState("closed")}
-      >
-        <AvatarModal />
-      </ModalWrapper>
-    );
-  }
+  return (
+    <ModalWrapper
+      close={canClose ? () => setModalState("closed") : () => {}}
+      isOpen={modalState !== "closed"}
+      className={getWrapperClassName()}
+    >
+      {modalState === "cat_in_bag" && isCatPlayer && (
+        <CatModalChosen
+          bet={bet}
+          name={chosenPlayer?.name}
+          onLeftClick={() => onClick(bet)}
+          onRightClick={() => onClick(bet * QUESTIONS_COUNT)}
+        />
+      )}
+      {modalState === "cat_in_bag" && !isCatPlayer && <CatsModal />}
+      {modalState === "auction" && <AuctionModal />}
+      {modalState === "round_results" && <RoundResultsModal />}
+      {modalState === "final_bet" && <FinalBetModal />}
+      {modalState === "exit_submit" && <ExitModal />}
+      {modalState === "add_avatar" && <AvatarModal />}
+    </ModalWrapper>
+  );
 }

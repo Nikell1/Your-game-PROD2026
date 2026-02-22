@@ -7,6 +7,7 @@ export interface GetRandomPhraseOptions {
   excludeLastId?: string | null;
   price?: number;
   bet?: number;
+  correctAnswer?: string;
 }
 
 const HOST_PHRASES = phrasesData as IHostPhrase[];
@@ -15,6 +16,7 @@ export function getRandomPhrase({
   eventType,
   playerName,
   excludeLastId,
+  correctAnswer,
   price,
   bet,
 }: GetRandomPhraseOptions): IHostPhrase | null {
@@ -40,6 +42,12 @@ export function getRandomPhrase({
 
   if (bet) {
     phrase.label = phrase.label.replace(/\{bet\}/g, bet.toString());
+  }
+  if (correctAnswer) {
+    phrase.label = phrase.label.replace(
+      /\{correctAnswer\}/g,
+      correctAnswer.toString(),
+    );
   }
 
   return phrase;

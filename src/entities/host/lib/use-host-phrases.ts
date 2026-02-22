@@ -12,8 +12,10 @@ export function useHostPhrases() {
       excludeLastId,
       price,
       bet,
+      correctAnswer,
     }: GetRandomPhraseOptions) => {
       const phrase = getRandomPhrase({
+        correctAnswer,
         eventType,
         playerName,
         excludeLastId,

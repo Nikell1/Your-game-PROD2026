@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
 export function Header({ title }: { title: string }) {
-  const { isOnDev, setIsOnDev, status } = useGameStore();
+  const { isOnDev, setIsOnDev, status, currentQuestion } = useGameStore();
   const { setModalState } = useModalStore();
 
   const handleDevModeChange = useCallback(() => {
@@ -25,9 +25,11 @@ export function Header({ title }: { title: string }) {
     }
   }, [status, router, setModalState]);
 
+  const LogOutDisabled = currentQuestion?.isAnswering;
+
   return (
     <header className="w-full flex justify-between py-6 px-12 shrink-0 relative">
-      <Button variant="ghost" onClick={handleExit}>
+      <Button variant="ghost" onClick={handleExit} disabled={LogOutDisabled}>
         <LogOut className="size-8" />
       </Button>
 

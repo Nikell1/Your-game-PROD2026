@@ -7,6 +7,7 @@ interface PlayerActiveCardProps {
   children?: React.ReactNode;
   isActive: boolean;
   isBottom?: boolean;
+  isDisabled?: boolean;
 }
 
 export function PlayerActiveCard({
@@ -14,15 +15,17 @@ export function PlayerActiveCard({
   children,
   isActive,
   isBottom = true,
+  isDisabled = false,
 }: PlayerActiveCardProps) {
   return (
     <PlayerCardWrapper
       player={player}
       style={isActive ? { boxShadow: `0 0 10px 0 ${player.color}40` } : {}}
       className={cn(
-        " transition-all duration-300",
-        isBottom && "border-b-0! rounded-b-none",
-        isActive && "scale-115 -translate-y-6 shadow-md",
+        "hover:-translate-y-2 pb-5!",
+        isBottom && "border-b-0! rounded-b-none relative top-2",
+        isActive && "scale-115 -translate-y-5 shadow-md hover:-translate-y-7",
+        isDisabled && "opacity-50 pointer-events-none brightness-70",
       )}
     >
       <p

@@ -30,7 +30,7 @@ export function EndingTable() {
           const color = answer?.isCorrect ? COLOR_SUCCESS : COLOR_DESTRUCTIVE;
 
           return (
-            <div key={player.id} className="flex gap-4 flex-col">
+            <div key={player.id} className="flex gap-4 flex-col pt-2">
               <PlayerActiveCard
                 player={player}
                 isActive={false}

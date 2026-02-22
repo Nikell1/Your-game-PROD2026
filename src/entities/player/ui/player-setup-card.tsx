@@ -3,11 +3,14 @@ import { PlayerCardWrapper } from "./player-card-wrapper";
 import { Trash2 } from "lucide-react";
 import { ISetupPlayer } from "../player-types";
 import { MAX_NAME_LENGTH } from "../player-constants";
+import { cn } from "@/shared/lib";
 
 interface PlayerSetupCardProps {
   player: ISetupPlayer;
   isDisabled: boolean;
   index: number;
+  isNew?: boolean;
+  isDeleting?: boolean;
 
   onPlayerRemove: (index: number) => void;
   onNameChange: (index: number, name: string) => void;
@@ -19,11 +22,22 @@ export function PlayerSetupCard({
   isDisabled,
   onPlayerRemove,
   index,
+  isNew,
+  isDeleting,
   onNameChange,
   onClick,
 }: PlayerSetupCardProps) {
   return (
-    <PlayerCardWrapper player={player} isSetup onClick={onClick}>
+    <PlayerCardWrapper
+      player={player}
+      isSetup
+      onClick={onClick}
+      className={cn(
+        "hover:-translate-y-2",
+        isNew && "animate-slide-in",
+        isDeleting && "animate-slide-out",
+      )}
+    >
       <Button
         variant="ghost"
         disabled={isDisabled}

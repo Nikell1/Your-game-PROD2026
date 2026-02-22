@@ -1,6 +1,10 @@
 "use client";
 
 import { useGameStore, getRoundTitle } from "@/entities/game";
+import {
+  useAnswerInputStore,
+  useDisableQuestion,
+} from "@/features/answer-question";
 import { useKeysClick } from "@/features/keys-click";
 import { useCustomTimer } from "@/features/timer";
 import {
@@ -9,11 +13,14 @@ import {
   HostWidget,
   PlayersList,
 } from "@/widgets";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export function QuestionPage() {
-  const { status, activePlayerId } = useGameStore();
+  const { status, activePlayerId, players } = useGameStore();
   const timer = useCustomTimer();
+  const { disabledPlayerIds } = useAnswerInputStore();
+  const disableQuestion = useDisableQuestion(timer.clear);
+  const disabledRef = useRef(false);
 
   const { handleKeyDown } = useKeysClick(timer.pause);
 
@@ -25,6 +32,22 @@ export function QuestionPage() {
       };
     }
   }, [activePlayerId, handleKeyDown, status]);
+
+  useEffect(() => {
+    const shouldDisable =
+      players.length > 0 &&
+      players.length === disabledPlayerIds.length &&
+      !disabledRef.current;
+
+    if (shouldDisable) {
+      disabledRef.current = true;
+      disableQuestion();
+    }
+
+    if (players.length !== disabledPlayerIds.length) {
+      disabledRef.current = false;
+    }
+  }, [disableQuestion, disabledPlayerIds.length, players.length]);
 
   const headerTitle = getRoundTitle(status);
 

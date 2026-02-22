@@ -1,23 +1,16 @@
-import { useReturnToTable } from "@/features/return-to-table";
 import { useGameStore } from "@/entities/game";
 import { useAnswerInputStore } from "../model/answer-input-store";
 import { useManageScore } from "@/features/manage-user-score";
 import { useHostPhrases } from "@/entities/host";
 import { IActivePlayer } from "@/entities/player";
+import { useTimeoutReturn } from "./use-timeout-return";
 
 export function useHandleCorrectAnswer(clear: () => void) {
-  const {
-    activePlayerId,
-    currentQuestion,
-    answeredQuestionsIds,
-    setCurrentQuestion,
-    setAnsweredQuestionsIds,
-    setSpecials,
-  } = useGameStore();
+  const { activePlayerId, currentQuestion } = useGameStore();
   const { setIsCorrect } = useAnswerInputStore();
   const { increaseScore } = useManageScore();
   const { say } = useHostPhrases();
-  const returnToTable = useReturnToTable();
+  const timeoutReturn = useTimeoutReturn();
 
   return (activePlayer: IActivePlayer) => {
     if (currentQuestion && activePlayerId) {
@@ -45,21 +38,7 @@ export function useHandleCorrectAnswer(clear: () => void) {
           price: currentQuestion.price,
         });
       }
-      setTimeout(() => {
-        const newAnswered = [currentQuestion.id, ...answeredQuestionsIds];
-
-        setCurrentQuestion(null);
-        setAnsweredQuestionsIds(newAnswered);
-
-        setSpecials("default");
-
-        returnToTable();
-
-        say({
-          eventType: "question_table_open",
-          playerName: activePlayer?.name || null,
-        });
-      }, 3000);
+      timeoutReturn();
     }
   };
 }

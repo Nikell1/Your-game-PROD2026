@@ -2,25 +2,17 @@ import { IActivePlayer } from "@/entities/player";
 import { useManageScore } from "@/features/manage-user-score";
 import { useAnswerInputStore } from "../model/answer-input-store";
 import { useGameStore } from "@/entities/game";
-import { useReturnToTable } from "@/features/return-to-table";
 import { useHostPhrases } from "@/entities/host";
+import { useTimeoutReturn } from "./use-timeout-return";
 
 export function useHandleIncorrect(clear: () => void, resume: () => void) {
   const { decreaseScore } = useManageScore();
-  const { setIsCorrect } = useAnswerInputStore();
-  const {
-    activePlayerId,
-    currentQuestion,
-    specials,
-    setActivePlayerId,
-    answeredQuestionsIds,
-    setAnsweredQuestionsIds,
-    setSpecials,
-    setCurrentQuestion,
-  } = useGameStore();
+  const { setIsCorrect, pushDisabledPlayerIds } = useAnswerInputStore();
+  const { activePlayerId, currentQuestion, specials, setActivePlayerId } =
+    useGameStore();
 
-  const returnToTable = useReturnToTable();
   const { say } = useHostPhrases();
+  const timeoutReturn = useTimeoutReturn();
 
   return (activePlayer: IActivePlayer) => {
     if (activePlayerId && currentQuestion) {
@@ -29,6 +21,8 @@ export function useHandleIncorrect(clear: () => void, resume: () => void) {
 
       if (specials === "default") {
         resume();
+
+        pushDisabledPlayerIds(activePlayerId);
 
         setActivePlayerId(null);
 
@@ -53,18 +47,7 @@ export function useHandleIncorrect(clear: () => void, resume: () => void) {
             price: currentQuestion.price,
           });
         }
-        setTimeout(() => {
-          const newAnswered = [currentQuestion.id, ...answeredQuestionsIds];
-
-          setAnsweredQuestionsIds(newAnswered);
-
-          setSpecials("default");
-
-          setCurrentQuestion(null);
-
-          returnToTable();
-          say({ eventType: "question_table_open" });
-        }, 3000);
+        timeoutReturn();
       }
     }
   };

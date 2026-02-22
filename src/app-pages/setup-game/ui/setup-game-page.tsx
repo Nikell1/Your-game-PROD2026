@@ -9,9 +9,9 @@ import {
 import { Button } from "@/shared/ui";
 import { Header } from "@/widgets";
 import { useSetupGameStore } from "../model/setup-game-store";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNewRound } from "@/features/new-round";
-import { createEnterListener } from "@/shared/lib";
+import { cn, createEnterListener } from "@/shared/lib";
 import { ModalWidget } from "@/widgets/modal";
 import { usePlayerAvatar } from "@/features/player-avatar";
 
@@ -27,11 +27,31 @@ export function SetupGamePage() {
 
   const startGame = useNewRound();
   const { clickAvatarModal } = usePlayerAvatar();
+  const [newPlayerIndex, setNewPlayerIndex] = useState<number | null>(null);
+  const [deletingPlayerIndex, setDeletingPlayerIndex] = useState<number | null>(
+    null,
+  );
 
   const isPlayersValid = useMemo(
     () => validatePlayers(playersData),
     [playersData],
   );
+
+  const handleRemovePlayer = (index: number) => {
+    setDeletingPlayerIndex(index);
+    setTimeout(() => {
+      removePlayer(index);
+      setDeletingPlayerIndex(null);
+    }, 300);
+  };
+
+  const handleAddPlayer = () => {
+    const newIndex = playersData.length;
+    setNewPlayerIndex(newIndex);
+    addPlayer();
+
+    setTimeout(() => setNewPlayerIndex(null), 1000);
+  };
 
   useEffect(() => {
     const cleanup = createEnterListener(() => {
@@ -53,11 +73,13 @@ export function SetupGamePage() {
         <div className="flex flex-wrap gap-14 px-8 py-4 max-w-278">
           {playersData.map((player, index) => (
             <PlayerSetupCard
+              isDeleting={index === deletingPlayerIndex}
               key={index}
+              isNew={index === newPlayerIndex}
               player={player}
               index={index}
               onNameChange={updatePlayerName}
-              onPlayerRemove={removePlayer}
+              onPlayerRemove={handleRemovePlayer}
               isDisabled={isRemoveBtnDisabled}
               onClick={() => clickAvatarModal(index)}
             />
@@ -65,8 +87,8 @@ export function SetupGamePage() {
 
           {isAddBtnDisabled && (
             <Button
-              className="border text-8xl size-25 relative mx-13 my-18"
-              onClick={() => addPlayer()}
+              className={cn("border text-8xl size-25 relative mx-13 my-18")}
+              onClick={handleAddPlayer}
             >
               <span className="absolute -top-2 left-4">+</span>
             </Button>

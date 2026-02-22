@@ -2,11 +2,13 @@
 
 import { useGameStore } from "@/entities/game";
 import { PlayerActiveCard } from "@/entities/player";
+import { useAnswerInputStore } from "@/features/answer-question";
 import { ScoreControls } from "@/features/manage-user-score";
 import { cn } from "@/shared/lib";
 
 export function PlayersList() {
   const { players, activePlayerId, status, finalBets } = useGameStore();
+  const { disabledPlayerIds } = useAnswerInputStore();
 
   const chosenPlayers =
     status === "FINAL_ROUND"
@@ -24,12 +26,13 @@ export function PlayersList() {
       border border-primary border-b-0 rounded-t-[80px]"
       />
 
-      <div className="flex flex-row-reverse gap-[4%] px-20">
+      <div className="flex flex-row-reverse gap-[4%] px-20 overflow-hidden pt-12">
         {chosenPlayers.map((player) => (
           <PlayerActiveCard
             key={player.id}
             player={player}
             isActive={player.id === activePlayerId}
+            isDisabled={disabledPlayerIds.includes(player.id)}
           >
             <ScoreControls player={player} />
           </PlayerActiveCard>

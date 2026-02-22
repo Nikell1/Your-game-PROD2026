@@ -958,5 +958,30 @@
     "id": "final_results_5",
     "eventType": "final_results",
     "label": "Финальные результаты перед вами! Кто же станет победителем?"
+  },
+  {
+    "id": "all_incorrect_1",
+    "eventType": "all_players_incorrect",
+    "label": "Ого! Никто не знает ответа? Правильный ответ был: {correctAnswer}"
+  },
+  {
+    "id": "all_incorrect_2",
+    "eventType": "all_players_incorrect",
+    "label": "Какая досада! Все промахнулись. Правильный ответ: {correctAnswer}"
+  },
+  {
+    "id": "all_incorrect_3",
+    "eventType": "all_players_incorrect",
+    "label": "Тишина в зале... Никто не ответил верно. Ответ: {correctAnswer}"
+  },
+  {
+    "id": "all_incorrect_4",
+    "eventType": "all_players_incorrect",
+    "label": "Неужели это было так сложно? Правильный ответ: {correctAnswer}"
+  },
+  {
+    "id": "all_incorrect_5",
+    "eventType": "all_players_incorrect",
+    "label": "Ой-ой-ой, полный ноль! А ответ-то был: {correctAnswer}"
   }
 ]

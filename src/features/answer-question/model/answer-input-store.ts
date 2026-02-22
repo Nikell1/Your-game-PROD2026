@@ -4,16 +4,19 @@ import { persist } from "zustand/middleware";
 interface AnswerInputState {
   inputValue: string;
   isCorrect: boolean | null;
+  disabledPlayerIds: number[];
 }
 
 interface AnswerInputActions {
   setIsCorrect: (n: boolean | null) => void;
   setInputValue: (value: string) => void;
   resetAnswerInputStore: () => void;
+  pushDisabledPlayerIds: (id: number) => void;
 }
 
 const initialState: AnswerInputState = {
   inputValue: "",
+  disabledPlayerIds: [],
   isCorrect: null,
 };
 
@@ -23,6 +26,11 @@ export const useAnswerInputStore = create<IAnswerInputStore>()(
   persist(
     (set) => ({
       ...initialState,
+
+      pushDisabledPlayerIds: (id) =>
+        set((state) => ({
+          disabledPlayerIds: [...state.disabledPlayerIds, id],
+        })),
 
       setIsCorrect: (n) => set({ isCorrect: n }),
 

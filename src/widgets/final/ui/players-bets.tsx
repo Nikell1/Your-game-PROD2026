@@ -13,7 +13,7 @@ export function PlayersBets({ playersWithoutBet, setModalState }: Props) {
   const buttonColor = playersWithoutBet[0]?.color || COLOR_PRIMARY;
 
   return (
-    <div className="flex flex-col gap-3 relative overflow-auto custom-scroll h-full">
+    <div className="flex flex-col gap-3 relative overflow-auto custom-scroll h-full pt-2">
       <div className="flex flex-wrap gap-x-6 gap-y-18">
         {playersWithoutBet.map((player) => (
           <PlayerActiveCard
@@ -26,7 +26,7 @@ export function PlayersBets({ playersWithoutBet, setModalState }: Props) {
           </PlayerActiveCard>
         ))}
       </div>
-      <Frame color={buttonColor} className="w-50 rounded-lg absolute top-70">
+      <Frame color={buttonColor} className="w-50 rounded-lg absolute top-72">
         <Button
           className="w-full hover:bg-foreground/5"
           variant="ghost"
