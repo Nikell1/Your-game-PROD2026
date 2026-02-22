@@ -1,12 +1,13 @@
 "use client";
 
 import { useGameStore } from "@/entities/game";
+import { useHostPhrases } from "@/entities/host";
 import { PlayerWinnerCard } from "@/entities/player";
 import { useEndGame } from "@/features/end-game";
 import { Button } from "@/shared/ui";
 import { Header, HostWidget } from "@/widgets";
 import Link from "next/link";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 export function GameEndingPage() {
   const { players } = useGameStore();
@@ -16,6 +17,11 @@ export function GameEndingPage() {
   }, [players]);
 
   const endGame = useEndGame();
+  const { say } = useHostPhrases();
+
+  useEffect(() => {
+    say({ eventType: "game_results" });
+  }, [say]);
   return (
     <>
       <Header title="Победители" />

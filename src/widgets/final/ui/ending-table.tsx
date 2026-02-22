@@ -1,14 +1,22 @@
 import { useGameStore } from "@/entities/game";
+import { useHostPhrases } from "@/entities/host";
 import { PlayerActiveCard } from "@/entities/player";
 import { ScoreControls } from "@/features/manage-user-score";
 import { GAME_ROUTES } from "@/shared/config";
 import { COLOR_DESTRUCTIVE, COLOR_SUCCESS } from "@/shared/constants";
 import { Button, Frame } from "@/shared/ui";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export function EndingTable() {
   const { players, answeredPlayersIds, finalBets, finalQuestion } =
     useGameStore();
+  const { say } = useHostPhrases();
+
+  useEffect(() => {
+    say({ eventType: "final_results" });
+  }, [say]);
+
   return (
     <Frame className="rounded-xl py-4 px-8 flex-col gap-6 w-240 max-h-160">
       <Frame className="p-2 rounded-lg text-2xl justify-center">

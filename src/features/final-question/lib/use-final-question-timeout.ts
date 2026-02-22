@@ -1,16 +1,19 @@
 import { useReturnToTable } from "@/features/return-to-table";
 import { useGameStore } from "@/entities/game";
+import { useHostPhrases } from "@/entities/host";
 
 export function useFinalQuestionTimeout(clear: () => void) {
-  const { setIsTimerActive, setFinalAnswers } = useGameStore();
+  const { setFinalAnswers } = useGameStore();
   const returnToTable = useReturnToTable();
+  const { say } = useHostPhrases();
 
   return () => {
-    setIsTimerActive(false);
     setFinalAnswers(false);
     clear();
-    console.log(333);
 
-    returnToTable();
+    say({ eventType: "timer_expired" });
+    setTimeout(() => {
+      returnToTable();
+    }, 3000);
   };
 }

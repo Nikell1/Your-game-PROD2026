@@ -20,7 +20,6 @@ export function useAnswerTimeout(clear: () => void) {
   return () => {
     if (currentQuestion) {
       clear();
-      console.log(1);
       if (
         currentQuestion.specials === "auction" ||
         currentQuestion.specials === "cat_in_bag"

@@ -1,16 +1,22 @@
 import { useGameStore } from "@/entities/game";
+import { useHostPhrases } from "@/entities/host";
 import { useNewRound } from "@/features/new-round";
 import { cn } from "@/shared/lib";
 import { Button, Frame } from "@/shared/ui";
 import { ChevronRight } from "lucide-react";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 export function RoundResultsModal() {
   const { players, status } = useGameStore();
+  const { say } = useHostPhrases();
 
   const sortedPlayers = useMemo(() => {
     return [...players].sort((a, b) => b.score - a.score);
   }, [players]);
+
+  useEffect(() => {
+    say({ eventType: "general_round_end" });
+  }, [say]);
 
   const newRound = useNewRound();
   return (

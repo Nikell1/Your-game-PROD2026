@@ -6,6 +6,7 @@ import { PlayerTurn } from "./player-turn";
 import { useFinalQuestionClick } from "@/features/final-question";
 import { useEffect, useMemo, useRef } from "react";
 import { useEndFinal } from "@/features/final-round";
+import { useHostPhrases } from "@/entities/host";
 
 export function ProcessTable() {
   const {
@@ -19,6 +20,7 @@ export function ProcessTable() {
   const { setModalState } = useModalStore();
   const finalQuestionClick = useFinalQuestionClick();
   const endFinal = useEndFinal();
+  const { say } = useHostPhrases();
 
   const playersWithoutBet = useMemo(
     () =>
@@ -31,8 +33,9 @@ export function ProcessTable() {
   useEffect(() => {
     if (players[0] && playersWithoutBet.length === 0 && !activePlayerId) {
       setActivePlayerId(players[0].id);
+      say({ eventType: "final_all_bets_placed" });
     }
-  }, [activePlayerId, players, playersWithoutBet, setActivePlayerId]);
+  }, [activePlayerId, players, playersWithoutBet, setActivePlayerId, say]);
 
   const finalCompletedRef = useRef(false);
 

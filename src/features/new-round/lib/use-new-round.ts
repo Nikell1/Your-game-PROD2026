@@ -101,8 +101,10 @@ export function useNewRound() {
           step: ROUND_2_PRICE_STEP,
         });
         router.replace(GAME_ROUTES.ROUND_2);
+        say({ eventType: "round_2_start" });
       } else if (status === "ROUND_2") {
         startFinal(availableThemes, availableQuestions);
+        say({ eventType: "final_round_start" });
       }
     }
   };

@@ -933,5 +933,30 @@
     "id": "game_results_5",
     "eventType": "game_results",
     "label": "Итоги игры! Смотрим на табло!"
+  },
+  {
+    "id": "final_results_1",
+    "eventType": "final_results",
+    "label": "Итак, финал завершён! Давайте посмотрим, как изменились счета игроков."
+  },
+  {
+    "id": "final_results_2",
+    "eventType": "final_results",
+    "label": "Вот и настал момент истины! Раскрываем ответы и считаем очки."
+  },
+  {
+    "id": "final_results_3",
+    "eventType": "final_results",
+    "label": "Вот и правильный ответ. Проверяем, кто угадал!"
+  },
+  {
+    "id": "final_results_4",
+    "eventType": "final_results",
+    "label": "Барабанная дробь... Сейчас мы увидим, кто сделал правильную ставку!"
+  },
+  {
+    "id": "final_results_5",
+    "eventType": "final_results",
+    "label": "Финальные результаты перед вами! Кто же станет победителем?"
   }
 ]

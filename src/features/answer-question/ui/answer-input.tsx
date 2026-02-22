@@ -20,14 +20,16 @@ export function AnswerInput({
   const { answerHandler, currentQuestion, isOnDev, activePlayerId } =
     useAnswerQuestion(clear, resume);
   const finalAnswerHandler = useAnswerFinalQuestion(clear);
-  const { isTimerActive, status, finalQuestion } = useGameStore();
+  const { isTimerActive, status, finalQuestion, isShowTimer } = useGameStore();
   const { isCorrect, inputValue, setInputValue } = useAnswerInputStore();
 
   const handler = status === "FINAL_ROUND" ? finalAnswerHandler : answerHandler;
   const question = status === "FINAL_ROUND" ? finalQuestion : currentQuestion;
 
+  const isDisabled = !activePlayerId || !isShowTimer;
+
   useEffect(() => {
-    if (activePlayerId) {
+    if (!isDisabled) {
       const cleanup = createEnterListener(() => handler(inputValue));
       if (!isTimerActive) {
         inputRef.current?.focus();
@@ -35,7 +37,7 @@ export function AnswerInput({
 
       return cleanup;
     }
-  }, [activePlayerId, handler, inputValue, isTimerActive]);
+  }, [handler, inputValue, isTimerActive, isDisabled]);
 
   return (
     <div className="relative">
@@ -45,7 +47,7 @@ export function AnswerInput({
         </p>
       )}
       <Input
-        disabled={!activePlayerId}
+        disabled={isDisabled}
         ref={inputRef}
         value={inputValue}
         onChange={(e) => {
@@ -58,7 +60,7 @@ export function AnswerInput({
         )}
       />
       <Button
-        disabled={!activePlayerId}
+        disabled={isDisabled}
         onClick={() => handler(inputValue)}
         variant="ghost"
         className="absolute right-0 bottom-0"

@@ -1,15 +1,11 @@
 import { useGameStore } from "@/entities/game";
+import { useHostPhrases } from "@/entities/host";
 import { useCallback } from "react";
 
 export function useEndFinal() {
   const { finalBets, answeredPlayersIds } = useGameStore();
 
   return useCallback(() => {
-    console.log("🏆 Завершение финала с данными:", {
-      answeredPlayersIds,
-      finalBets,
-    });
-
     const state = useGameStore.getState();
     const currentPlayers = [...state.players];
 

@@ -2,14 +2,13 @@ import { useGameStore } from "@/entities/game";
 import { useReturnToTable } from "@/features/return-to-table";
 
 export function useAnswerFinalQuestion(clear: () => void) {
-  const { finalQuestion, setFinalAnswers, activePlayerId, setIsTimerActive } =
-    useGameStore();
+  const { finalQuestion, setFinalAnswers, activePlayerId } = useGameStore();
 
   const returnToTable = useReturnToTable();
 
   return (answer: string) => {
     if (activePlayerId) {
-      setIsTimerActive(false);
+      clear();
       if (
         finalQuestion.correctAnswer.toLowerCase().replace(/\s/g, "") ===
         answer.toLowerCase().replace(/\s/g, "")
@@ -18,8 +17,6 @@ export function useAnswerFinalQuestion(clear: () => void) {
       } else {
         setFinalAnswers(false);
       }
-
-      clear();
 
       returnToTable();
     }
