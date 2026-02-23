@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 const sourceDir = path.join(__dirname, "..", "public_original");
 const targetDir = path.join(__dirname, "..", "public");
