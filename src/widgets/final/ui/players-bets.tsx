@@ -22,7 +22,7 @@ export function PlayersBets({ playersWithoutBet, setModalState }: Props) {
             player={player}
             isActive={false}
           >
-            <ScoreControls player={player} />
+            <ScoreControls player={player} size="lg" />
           </PlayerActiveCard>
         ))}
       </div>
