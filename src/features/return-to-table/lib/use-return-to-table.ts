@@ -16,7 +16,6 @@ export function useReturnToTable() {
 
   return () => {
     resetAnswerInputStore();
-
     router.replace(path);
   };
 }

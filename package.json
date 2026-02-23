@@ -23,6 +23,7 @@
     "react-dom": "19.2.3",
     "react-hook-form": "^7.71.1",
     "react-ts-typewriter": "^0.1.8-b",
+    "react-use-audio-player": "^4.0.2",
     "tailwind-merge": "^3.4.0",
     "three": "^0.182.0",
     "zustand": "^5.0.11"

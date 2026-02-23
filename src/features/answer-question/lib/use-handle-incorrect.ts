@@ -4,6 +4,7 @@ import { useAnswerInputStore } from "../model/answer-input-store";
 import { useGameStore } from "@/entities/game";
 import { useHostPhrases } from "@/entities/host";
 import { useTimeoutReturn } from "./use-timeout-return";
+import { useSound } from "@/features/sounds";
 
 export function useHandleIncorrect(clear: () => void, resume: () => void) {
   const { decreaseScore } = useManageScore();
@@ -18,8 +19,10 @@ export function useHandleIncorrect(clear: () => void, resume: () => void) {
 
   const { say } = useHostPhrases();
   const timeoutReturn = useTimeoutReturn();
+  const { playSound } = useSound();
 
   return (activePlayer: IActivePlayer) => {
+    playSound("incorrectAnswer");
     if (activePlayerId && currentQuestion) {
       decreaseScore(activePlayerId, currentQuestion.price);
       setIsCorrect(false);

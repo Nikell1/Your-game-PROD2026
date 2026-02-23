@@ -5,6 +5,7 @@ import {
 } from "@/entities/game";
 import { useHostPhrases } from "@/entities/host";
 import { useFindPlayerInPlayers } from "@/entities/player";
+import { useSound } from "@/features/sounds";
 import { useCustomTimer } from "@/features/timer";
 import { GAME_ROUTES } from "@/shared/config";
 import { useModalStore } from "@/shared/model";
@@ -18,6 +19,7 @@ export function useCatModalChosen() {
   const { activePlayerId } = useGameStore();
   const findPlayer = useFindPlayerInPlayers();
   const { start } = useCustomTimer();
+  const { playLoopSound } = useSound();
 
   const router = useRouter();
 
@@ -37,6 +39,7 @@ export function useCatModalChosen() {
         eventType: "cat_in_bag_answer_start",
         playerName: activePlayer?.name,
       });
+      playLoopSound("general_question");
     }
   }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { PROJECT_NAME } from "@/shared/constants";
 import { HexagonBackground } from "@/shared/ui";
+import { AudioProvider } from "@/providers/audioProvider";
 
 export const metadata: Metadata = {
   title: PROJECT_NAME,
@@ -19,7 +20,7 @@ export default function RootLayout({
       <body className={`font-sans antialiased w-screen h-screen flex flex-col`}>
         <HexagonBackground className="w-full h-full absolute top-0 right-0 z-1" />
         <div className="relative z-2 w-screen h-screen flex flex-col">
-          {children}
+          <AudioProvider>{children}</AudioProvider>
         </div>
       </body>
     </html>

@@ -8,6 +8,8 @@ import { cn } from "@/shared/lib";
 import { ModalWidget } from "@/widgets/modal";
 import { usePlayerAvatar } from "@/features/player-avatar";
 import { useSetupPage } from "../lib/use-setup-page";
+import { useSound } from "@/features/sounds";
+import { useEffect } from "react";
 
 export function SetupGamePage() {
   const { playersData, updatePlayerName, resetSetupGameStore } =
@@ -25,6 +27,12 @@ export function SetupGamePage() {
   } = useSetupPage();
 
   const { clickAvatarModal } = usePlayerAvatar();
+
+  const { playLoopSound } = useSound();
+
+  useEffect(() => {
+    playLoopSound("intro");
+  }, [playLoopSound]);
 
   return (
     <>

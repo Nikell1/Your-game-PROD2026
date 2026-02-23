@@ -7,9 +7,16 @@ import { ButtonList } from "./button-list";
 import { PROJECT_NAME } from "@/shared/constants";
 import { GAME_ROUTES } from "@/shared/config";
 import { useGameStore } from "@/entities/game";
+import { useEffect } from "react";
+import { useSound } from "@/features/sounds";
 
 export function MainMenuPage() {
   const { setStatus } = useGameStore();
+  const { playLoopSound } = useSound();
+
+  useEffect(() => {
+    playLoopSound("intro");
+  }, [playLoopSound]);
 
   return (
     <>

@@ -4,6 +4,7 @@ import { useManageScore } from "@/features/manage-user-score";
 import { useHostPhrases } from "@/entities/host";
 import { IActivePlayer } from "@/entities/player";
 import { useTimeoutReturn } from "./use-timeout-return";
+import { useSound } from "@/features/sounds";
 
 export function useHandleCorrectAnswer(clear: () => void) {
   const { activePlayerId, currentQuestion, setShowCorrectAnswer } =
@@ -12,6 +13,7 @@ export function useHandleCorrectAnswer(clear: () => void) {
   const { increaseScore } = useManageScore();
   const { say } = useHostPhrases();
   const timeoutReturn = useTimeoutReturn();
+  const { playSound } = useSound();
 
   return (activePlayer: IActivePlayer) => {
     if (currentQuestion && activePlayerId) {
@@ -39,6 +41,7 @@ export function useHandleCorrectAnswer(clear: () => void) {
           price: currentQuestion.price,
         });
       }
+      playSound("correctAnswer");
       setShowCorrectAnswer(true);
       timeoutReturn();
     }

@@ -6,6 +6,7 @@ import {
 import { useHostPhrases } from "@/entities/host";
 import { useAuctionModal } from "@/features/auction";
 import { useCatModal } from "@/features/cat-in-bag/lib/use-cat-modal";
+import { useSound } from "@/features/sounds";
 import { useCustomTimer } from "@/features/timer";
 import { GAME_ROUTES } from "@/shared/config";
 import { useRouter } from "next/navigation";
@@ -22,6 +23,7 @@ export function useQuestionClick() {
   const router = useRouter();
   const { say } = useHostPhrases();
   const { start } = useCustomTimer();
+  const { playLoopSound, playSound, stopLoopSound } = useSound();
 
   return (question: IGameQuestion) => {
     if (question.specials === "default") {
@@ -40,6 +42,11 @@ export function useQuestionClick() {
       setActivePlayerId(null);
       setCurrentQuestion({ ...question, isAnswering: false });
       say({ eventType: "cat_in_bag_open" });
+      stopLoopSound();
+      playSound("cat");
+      setTimeout(() => {
+        playLoopSound("categories");
+      }, 2500);
     }
 
     if (question.specials === "auction") {
@@ -47,6 +54,8 @@ export function useQuestionClick() {
       showAuctionModal();
       setCurrentQuestion({ ...question, isAnswering: false });
       say({ eventType: "auction_open" });
+      stopLoopSound();
+      playSound("auction");
     }
   };
 }

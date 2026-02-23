@@ -6,6 +6,7 @@ import {
   useDisableQuestion,
 } from "@/features/answer-question";
 import { useKeysClick } from "@/features/keys-click";
+import { useSound } from "@/features/sounds";
 import { useCustomTimer } from "@/features/timer";
 import {
   CurrentQuestionWidget,
@@ -23,6 +24,16 @@ export function QuestionPage() {
   const disabledRef = useRef(false);
 
   const { handleKeyDown } = useKeysClick(timer.pause);
+
+  const { playLoopSound } = useSound();
+
+  useEffect(() => {
+    if (status === "FINAL_ROUND") {
+      playLoopSound("finalQuestion");
+    } else {
+      playLoopSound("general_question");
+    }
+  }, [status]);
 
   useEffect(() => {
     if (!activePlayerId && status !== "FINAL_ROUND") {

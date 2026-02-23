@@ -2,6 +2,7 @@ import { useGameStore } from "@/entities/game";
 import { useHostPhrases } from "@/entities/host";
 import { useManageScore } from "@/features/manage-user-score";
 import { useTimeoutReturn } from "./use-timeout-return";
+import { useSound } from "@/features/sounds";
 
 export function useAnswerTimeout(clear: () => void) {
   const { currentQuestion, prevActivePlayerId } = useGameStore();
@@ -9,6 +10,7 @@ export function useAnswerTimeout(clear: () => void) {
   const timeoutReturn = useTimeoutReturn();
   const { setIsShowTimer, setIsTimerActive, setShowCorrectAnswer } =
     useGameStore();
+  const { playSound, stopLoopSound } = useSound();
 
   const { decreaseScore } = useManageScore();
   return () => {
@@ -16,6 +18,8 @@ export function useAnswerTimeout(clear: () => void) {
       setIsTimerActive(false);
       setIsShowTimer(false);
       clear();
+      stopLoopSound();
+      playSound("timeout");
       setShowCorrectAnswer(true);
       if (
         currentQuestion.specials === "auction" ||

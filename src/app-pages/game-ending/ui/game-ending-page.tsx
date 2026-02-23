@@ -4,6 +4,7 @@ import { useGameStore } from "@/entities/game";
 import { useHostPhrases } from "@/entities/host";
 import { PlayerWinnerCard } from "@/entities/player";
 import { useEndGame } from "@/features/end-game";
+import { useSound } from "@/features/sounds";
 import { Button } from "@/shared/ui";
 import { Header, HostWidget } from "@/widgets";
 import Link from "next/link";
@@ -11,6 +12,7 @@ import { useEffect, useMemo } from "react";
 
 export function GameEndingPage() {
   const { players } = useGameStore();
+  const { playLoopSound } = useSound();
 
   const sortedPlayers = useMemo(() => {
     return [...players].sort((a, b) => b.score - a.score);
@@ -22,6 +24,10 @@ export function GameEndingPage() {
   useEffect(() => {
     say({ eventType: "game_results" });
   }, [say]);
+
+  useEffect(() => {
+    playLoopSound("ending");
+  }, []);
   return (
     <>
       <Header title="Победители" />

@@ -2,11 +2,13 @@ import { useGameStore } from "@/entities/game";
 import { useModalStore } from "@/shared/model";
 import { useAuctionStore } from "../model/auction-store";
 import { IAuctionPlayer } from "../auction-types";
+import { useSound } from "@/features/sounds";
 
 export function useAuctionModal() {
   const { resetModalStore, setModalState } = useModalStore();
   const { setSpecials, players, currentQuestion } = useGameStore();
   const { setPlayers, setMinBet } = useAuctionStore();
+  const { playLoopSound } = useSound();
 
   function showAuctionModal() {
     resetModalStore();
@@ -26,6 +28,7 @@ export function useAuctionModal() {
 
       setModalState("closed");
       setSpecials("auction");
+      playLoopSound("auctionBets");
     }, 3000);
   }
 
