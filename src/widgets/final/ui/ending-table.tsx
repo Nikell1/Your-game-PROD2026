@@ -25,7 +25,6 @@ export function EndingTable() {
         {players.map((player) => {
           const playerBet = finalBets.find((fb) => fb.playerId === player.id);
           const answer = answeredPlayers.find((ans) => ans.id === player.id);
-          const isCorAns = answer?.isCorrect ? "Верный" : "Неверный";
           const color = answer?.isCorrect ? COLOR_SUCCESS : COLOR_DESTRUCTIVE;
 
           return (
@@ -44,7 +43,7 @@ export function EndingTable() {
               >
                 <span>Ставка: {playerBet?.bet}</span>
                 <p>
-                  Ответ <span className={color}>{isCorAns}</span>
+                  Ответ: <span className={color}>{answer?.answer}</span>
                 </p>
               </Frame>
             </div>

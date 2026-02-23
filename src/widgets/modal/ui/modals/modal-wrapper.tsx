@@ -1,5 +1,6 @@
 import { cn } from "@/shared/lib";
-import { Frame } from "@/shared/ui";
+import { Button, Frame } from "@/shared/ui";
+import { X } from "lucide-react";
 
 interface Props {
   children: React.ReactNode;
@@ -13,6 +14,7 @@ export function ModalWrapper({
   children,
   isOpen,
   className,
+  canClose = false,
   close = () => {},
 }: Props) {
   return (
@@ -33,6 +35,15 @@ export function ModalWrapper({
           isOpen && "scale-100",
         )}
       >
+        {canClose && (
+          <Button
+            variant="ghost"
+            className="absolute right-5 top-7"
+            onClick={close}
+          >
+            <X className="size-10" />
+          </Button>
+        )}
         {children}
       </Frame>
     </>

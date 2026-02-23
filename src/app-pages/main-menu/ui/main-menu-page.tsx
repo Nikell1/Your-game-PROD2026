@@ -1,18 +1,20 @@
 "use client";
 
 import { Badge, Button } from "@/shared/ui";
-import { Play, Swords } from "lucide-react";
+import { Play, Settings, Swords } from "lucide-react";
 import Link from "next/link";
-import { ButtonList } from "./button-list";
 import { PROJECT_NAME } from "@/shared/constants";
 import { GAME_ROUTES } from "@/shared/config";
 import { useGameStore } from "@/entities/game";
 import { useEffect } from "react";
 import { useSound } from "@/features/sounds";
+import { useModalStore } from "@/shared/model";
+import { ModalWidget } from "@/widgets/modal";
 
 export function MainMenuPage() {
   const { setStatus } = useGameStore();
   const { playLoopSound } = useSound();
+  const { setModalState } = useModalStore();
 
   useEffect(() => {
     playLoopSound("intro");
@@ -43,12 +45,20 @@ export function MainMenuPage() {
               <span>Создать игру</span>
             </Link>
           </Button>
-
-          <ButtonList />
+          <nav className="flex flex-wrap gap-x-12 gap-y-10 justify-center max-w-200 mx-auto">
+            <Button
+              size="xl"
+              className="text-lg w-40"
+              onClick={() => setModalState("settings")}
+            >
+              <Settings />
+              <span>Настройки</span>
+            </Button>
+          </nav>
         </main>
-
         <footer className="text-center text-white/50">Version: 0.0.1</footer>
       </div>
+      <ModalWidget />
     </>
   );
 }

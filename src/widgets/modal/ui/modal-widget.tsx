@@ -36,7 +36,7 @@ export function ModalWidget() {
         return "w-155 p-10 gap-12 items-center";
       case "final_bet":
       case "exit_submit":
-        return "w-140 p-8! gap-6 items-center";
+        return "w-160 py-8! gap-6 items-center";
       case "add_avatar":
         return "w-220 p-8! gap-6 items-center";
       default:
@@ -46,6 +46,7 @@ export function ModalWidget() {
 
   return (
     <ModalWrapper
+      canClose={canClose}
       close={canClose ? () => setModalState("closed") : () => {}}
       isOpen={modalState !== "closed"}
       className={getWrapperClassName()}

@@ -25,11 +25,11 @@ export function Header({ title }: { title: string }) {
     }
   }, [status, router, setModalState]);
 
-  const LogOutDisabled = currentQuestion?.isAnswering;
+  const disabled = currentQuestion?.isAnswering;
 
   return (
     <header className="w-full flex justify-between py-6 px-12 shrink-0 relative">
-      <Button variant="ghost" onClick={handleExit} disabled={LogOutDisabled}>
+      <Button variant="ghost" onClick={handleExit} disabled={disabled}>
         <LogOut className="size-8" />
       </Button>
 
@@ -49,7 +49,11 @@ export function Header({ title }: { title: string }) {
           <span className="text-xl">Режим разработчика</span>
         </div>
 
-        <Button variant="ghost" onClick={() => setModalState("settings")}>
+        <Button
+          variant="ghost"
+          onClick={() => setModalState("settings")}
+          disabled={disabled}
+        >
           <Settings className="size-9" />
         </Button>
       </div>
