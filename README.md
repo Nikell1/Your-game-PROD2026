@@ -13,17 +13,17 @@
 
 # Экстрафичи:
 
-- **Персонажи игроков**
+- **Персонажи игроков**  
 На экране подготовки к игре игрок может нажать на свой аватар и в открывшемся модальном окне выбрать один из восьми предустановленных аватаров или загрузить свой. Аватары сохраняются на протяжении всей игры
 
-- **Звуки**
+- **Звуки**  
 На экраны добавлена фоновая музыка, также добавлены звуки для основных событий игры (правильный/неправильный ответ, отсутствие ответа, время истекло, выпадение кота в мешке или аукциона). Громкость звуков можно изменить в настройках.
 
 
-- **Анимации**
+- **Анимации**  
 Добавлены анимации, плавность
 
-- **Реакция ведущего на ввод ответов**
+- **Реакция ведущего на ввод ответов**  
 Добавлен ведущий, который сопровождает игроков на протяжении всей игры и реагирует на большинство событий. Фразы разнообразны.
 
 
@@ -371,6 +371,68 @@ src/
 - Контексты (аудио, тема)
 
 ---
+
+# Потоки данных в игре
+
+### 1. Начало игры
+
+[app] /game/setup  
+  ↓  
+[app-pages] SetupGamePage  
+  ↓  
+[widgets] PlayerSetupList  
+  ↓  
+[features] usePlayerAvatar, useValidatePlayers  
+  ↓  
+[entities] player/validate-players.ts  
+  ↓  
+[shared] ui/input.tsx, ui/button.tsx  
+  ↓  
+[app] /game/round/1 (редирект после валидации)  
+
+### 2. Выбор вопроса
+
+[widgets] QuestionsTable  
+  ↓ (клик)  
+[features] useQuestionClick  
+  ↓  
+[entities] game/question-slice (setCurrentQuestion)  
+
+### 3. Ответ на вопрос
+
+[app] /game/[questionId]  
+  ↓  
+[app-pages] QuestionPage  
+  ↓  
+[widgets] CurrentQuestionWidget  
+  ↓  
+[features]  
+├─→ [features] useKeysClick (захват права ответа)  
+├─→ [features] useTimer  
+├─→ [features] useHandleCorrect / useHandleIncorrect  
+└─→ [entities] game/players-slice (updateScore)  
+  ↓  
+[features] useReturnToTable  
+  ↓  
+[app] /game/round/[id]  
+
+### 4. Финальный раунд
+
+[app] /game/round/final  
+  ↓  
+[widgets] FinalRoundWidget  
+  ↓  
+[features] useStartFinal (фильтрация игроков)  
+  ↓  
+[widgets] PlayersBets (секретные ставки)  
+  ↓  
+[features/final-question] useFinalQuestionClick  
+  ↓  
+[widgets] ProcessTable (поочередные ответы)  
+  ↓  
+[features] useEndFinal (подсчет результатов)  
+  ↓  
+[app] /game/ending  
 
 ## Ключевые паттерны и принципы
 
