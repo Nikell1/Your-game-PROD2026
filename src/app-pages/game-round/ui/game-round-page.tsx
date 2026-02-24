@@ -27,11 +27,6 @@ export function GameRoundPage() {
       stopLoopSound();
       playSound("roundEnd");
     }
-    // if (answeredQuestionsIds.length === 1) {
-    //   setModalState("round_results");
-    //   stopLoopSound();
-    //   playSound("roundEnd");
-    // }
   }, [answeredQuestionsIds, setModalState]);
 
   useEffect(() => {

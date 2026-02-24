@@ -42,7 +42,6 @@ export function useAuctionTable() {
 
     if (activePlayers.length === 1) {
       const winner = activePlayers[0];
-      // say({ eventType: "auction_winner", playerName: winner.name });
       setTimeout(() => {
         setActivePlayerId(winner.id);
         setPrevActivePlayerId(winner.id);
