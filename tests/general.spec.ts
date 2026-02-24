@@ -41,6 +41,39 @@ async function createGameWithTwoPlayers(page: Page) {
   await expect(page.getByRole("heading", { name: "Раунд 1" })).toBeVisible();
 }
 
+test("the button is disabled until all names are valid", async ({ page }) => {
+  await page.goto("/game/setup");
+
+  const nameInputs = page.getByPlaceholder("Имя игрока");
+  const startButton = page.getByRole("button", { name: "Начать игру" });
+
+  // Проверяем, что изначально кнопка disabled
+  await expect(startButton).toBeDisabled();
+
+  // Заполняем первый инпут (максимум 14 символов)
+  await nameInputs.first().fill("Игрок 1");
+  await expect(startButton).toBeDisabled(); // все еще disabled
+
+  // Проверяем ограничение длины
+  await nameInputs.first().fill("А".repeat(20));
+  const firstValue = await nameInputs.first().inputValue();
+  expect(firstValue.length).toBe(14);
+
+  // Заполняем второй инпут
+  await nameInputs.nth(1).fill("Игрок 2");
+
+  // Теперь оба заполнены - кнопка enabled
+  await expect(startButton).toBeEnabled();
+
+  // Проверяем, что при очистке одного поля кнопка снова disabled
+  await nameInputs.first().fill("");
+  await expect(startButton).toBeDisabled();
+
+  // Восстанавливаем - кнопка снова enabled
+  await nameInputs.first().fill("Игрок 1");
+  await expect(startButton).toBeEnabled();
+});
+
 test("main menu navigates to setup game", async ({ page }) => {
   await page.goto("/");
 

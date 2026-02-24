@@ -1,59 +1,407 @@
-# PROD 2026 - Frontend
+Архитектура приложения:
 
-> [!IMPORTANT]
-> An English version of the README is available here - [README-EN.md](README-EN.md)
+Проект построен на основе Feature-Sliced Design (FSD) — методологии архитектуры фронтенд-приложений. Это обеспечивает четкое разделение ответственности, масштабируемость и поддерживаемость кода.
 
-> [!TIP]
-> Задание можно найти в отдельном репозитории по ссылке – https://gitlab.prodcontest.com/2026-final-tasks/frontend
+Полная структура проекта
 
-**Используйте данный репозиторий для работы над задачей.**
+src/
+├── app/                           # Слой приложения (Next.js App Router)
+│   ├── game/                      # Группа маршрутов игры
+│   │   ├── [questionId]/          # Динамический маршрут вопроса
+│   │   │   └── page.tsx
+│   │   ├── ending/                 # Завершение игры
+│   │   │   └── page.tsx
+│   │   ├── round/                  # Раунды
+│   │   │   ├── [id]/               # Динамический раунд (1, 2)
+│   │   │   │   └── page.tsx
+│   │   │   └── final/              # Финальный раунд
+│   │   │       └── page.tsx
+│   │   └── setup/                  # Настройка игры
+│   │       └── page.tsx
+│   ├── favicon.ico
+│   ├── globals.css                 # Глобальные стили
+│   ├── layout.tsx                  # Корневой layout
+│   └── page.tsx                     # Главная страница (меню)
+│
+├── app-pages/                      # Композиция страниц
+│   ├── final-round/
+│   │   └── ui/
+│   │       └── final-round-page.tsx
+│   ├── game-ending/
+│   │   └── ui/
+│   │       └── game-ending-page.tsx
+│   ├── game-round/
+│   │   └── ui/
+│   │       └── game-round-page.tsx
+│   ├── main-menu/
+│   │   └── ui/
+│   │       └── main-menu-page.tsx
+│   ├── question-page/
+│   │   └── question-page.tsx
+│   └── setup-game/
+│       ├── lib/
+│       │   └── use-setup-page.ts
+│       ├── model/
+│       │   └── setup-game-store.ts
+│       ├── ui/
+│       │   └── setup-game-page.tsx
+│       └── index.ts
+│
+├── entities/                       # Бизнес-сущности
+│   ├── game/                       # Сущность "Игра"
+│   │   ├── lib/
+│   │   │   ├── create-current-question.ts
+│   │   │   └── get-round-title.ts
+│   │   ├── model/
+│   │   │   ├── slices/             # Слайсы состояния
+│   │   │   │   ├── dev-mode-slice.ts
+│   │   │   │   ├── players-slice.ts
+│   │   │   │   ├── question-slice.ts
+│   │   │   │   ├── status-slice.ts
+│   │   │   │   ├── timer-slice.ts
+│   │   │   │   └── usedIds-slice.ts
+│   │   │   ├── game-constants.ts
+│   │   │   ├── game-store.ts
+│   │   │   ├── game-types.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   │
+│   ├── host/                       # Сущность "Ведущий"
+│   │   ├── lib/
+│   │   │   ├── get-random-phrase.ts
+│   │   │   └── use-host-phrases.ts
+│   │   ├── model/
+│   │   │   └── host-store.ts
+│   │   ├── ui/
+│   │   │   └── host-phrase.tsx
+│   │   ├── host-types.ts
+│   │   └── index.ts
+│   │
+│   └── player/                     # Сущность "Игрок"
+│       ├── lib/
+│       │   ├── use-find-player-in-players.ts
+│       │   └── validate-players.ts
+│       ├── ui/
+│       │   ├── player-active-card.tsx
+│       │   ├── player-card-wrapper.tsx
+│       │   ├── player-setup-card.tsx
+│       │   └── player-winner-card.tsx
+│       ├── player-constants.ts
+│       ├── player-types.ts
+│       └── index.ts
+│
+├── features/                       # Пользовательские сценарии
+│   ├── answer-question/            # Ответ на вопрос
+│   │   ├── lib/
+│   │   │   ├── use-answer-question.ts
+│   │   │   ├── use-disable-question.ts
+│   │   │   ├── use-handle-correct.ts
+│   │   │   ├── use-handle-incorrect.ts
+│   │   │   ├── use-question-timeout.ts
+│   │   │   └── use-timeout-return.ts
+│   │   ├── model/
+│   │   │   └── answer-input-store.ts
+│   │   ├── ui/
+│   │   │   └── answer-input.tsx
+│   │   └── index.ts
+│   │
+│   ├── auction/                    # Механика аукциона
+│   │   ├── lib/
+│   │   │   ├── use-auction-modal.ts
+│   │   │   └── use-auction-table.ts
+│   │   ├── model/
+│   │   │   └── auction-store.ts
+│   │   ├── ui/
+│   │   │   ├── auction-bets-controls.tsx
+│   │   │   └── auction-player-row.tsx
+│   │   ├── auction-constants.ts
+│   │   ├── auction-types.ts
+│   │   └── index.ts
+│   │
+│   ├── cat-in-bag/                 # Кот в мешке
+│   │   ├── lib/
+│   │   │   ├── generate-cat.ts
+│   │   │   ├── use-cat-modal.ts
+│   │   │   └── use-cat-modal-chosen.ts
+│   │   ├── ui/
+│   │   │   └── input-player.tsx
+│   │   └── index.ts
+│   │
+│   ├── end-game/                   # Завершение игры
+│   │   ├── lib/
+│   │   │   └── use-end-game.ts
+│   │   └── index.ts
+│   │
+│   ├── exit-game/                  # Выход из игры
+│   │   ├── lib/
+│   │   │   └── use-exit-game.ts
+│   │   └── index.ts
+│   │
+│   ├── final-question/              # Финальный вопрос
+│   │   ├── lib/
+│   │   │   ├── use-answer-final-question.ts
+│   │   │   ├── use-final-question-click.ts
+│   │   │   ├── use-final-question-timeout.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   │
+│   ├── final-round/                 # Финальный раунд
+│   │   ├── lib/
+│   │   │   ├── use-end-final.ts
+│   │   │   ├── use-start-final.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   │
+│   ├── keys-click/                  # Обработка нажатия клавиш
+│   │   ├── lib/
+│   │   │   ├── use-keys-click.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   │
+│   ├── manage-user-score/           # Управление счетом
+│   │   ├── lib/
+│   │   │   └── use-manage-score.ts
+│   │   ├── ui/
+│   │   │   └── score-controls.tsx
+│   │   ├── score-constants.ts
+│   │   └── index.ts
+│   │
+│   ├── new-round/                   # Начало нового раунда
+│   │   ├── lib/
+│   │   │   ├── filter-material.ts
+│   │   │   ├── generate-positions.ts
+│   │   │   ├── generate-questions.ts
+│   │   │   ├── generate-specials.ts
+│   │   │   ├── get-specials-positions.ts
+│   │   │   ├── set-game-players.ts
+│   │   │   ├── use-new-round.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   │
+│   ├── player-avatar/               # Выбор аватара
+│   │   ├── lib/
+│   │   │   ├── use-player-avatar.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   │
+│   ├── question-click/              # Выбор вопроса
+│   │   ├── lib/
+│   │   │   ├── use-question-click.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   │
+│   ├── return-to-table/             # Возврат к табло
+│   │   ├── lib/
+│   │   │   ├── use-return-to-table.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   │
+│   ├── sounds/                      # Звуковое сопровождение
+│   │   ├── lib/
+│   │   │   └── use-sounds.ts
+│   │   ├── model/
+│   │   │   └── sound-store.ts
+│   │   ├── sound-constants.ts
+│   │   ├── sounds-types.ts
+│   │   └── index.ts
+│   │
+│   ├── timer/                       # Таймер
+│   │   ├── lib/
+│   │   │   ├── use-custom-timer.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   │
+│   └── index.ts
+│
+├── widgets/                         # Композиционные блоки
+│   ├── auction/
+│   │   └── ui/
+│   │       └── auction-widget.tsx
+│   ├── current-question/
+│   │   └── ui/
+│   │       └── current-question-widget.tsx
+│   ├── final/
+│   │   └── ui/
+│   │       ├── ending-table.tsx
+│   │       ├── final-table.tsx
+│   │       ├── player-turn.tsx
+│   │       ├── players-bets.tsx
+│   │       ├── process-table.tsx
+│   │       └── index.ts
+│   ├── header/
+│   │   └── ui/
+│   │       └── header.tsx
+│   ├── host/
+│   │   └── ui/
+│   │       └── host-widget.tsx
+│   ├── modal/
+│   │   └── ui/
+│   │       └── index.ts
+│   ├── players-list/
+│   │   └── ui/
+│   │       └── players-list.tsx
+│   ├── questions-table/
+│   │   └── ui/
+│   │       └── questions-table.tsx
+│   └── index.ts
+│
+├── providers/                       # Провайдеры
+│   ├── audio-provider.tsx
+│   ├── theme-provider.tsx
+│   └── index.ts
+│
+├── shared/                          # Переиспользуемый код
+│   ├── config/
+│   │   ├── pages-url-config.ts
+│   │   └── index.ts
+│   ├── constants/
+│   │   ├── colors-constants.ts
+│   │   ├── seo-constants.ts
+│   │   └── index.ts
+│   ├── lib/
+│   │   ├── compress-image.ts
+│   │   ├── create-enter-listener.ts
+│   │   ├── utils.ts
+│   │   └── index.ts
+│   ├── model/
+│   │   ├── modal-store.ts
+│   │   └── index.ts
+│   └── ui/
+│       ├── backgrounds/
+│       ├── vectors/
+│       ├── badge.tsx
+│       ├── button.tsx
+│       ├── file-input.tsx
+│       ├── frame.tsx
+│       ├── input.tsx
+│       ├── slider.tsx
+│       ├── switch.tsx
+│       └── index.ts
+│
+└── public_original/                  # Статические файлы (в корне проекта)
+    ├── avatars/
+    ├── data/                         # Предустановленные вопросы
+    ├── sounds/                       # Звуковые эффекты
+    ├── host-image.png
+    └── scripts/                      # Скрипты сборки
+        ├── postbuild.js
+        ├── prebuild.js
+        └── predev.js
 
-> [!WARNING]
-> Помните! Изменять файл .gitlab-ci.yml запрещено.
+Детальное описание взаимодействия слоев
 
-> [!WARNING]
-> В качестве отправленного решения будет зафиксирована версия проекта 
-> из последнего коммита в ветке main в момент дедлайна.
+1. Слой app (Next.js App Router)
 
-**Чтобы ваша работа была проверена, необходимо выполнить два условия:**
+Ответственность:
 
-1) Приложение должно собирать статику в папку public командой `npm run build`
+Определение маршрутов
 
-2) Приложение должно запускаться командой `npm ci && npm start` на Node.js версии LTS. Если приложение таким образом не запускается, оценка в категориях «Технические критерии» и «Общее впечатление эксперта» будет 0.
+Получение параметров URL
 
-## Как найти задеплоенный сайт?
+Рендеринг соответствующей страницы из app-pages
 
-Деплой происходит только при обновлении ветки main.
+4. Слой features (пользовательские сценарии)
 
-В случае успешного деплоя справа, в разделе `Project information`, появится ссылка `GitLab Pages`.
+Ответственность:
 
+Реализация конкретного пользовательского сценария
 
-## Академическая честность и культура общения
+Взаимодействие с entities
 
-Мы призываем всех участников соблюдать принципы академической честности и культуры общения, подходить к соревнованиям открыто и добросовестно. <br/>
-Цель олимпиады — не только продемонстрировать свои знания и навыки, но и развиваться как надёжные и ответственные специалисты в будущем.
+Навигация
 
-### Академическая честность и проверка на заимствования
+Бизнес-логика сценария
 
-Мы проверяем самостоятельность решений:
+5. Слой entities (бизнес-сущности)
 
-- внутренняя проверка организаторов;
-- внешняя проверка через Codechecker (продукт компании «Антиплагиат»).
+Ответственность:
 
-Код из открытых источников использовать можно, но важно указать источник — в комментарии рядом с фрагментом или в `README`. 
+Бизнес-логика предметной области
 
-Если вы используете LLM/нейросети (например, чтобы сгенерировать фрагменты кода, тесты или документацию), пожалуйста, помечайте это — где уместно, в комментарии рядом с фрагментом или отдельной заметкой в `README`. <br/>
-Важно: **ответственность за весь код в репозитории несёте вы**, включая сгенерированные фрагменты — вы должны понимать, что именно добавляете, уметь объяснить решение и проверять результат (корректность, безопасность, крайние случаи).
+Типы и интерфейсы
 
-Это позволит легко проверить и подтвердить самостоятельность вашей работы и снять возможные вопросы при проверке.
+Store для состояния сущности
 
-### Культура общения и этика участия
+6. Слой shared (переиспользуемый код)
 
-Олимпиада по промышленному программированию — это про профессиональный подход. Поэтому в репозитории (сообщения коммитов, названия веток, комментарии к коду и обсуждения) мы ожидаем уважительный и деловой тон.
+Ответственность:
 
-Мы не приемлем ненормативную лексику, оскорбления и токсичное поведение.
+Переиспользуемые UI компоненты
 
-## Меры при нарушениях
+Утилиты и хелперы
 
-Если мы фиксируем нарушение академической честности или культуры общения, мы можем аннулировать результат работы (включая дисквалификацию в рамках олимпиады). <br/>
-Решение принимается организаторами по совокупности признаков и результатов проверок.
+Константы, конфиги
+
+7. Слой providers (провайдеры)
+
+Потоки данных в игре
+
+1. Начало игры
+
+[app] /game/setup
+  ↓
+[app-pages] SetupGamePage
+  ↓
+[widgets] PlayerSetupList
+  ↓
+[features] usePlayerAvatar, useValidatePlayers
+  ↓
+[entities] player/validate-players.ts
+  ↓
+[shared] ui/input.tsx, ui/button.tsx
+  ↓
+[app] /game/round/1 (редирект после валидации)
+
+2. Выбор вопроса
+
+[widgets] QuestionsTable
+  ↓ (клик)
+[features] useQuestionClick
+  ↓
+[entities] game/question-slice (setCurrentQuestion)
+
+3. Ответ на вопрос
+
+[app] /game/[questionId]
+  ↓
+[app-pages] QuestionPage
+  ↓
+[widgets] CurrentQuestionWidget
+  ↓
+[features]
+  ├─→ [features] useKeysClick (захват права ответа)
+  ├─→ [features] useTimer
+  ├─→ [features] useHandleCorrect / useHandleIncorrect
+  └─→ [entities] game/players-slice (updateScore)
+  ↓
+[features] useReturnToTable
+  ↓
+[app] /game/round/[id]
+
+4. Финальный раунд
+
+[app] /game/round/final
+  ↓
+[widgets] FinalRoundWidget
+  ↓
+[features] useStartFinal (фильтрация игроков)
+  ↓
+[widgets] PlayersBets (секретные ставки)
+  ↓
+[features/final-question] useFinalQuestionClick
+  ↓
+[widgets] ProcessTable (поочередные ответы)
+  ↓
+[features] useEndFinal (подсчет результатов)
+  ↓
+[app] /game/ending
+
+Ключевые паттерны и принципы
+
+1. Композиция через хуки
+
+2. Изоляция бизнес-логики
+
+3. Публичное API через index.ts
+
+4. Строгие правила импортов
