@@ -22,16 +22,16 @@ export function GameRoundPage() {
 
   const { playLoopSound, stopLoopSound, playSound } = useSound();
   useEffect(() => {
-    // if (answeredQuestionsIds.length === QUESTIONS_COUNT * THEMES_COUNT) {
-    //   setModalState("round_results");
-    //   stopLoopSound();
-    //   playSound("roundEnd");
-    // }
-    if (answeredQuestionsIds.length === 1) {
+    if (answeredQuestionsIds.length === QUESTIONS_COUNT * THEMES_COUNT) {
       setModalState("round_results");
       stopLoopSound();
       playSound("roundEnd");
     }
+    // if (answeredQuestionsIds.length === 1) {
+    //   setModalState("round_results");
+    //   stopLoopSound();
+    //   playSound("roundEnd");
+    // }
   }, [answeredQuestionsIds, setModalState]);
 
   useEffect(() => {
